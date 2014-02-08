@@ -31,7 +31,7 @@ __download_url__ = 'https://github.com/prjemian/pyRestTable.git'
 
 import os
 setup_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', ))
-readme_file = os.path.join(setup_dir, 'README.rst')
+readme_file = os.path.join(setup_dir, 'README.md')
 if os.path.exists(readme_file):
     __long_description__ = open(readme_file, 'r').read()
 else:
