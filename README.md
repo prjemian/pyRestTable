@@ -11,6 +11,13 @@ pyRestTable
 
 :URL:       https://github.com/prjemian/pyRestTable
 
+:download:  https://github.com/prjemian/pyRestTable/tarball/2014-02
+
+Distributed under the terms of the Creative Commons 
+Attribution 4.0 International Public License.
+The full license is in the file *LICENSE.txt*, distributed with this software.
+
+
 Format a nice table in reST (reStructuredText ) from Python
 
 Each cell may have multiple lines, separated by "\n".

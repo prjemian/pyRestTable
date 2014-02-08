@@ -8,7 +8,7 @@
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
-# The full license is in the file LICENSE, distributed with this software.
+# The full license is in the file LICENSE.txt, distributed with this software.
 #-----------------------------------------------------------------------------
 
 import rest_table
@@ -27,7 +27,8 @@ __description__ = 'Format a nice table in reST (reStructuredText ) from Python'
 __author_name__ = __author__
 __author_email__ = __email__
 __url__ = 'https://github.com/prjemian/pyRestTable'
-__download_url__ = 'https://github.com/prjemian/pyRestTable.git'
+__download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/2014-02'
+__keywords__ = ['reST', 'table', 'documentation']
 
 import os
 setup_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', ))

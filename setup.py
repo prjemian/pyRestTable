@@ -29,6 +29,7 @@ setup (name =  pyRestTable.__package_name__,        # pyRestTable
        author_email=pyRestTable.__author_email__,
        url=pyRestTable.__url__,
        download_url=pyRestTable.__download_url__,
+       keywords=pyRestTable.__keywords__,
        platforms='any',
        package_dir = {'': 'src'},
        packages = find_packages('src'),
