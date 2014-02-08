@@ -39,6 +39,6 @@ setup (name =  pyRestTable.__package_name__,        # pyRestTable
                      'Programming Language :: Python :: 2.7',
                      'Topic :: Documentation',
                      'Topic :: Software Development :: Documentation',
-                     'Topic :: Text Processing :: Markup',
+                     #'Topic :: Text Processing :: Markup',
                      ],
       )
