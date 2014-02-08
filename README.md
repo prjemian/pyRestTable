@@ -2,9 +2,13 @@ pyRestTable
 ===========
 
 :version:   2014-02
+
 :author:    Pete R. Jemian
+
 :email:     prjemian@gmail.com
+
 :copyright: (c) 2014, Pete R. Jemian
+
 :URL:       https://github.com/prjemian/pyRestTable
 
 Format a nice table in reST (reStructuredText ) from Python
@@ -12,7 +16,40 @@ Format a nice table in reST (reStructuredText ) from Python
 Each cell may have multiple lines, separated by "\n".
 The content of each cell will be rendered as str(cell).
 
-EXAMPLE
+EXAMPLES
+--------
+
+
+Interactive example with ipython
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   In [1]: import pyRestTable
+   
+   In [2]: pyRestTable.__long_description__
+   
+   Out[2]: 'Format a nice table in reST (reStructuredText ) from Python'
+   
+   In [3]: pyRestTable.__version__
+   
+   Out[3]: '2014-02'
+   
+   In [4]: t = pyRestTable.Table()
+   
+   In [5]: t.labels = ['x', 'y']
+   
+   In [6]: t.rows.append([1,2])
+   
+   In [7]: print t.reST()
+
+	   = =
+	   x y
+	   = =
+	   1 2
+	   = =
+   
+
+Complex table example
+~~~~~~~~~~~~~~~~~~~~~
 
 These commands::
 
@@ -44,29 +81,3 @@ build this table source code::
     +------------+-----------------------------------------+--------+-------------------+
     | None       | <__main__.Table instance at 0x022B8EE0> | 1.234  | [0, 1, 2]         |
     +------------+-----------------------------------------+--------+-------------------+
-
-
-Interactive example with ipython::
-
-   In [1]: import pyRestTable
-   
-   In [2]: pyRestTable.__long_description__
-   Out[2]: 'Format a nice table in reST (reStructuredText ) from Python'
-   
-   In [3]: pyRestTable.__version__
-   Out[3]: '2014-02'
-   
-   In [4]: t = pyRestTable.Table()
-   
-   In [5]: t.labels = ['x', 'y']
-   
-   In [6]: t.rows.append([1,2])
-   
-   In [7]: print t.reST()
-
-	   = =
-	   x y
-	   = =
-	   1 2
-	   = =
-   
