@@ -5,3 +5,5 @@
 /.settings
 /.pypirc
 MANIFEST
+/build
+/dist
