@@ -29,11 +29,3 @@ __author_email__ = __email__
 __url__ = 'https://github.com/prjemian/pyRestTable'
 __download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/2014-02'
 __keywords__ = ['reST', 'table', 'documentation']
-
-import os
-setup_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', ))
-readme_file = os.path.join(setup_dir, 'README.md')
-if os.path.exists(readme_file):
-    __long_description__ = open(readme_file, 'r').read()
-else:
-    __long_description__ = __description__
