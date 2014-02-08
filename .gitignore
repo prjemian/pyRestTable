@@ -1,0 +1,5 @@
+/.pydevproject
+/.project
+*.pyc
+*.egg-info
+/.settings
