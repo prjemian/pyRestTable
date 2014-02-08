@@ -16,12 +16,9 @@ Format a nice table in reST (reStructuredText ) from Python
 Each cell may have multiple lines, separated by "\n".
 The content of each cell will be rendered as str(cell).
 
-EXAMPLES
---------
-
 
 Interactive example with ipython
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
    In [1]: import pyRestTable
    
@@ -49,7 +46,7 @@ Interactive example with ipython
    
 
 Complex table example
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 These commands::
 
