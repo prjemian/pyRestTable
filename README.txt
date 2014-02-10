@@ -1,1 +1,1 @@
-see README.md for more details
+see README.rst for more details

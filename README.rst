@@ -2,15 +2,10 @@ pyRestTable
 ===========
 
 :version:   2014-02
-
 :author:    Pete R. Jemian
-
 :email:     prjemian@gmail.com
-
 :copyright: (c) 2014, Pete R. Jemian
-
 :URL:       https://github.com/prjemian/pyRestTable
-
 :download:  https://github.com/prjemian/pyRestTable/tarball/2014-02
 
 Distributed under the terms of the Creative Commons 
