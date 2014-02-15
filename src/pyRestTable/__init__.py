@@ -27,5 +27,5 @@ __description__ = 'Format a nice table in reST (reStructuredText ) from Python'
 __author_name__ = __author__
 __author_email__ = __email__
 __url__ = 'https://github.com/prjemian/pyRestTable'
-__download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/2014-02'
+__download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
 __keywords__ = ['reST', 'table', 'documentation']
