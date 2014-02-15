@@ -1,12 +1,12 @@
 pyRestTable
 ===========
 
-:version:   2014-02
+:version:   2014-02-15
 :author:    Pete R. Jemian
 :email:     prjemian@gmail.com
 :copyright: 2014, Pete R. Jemian
 :URL:       https://github.com/prjemian/pyRestTable
-:download:  https://github.com/prjemian/pyRestTable/tarball/2014-02
+:download:  https://github.com/prjemian/pyRestTable/tarball/2014-02-15
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
 
 Format a nice table in reST (reStructuredText ) from Python.
@@ -21,8 +21,8 @@ Usage
 **pyRestTable** provides support for
 writing tables in the format of reStructured Text [#]_ 
 from Python programs.  (It provides
-no command-line or GUI program itself; it should be 
-used within a Python program.)
+no command-line or GUI program itself -- no "entry points"; 
+it should be used within a Python program.)
 
 * Import the pyRestTable package
 * Create the Table() instance
@@ -55,10 +55,10 @@ or
 
   $ easy_install -U pyRestTable
   
-or download the tarball from GitHub and use setup to install::
+or download the tarball from GitHub and use setuptools to install::
 
-  $ tar xzf pyRestTable.tar.gz
-  $ cd pyRestTable
+  $ tar xzf pyRestTable-2014-02-15.tar.gz.tar.gz
+  $ cd pyRestTable-2014-02-15
   $ python setup.py install
 
 Examples
@@ -77,7 +77,7 @@ Interactive example with ipython
    
    In [3]: pyRestTable.__version__
    
-   Out[3]: '2014-02'
+   Out[3]: '2014-02-15'
    
    In [4]: t = pyRestTable.Table()
    

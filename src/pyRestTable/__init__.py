@@ -15,7 +15,7 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2014-02'
+__version__ = '2014-02-15'
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
 __copyright__ = '2014, Pete R. Jemian'
