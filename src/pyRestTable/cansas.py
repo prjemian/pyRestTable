@@ -12,12 +12,12 @@ t.labels = ['SASentry', 'description', 'measurements']
 for node in node_list:
     subnode = node.find('cs:Title', namespaces=nsmap)
     if subnode is not None:
-    	s = etree.tostring(subnode, method="text")
-    	s_name = node.attrib['name']
-    	count = len(node.xpath('cs:SASdata', namespaces=nsmap))
+        s = etree.tostring(subnode, method="text")
+        s_name = node.attrib['name']
+        count = len(node.xpath('cs:SASdata', namespaces=nsmap))
     else:
-    	s_name = ''
-    	count = ''
+        s_name = ''
+        count = ''
     title = s.strip()
     t.rows += [[s_name, title, count]]
 
