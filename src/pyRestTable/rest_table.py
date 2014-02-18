@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-1 -*-
 
-# #-----------------------------------------------------------------------------
-# :version:   2014-02
+#-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
 # :copyright: (c) 2014, Pete R. Jemian
@@ -15,7 +14,7 @@
 '''
 Format a nice table in reST (restructured text)
 
-Each cell may have multiple lines, separated by "\n".
+Each cell may have multiple lines, separated by a newline.
 The content of each cell will be rendered as str(cell).
 
 EXAMPLE
@@ -26,7 +25,7 @@ These commands::
     t = pyRestTable.Table()
     t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
     t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-    t.rows.append( ['class', 'NX_FLOAT', '..', '..', ] )
+    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
     t.rows.append( range(0,4) )
     t.rows.append( [None, t, 1.234, range(3)] )
     print t.reST(fmt='complex')
@@ -44,7 +43,7 @@ build this table source code::
     |            |                                         | three, |                   |
     |            |                                         | four   |                   |
     +------------+-----------------------------------------+--------+-------------------+
-    | class      | NX_FLOAT                                | ..     | ..                |
+    | class      | NX_FLOAT                                |        | None              |
     +------------+-----------------------------------------+--------+-------------------+
     | 0          | 1                                       | 2      | 3                 |
     +------------+-----------------------------------------+--------+-------------------+
@@ -148,7 +147,7 @@ def main():
     t = Table()
     t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
     t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-    t.rows.append( ['class', 'NX_FLOAT', '..', '..', ] )
+    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
     t.rows.append( range(0,4) )
     t.rows.append( [None, t, 1.234, range(3)] )
     print t.reST(fmt='simple')

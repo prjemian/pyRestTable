@@ -1,7 +1,7 @@
 pyRestTable
 ===========
 
-:version:   2014-02-15
+:version:   2014-02-18
 :author:    Pete R. Jemian
 :email:     prjemian@gmail.com
 :copyright: 2014, Pete R. Jemian
@@ -10,7 +10,7 @@ pyRestTable
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
 
 Format a nice table in reST (reStructuredText ) from Python.
-Each cell may have multiple lines, separated by "\n".
+Each cell may have multiple lines, separated by a newline.
 The content of each cell will be rendered as str(cell).
 At present, *pyRestTable* only supports tables with content 
 that does not span any cells (no rowspans or columnspans).
@@ -160,7 +160,7 @@ variable ``nsmap``::
 	doc = etree.parse(xml_url)
 	node_list = doc.xpath('//cs:SASentry', namespaces=nsmap)
 	t = Table()
-	t.labels = ['SASentry', 'description', 'measurements']
+	t.labels = ['entry', 'description', 'measurements']
 	for node in node_list:
 	    subnode = node.find('cs:Title', namespaces=nsmap)
 	    if subnode is not None:
@@ -183,7 +183,7 @@ The output from this code::
 	10 SASentry elements in http://www.cansas.org/svn/1dwg/trunk/examples/cs_af1410.xml
 	
 	+-----------+--------------------------------------+--------------+
-	| SASentry  | description                          | measurements |
+	| entry     | description                          | measurements |
 	+===========+======================================+==============+
 	| AF1410:10 | AF1410-10 (AF1410 steel aged 10 h)   | 2            |
 	+-----------+--------------------------------------+--------------+
@@ -211,7 +211,7 @@ The resulting table is shown:
 10 SASentry elements in http://www.cansas.org/svn/1dwg/trunk/examples/cs_af1410.xml
 
 +-----------+--------------------------------------+--------------+
-| SASentry  | description                          | measurements |
+| entry     | description                          | measurements |
 +===========+======================================+==============+
 | AF1410:10 | AF1410-10 (AF1410 steel aged 10 h)   | 2            |
 +-----------+--------------------------------------+--------------+
