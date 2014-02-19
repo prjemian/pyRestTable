@@ -1,7 +1,6 @@
 # -*- coding: iso-8859-1 -*-
 
-# #-----------------------------------------------------------------------------
-# :version:   2014-02
+#-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
 # :copyright: (c) 2014, Pete R. Jemian
@@ -15,7 +14,7 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2014-02-15'
+__version__ = '2014-02-19'
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
 __copyright__ = '2014, Pete R. Jemian'
