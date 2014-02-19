@@ -1,13 +1,13 @@
 pyRestTable
 ===========
 
-:version:   2014-02-18
 :author:    Pete R. Jemian
 :email:     prjemian@gmail.com
 :copyright: 2014, Pete R. Jemian
-:URL:       https://github.com/prjemian/pyRestTable
-:download:  https://github.com/prjemian/pyRestTable/tarball/2014-02-15
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
+:URL:       https://github.com/prjemian/pyRestTable
+:PyPI:      https://pypi.python.org/pypi/pyRestTable/ 
+:documentation: http://prjemian.github.io/pyRestTable
 
 Format a nice table in reST (reStructuredText ) from Python.
 Each cell may have multiple lines, separated by a newline.
@@ -49,9 +49,7 @@ available for installation from PyPI via standard installers::
 
   $ pip install pyRestTable
 
-or
-
-::
+or::
 
   $ easy_install -U pyRestTable
   
