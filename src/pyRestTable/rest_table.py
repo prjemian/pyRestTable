@@ -61,9 +61,18 @@ class Table:
     def __init__(self):
         self.rows = []
         self.labels = []
+        self.use_tabular_columns = False
+        self.alignment = []
+        self.longtable = False
     
     def reST(self, indentation = '', fmt = 'simple'):
         '''render the table in reST format'''
+        if len(self.alignment) == 0:
+            #  set the default column alignments
+            self.alignment = str('L '*len(self.labels)).strip().split()
+        if not len(self.labels) == len(self.alignment):
+            msg = "Number of column labels is different from column width specifiers"
+            raise IndexError, msg
         return {'simple': self.simple_table,
                 'complex': self.complex_table,}[fmt](indentation)
     
@@ -76,7 +85,14 @@ class Table:
         separator = " ".join(['='*w for w in width]) + '\n'
         fmt = " ".join(["%%-%ds" % w for w in width]) + '\n'
         
-        rest = '%s%s' % (indentation, separator)         # top line
+        rest = ''
+        if self.use_tabular_columns:
+            rest += indentation
+            rest += '.. tabularcolumns:: |%s|' % '|'.join(self.alignment)
+            if self.longtable:
+                rest += '\n%s%s' % (' '*4, ':longtable:')
+            rest += '\n\n'
+        rest += '%s%s' % (indentation, separator)        # top line of table
         rest += self._row(self.labels, fmt, indentation) # labels
         rest += '%s%s' % (indentation, separator)        # end of the labels
         for row in self.rows:
@@ -94,7 +110,14 @@ class Table:
         label_sep = '+' + "".join(['='*(w+2) + '+' for w in width]) + '\n'
         fmt = '|' + "".join([" %%-%ds |" % w for w in width]) + '\n'
         
-        rest = '%s%s' % (indentation, separator)         # top line
+        rest = ''
+        if self.use_tabular_columns:
+            rest += indentation
+            rest += '.. tabularcolumns:: |%s|' % '|'.join(self.alignment)
+            if self.longtable:
+                rest += '\n%s%s' % (' '*4, ':longtable:')
+            rest += '\n\n'
+        rest += '%s%s' % (indentation, separator)        # top line of table
         rest += self._row(self.labels, fmt, indentation) # labels
         rest += '%s%s' % (indentation, label_sep)         # end of the labels
         for row in self.rows:
@@ -102,16 +125,57 @@ class Table:
             rest += '%s%s' % (indentation, separator)    # row separator
         return rest
     
+    def list_table(self, indentation = ''):
+        '''
+        Demo list-table: (not implemented yet)
+        
+        .. Does this work?
+        
+        It was found on this page
+            http://docutils.sourceforge.net/docs/ref/rst/directives.html
+        
+        .. list-table:: Frozen Delights!
+           :widths: 15 10 30
+           :header-rows: 1
+        
+           * - Treat
+             - Quantity
+             - Description
+           * - Albatross
+             - 2.99
+             - On a stick!
+           * - Crunchy Frog
+             - 1.49
+             - If we took the bones out, it wouldn't be
+               crunchy, now would it?
+           * - Gannet Ripple
+             - 1.99
+             - On a stick!
+        
+        .. Yes, it _does_ work. 
+        '''
+        raise NotImplementedError
+    
     def _row(self, row, fmt, indentation = ''):
         '''
-        Given a list of <entry nodes in this table <row, 
+        Given a list of entry nodes in this table row, 
         build one line of the table with one text from each entry element.
         The lines are separated by line breaks.
         '''
+        def pick_line(text, lineNum):
+            '''
+            Pick the specific line of text or supply an empty string.
+            Convenience routine when analyzing tables.
+            '''
+            if lineNum < len(text):
+                s = text[lineNum]
+            else:
+                s = ""
+            return s
         text = ""
         if len(row) > 0:
             for line_num in range( max(map(len, [str(_).split("\n") for _ in row])) ):
-                item = [self._pick_line(str(r).split("\n"), line_num) for r in row]
+                item = [pick_line(str(r).split("\n"), line_num) for r in row]
                 text += indentation + fmt % tuple(item)
         return text
     
@@ -129,17 +193,6 @@ class Table:
                 width = row_width
             width = map( max, zip(width, row_width) )
         return width
-    
-    def _pick_line(self, text, lineNum):
-        '''
-        Pick the specific line of text or supply an empty string.
-        Convenience routine when analyzing tables.
-        '''
-        if lineNum < len(text):
-            s = text[lineNum]
-        else:
-            s = ""
-        return s
 
 
 def main():
@@ -152,6 +205,11 @@ def main():
     t.rows.append( [None, t, 1.234, range(3)] )
     print t.reST(fmt='simple')
     print ""
+    print t.reST(fmt='complex')
+    print ""
+    t.longtable = True
+    t.use_tabular_columns = True
+    t.alignment = 'l L c r'.split()
     print t.reST(fmt='complex')
 
 
