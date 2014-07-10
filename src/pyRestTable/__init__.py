@@ -14,7 +14,7 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2014.0710.0'
+__version__ = '2014.0710.01'
 __release__ = __version__
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'

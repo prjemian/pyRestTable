@@ -9,6 +9,7 @@
    examples/index
    code/*
    changes
+   license
 
 
 Features
