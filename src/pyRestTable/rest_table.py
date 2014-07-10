@@ -11,46 +11,18 @@
 # The full license is in the file LICENSE, distributed with this software.
 #-----------------------------------------------------------------------------
 
-'''
-Format a nice table in reST (restructured text)
+'''Format a nice table in reST (restructured text)'''
 
-Each cell may have multiple lines, separated by a newline.
-The content of each cell will be rendered as str(cell).
-
-EXAMPLE
-
-These commands::
-
+def _simple_example():
     import pyRestTable
+    
     t = pyRestTable.Table()
-    t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
-    t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
-    t.rows.append( range(0,4) )
-    t.rows.append( [None, t, 1.234, range(3)] )
-    print t.reST(fmt='complex')
-
-build this table source code::
-
-    +------------+-----------------------------------------+--------+-------------------+
-    | Name       | Type                                    | Units  | Description       |
-    | and        |                                         |        | (and Occurrences) |
-    | Attributes |                                         |        |                   |
-    +============+=========================================+========+===================+
-    | one,       | buckle my                               | shoe.  | ...               |
-    | two        |                                         |        |                   |
-    |            |                                         |        |                   |
-    |            |                                         | three, |                   |
-    |            |                                         | four   |                   |
-    +------------+-----------------------------------------+--------+-------------------+
-    | class      | NX_FLOAT                                |        | None              |
-    +------------+-----------------------------------------+--------+-------------------+
-    | 0          | 1                                       | 2      | 3                 |
-    +------------+-----------------------------------------+--------+-------------------+
-    | None       | <__main__.Table instance at 0x022B8EE0> | 1.234  | [0, 1, 2]         |
-    +------------+-----------------------------------------+--------+-------------------+
-
-'''
+    t.labels = ('one', 'two', 'three' )
+    t.rows.append( ['1,1', '1,2', '1,3',] )
+    t.rows.append( ['2,1', '2,2', '2,3',] )
+    t.rows.append( ['3,1', '3,2', '3,3',] )
+    t.rows.append( ['4,1', '4,2', '4,3',] )
+    print t.reST()
 
 
 class Table:
