@@ -7,7 +7,9 @@ Examples are provided to demonstrate usage.
 .. toctree::
    :maxdepth: 1
 
-   simple
    interactive
-   complex
+   simple
+   grid
+   list-table
+   example2
    cansas

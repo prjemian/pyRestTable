@@ -14,11 +14,11 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2014.0710.01'
+__version__ = '2015.1111.1'
 __release__ = __version__
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
-__copyright__ = '2014, Pete R. Jemian'
+__copyright__ = '2014-2015, Pete R. Jemian'
 
 __package_name__ = 'pyRestTable'
 __license_url__ = 'http://creativecommons.org/licenses/by/4.0/deed.en_US'

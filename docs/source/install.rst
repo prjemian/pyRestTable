@@ -11,6 +11,6 @@ or::
   
 or download the tarball from GitHub and use setuptools to install::
 
-  $ tar xzf pyRestTable-2014-0710-0.tar.gz
-  $ cd pyRestTable-2014-0710-0
+  $ tar xzf pyRestTable-2015-1111-1.tar.gz
+  $ cd pyRestTable-2015-1111-1
   $ python setup.py install

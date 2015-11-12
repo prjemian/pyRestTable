@@ -1,10 +1,11 @@
-Simple example
-##############
+*simple* (default)
+##################
+
+:see: http://docutils.sourceforge.net/docs/ref/rst/directives.html#tables
 
 These commands::
  
    import pyRestTable
-
    t = pyRestTable.Table()
    t.labels = ('one', 'two', 'three' )
    t.rows.append( ['1,1', '1,2', '1,3',] )

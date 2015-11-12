@@ -1,5 +1,5 @@
-Interactive example with ipython
-################################
+Interactive example with *ipython*
+##################################
 
    In [1]: import pyRestTable
    
@@ -9,7 +9,7 @@ Interactive example with ipython
    
    In [3]: pyRestTable.__version__
    
-   Out[3]: '2014-02-15'
+   Out[3]: '2015-1111-1'
    
    In [4]: t = pyRestTable.Table()
    
@@ -18,18 +18,26 @@ Interactive example with ipython
    In [6]: t.rows.append([1,2])
    
    In [7]: print t.reST()
-
+   
    ::
-
+   
       = =
       x y
       = =
       1 2
       = =
 
-The same table may be rendered in the "complex" reST format:
+which displays as:
+
+= =
+x y
+= =
+1 2
+= =
+
+The same table may be rendered in the *grid* reST format:
    
-   In [8]: print t.reST(fmt='complex')
+   In [8]: print t.reST(fmt='grid')
 
    ::
    
@@ -38,3 +46,37 @@ The same table may be rendered in the "complex" reST format:
       +===+===+
       | 1 | 2 |
       +---+---+
+
+which displays as:
+
++---+---+
+| x | y |
++===+===+
+| 1 | 2 |
++---+---+
+
+The same table may be rendered in the *list-table* reST format:
+   
+   In [9]: print t.reST(fmt='list-table')
+
+   ::
+
+      .. list-table:: 
+         :header-rows: 1
+         :widths: 1 1
+   
+         * - x
+           - y
+         * - 1
+           - 2
+
+which displays as:
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 1 1
+
+   * - x
+     - y
+   * - 1
+     - 2

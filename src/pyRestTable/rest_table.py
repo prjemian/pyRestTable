@@ -33,9 +33,9 @@ class Table:
     def __init__(self):
         self.rows = []
         self.labels = []
-        self.use_tabular_columns = False
-        self.alignment = []
-        self.longtable = False
+        self.use_tabular_columns = False    # TODO: needs documentation
+        self.alignment = []                 # TODO: needs documentation
+        self.longtable = False              # TODO: needs documentation
     
     def reST(self, indentation = '', fmt = 'simple'):
         '''render the table in reST format'''
@@ -46,10 +46,13 @@ class Table:
             msg = "Number of column labels is different from column width specifiers"
             raise IndexError, msg
         return {'simple': self.simple_table,
-                'complex': self.complex_table,}[fmt](indentation)
+                'complex': self.grid_table,     # alias for `grid`, do not deprecate
+                'grid': self.grid_table,
+                'list-table': self.list_table,
+                }[fmt](indentation)
     
     def simple_table(self, indentation = ''):
-        '''render the table in simple rest format'''
+        '''render the table in *simple* reST format'''
         # maximum column widths, considering possible line breaks in each cell
         width = self.find_widths()
         
@@ -72,8 +75,8 @@ class Table:
         rest += '%s%s' % (indentation, separator)        # end of table
         return rest
     
-    def complex_table(self, indentation = ''):
-        '''render the table in complex rest format'''
+    def grid_table(self, indentation = ''):
+        '''render the table in *grid* reST format'''
         # maximum column widths, considering possible line breaks in each cell
         width = self.find_widths()
         
@@ -99,12 +102,9 @@ class Table:
     
     def list_table(self, indentation = ''):
         '''
-        Demo list-table: (not implemented yet)
+        render the table in *list-table* reST format:
         
-        .. Does this work?
-        
-        It was found on this page
-            http://docutils.sourceforge.net/docs/ref/rst/directives.html
+        :see: http://docutils.sourceforge.net/docs/ref/rst/directives.html
         
         .. list-table:: Frozen Delights!
            :widths: 15 10 30
@@ -118,15 +118,44 @@ class Table:
              - On a stick!
            * - Crunchy Frog
              - 1.49
-             - If we took the bones out, it wouldn't be
+             - If we took the bones rest, it wouldn't be
                crunchy, now would it?
            * - Gannet Ripple
              - 1.99
              - On a stick!
         
-        .. Yes, it _does_ work. 
+        .. ... and, Yes, it _does_ work. 
         '''
-        raise NotImplementedError
+        
+        def multiline(cell, prefix, indentation, fmt):
+            r = []
+            for i, line in enumerate(str(cell).splitlines()):
+                if i > 0: s = ''
+                else:     s = prefix
+                r.append(indentation + fmt % s + line)
+            return r
+        
+        widths = self.find_widths()
+        rest  = [indentation + '.. list-table:: ', ]
+        rest.append(indentation + '   :header-rows: 1')
+        rest.append(indentation + '   :widths: ' + ' '.join(map(str, widths)))
+        rest.append('')
+        
+        fmt = '%7s'
+        
+        rest += multiline(self.labels[0], '* - ', indentation, fmt)
+        for cell in self.labels[1:]:
+            rest += multiline(cell, '- ', indentation, fmt)
+    
+        for row in self.rows:
+            rest += multiline(str(row[0]), '* - ', indentation, fmt)
+            for cell in row[1:]:
+                if cell is None or len(str(cell).strip()) == 0:
+                    rest.append(indentation + fmt % '- ' + '')
+                else:
+                    rest += multiline(cell, '- ', indentation, fmt)
+    
+        return '\n'.join(rest)
     
     def _row(self, row, fmt, indentation = ''):
         '''
@@ -167,22 +196,52 @@ class Table:
         return width
 
 
-def main():
-    '''test routine used to demo the code'''
+def example_basic():
+    '''basic example table'''
+    t = Table()
+    t.labels = ('one', 'two', 'three' )
+    t.rows.append( ['1,1', '1,2', '1,3',] )
+    t.rows.append( ['2,1', '2,2', '2,3',] )
+    t.rows.append( ['3,1', '3,2', '3,3',] )
+    t.rows.append( ['4,1', '4,2', '4,3',] )
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
+
+
+def example_complicated():
+    '''complicated example table'''
     t = Table()
     t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
     t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
     t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
     t.rows.append( range(0,4) )
     t.rows.append( [None, t, 1.234, range(3)] )
-    print t.reST(fmt='simple')
-    print ""
-    print t.reST(fmt='complex')
-    print ""
     t.longtable = True
     t.use_tabular_columns = True
     t.alignment = 'l L c r'.split()
-    print t.reST(fmt='complex')
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
+
+
+def example_minimal():
+    '''minimal example table'''
+    t = Table()
+    t.labels = ['x', 'y']
+    t.rows.append([1,2])
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
+
+
+def main():
+    '''test routine used to demo the code'''
+    example_basic()
+    print '\n-----------\n'
+    example_complicated()
+    print '\n-----------\n'
+    example_minimal()
 
 
 if __name__ == '__main__':
