@@ -13,16 +13,44 @@
 
 '''Format a nice table in reST (restructured text)'''
 
-def _simple_example():
-    import pyRestTable
-    
-    t = pyRestTable.Table()
+
+def example_minimal():
+    '''minimal example table'''
+    t = Table()
+    t.labels = ['x', 'y']
+    t.rows.append([1,2])
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
+
+
+def example_basic():
+    '''basic example table'''
+    t = Table()
     t.labels = ('one', 'two', 'three' )
     t.rows.append( ['1,1', '1,2', '1,3',] )
     t.rows.append( ['2,1', '2,2', '2,3',] )
     t.rows.append( ['3,1', '3,2', '3,3',] )
     t.rows.append( ['4,1', '4,2', '4,3',] )
-    print t.reST()
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
+
+
+def example_complicated():
+    '''complicated example table'''
+    t = Table()
+    t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
+    t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
+    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
+    t.rows.append( range(0,4) )
+    t.rows.append( [None, t, 1.234, range(3)] )
+    t.longtable = True
+    t.use_tabular_columns = True
+    t.alignment = 'l L c r'.split()
+    print t.reST(fmt='simple') + '\n'
+    print t.reST(fmt='grid') + '\n'
+    print t.reST(fmt='list-table')
 
 
 class Table:
@@ -194,45 +222,6 @@ class Table:
                 width = row_width
             width = map( max, zip(width, row_width) )
         return width
-
-
-def example_basic():
-    '''basic example table'''
-    t = Table()
-    t.labels = ('one', 'two', 'three' )
-    t.rows.append( ['1,1', '1,2', '1,3',] )
-    t.rows.append( ['2,1', '2,2', '2,3',] )
-    t.rows.append( ['3,1', '3,2', '3,3',] )
-    t.rows.append( ['4,1', '4,2', '4,3',] )
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
-
-
-def example_complicated():
-    '''complicated example table'''
-    t = Table()
-    t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
-    t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
-    t.rows.append( range(0,4) )
-    t.rows.append( [None, t, 1.234, range(3)] )
-    t.longtable = True
-    t.use_tabular_columns = True
-    t.alignment = 'l L c r'.split()
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
-
-
-def example_minimal():
-    '''minimal example table'''
-    t = Table()
-    t.labels = ['x', 'y']
-    t.rows.append([1,2])
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
 
 
 def main():
