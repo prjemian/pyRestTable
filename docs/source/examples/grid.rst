@@ -42,21 +42,24 @@ which is rendered as:
 | 4,1 | 4,2 | 4,3   |
 +-----+-----+-------+
 
-API Changes
-***********
+.. note::
 
-In versions previous to 2015.1111.01, the `complex` output 
-table format was supported.  ::
+   **API Changes**
+   
+   * version 2015.1111.01
 
-    print t.reST(fmt='complex')
-
-The `complex` output format has been renamed `grid` to be
-consistent with the docutils [#]_ documentation::
-
-    print t.reST(fmt='grid')
-
-The two commands are identical.  To preserve existing code, no
-plans are made to deprecate the `complex` name.
-
- .. [#] docutils: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
- 
+      In versions previous to 2015.1111.01, the ``complex`` output 
+      table format was supported::
+      
+          print t.reST(fmt='complex')
+      
+      The ``complex`` output format has been aliased ``grid`` to be
+      consistent with the docutils [#]_ documentation::
+      
+          print t.reST(fmt='grid')
+      
+      The two commands are identical.  To preserve existing code, no
+      plans are made to deprecate the ``complex`` name.
+      
+       .. [#] docutils: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+    

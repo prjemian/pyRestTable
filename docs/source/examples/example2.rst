@@ -5,17 +5,20 @@ These commands setup the table::
 
    import pyRestTable
    t = pyRestTable.Table()
-   t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
-   t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-   t.rows.append( ['class', 'NX_FLOAT', '..', '..', ] )
-   t.rows.append( range(0,4) )
-   t.rows.append( [None, t, 1.234, range(3)] )
-   t.longtable = True
-   t.use_tabular_columns = True
-   t.alignment = 'l L c r'.split()
+   t.addLabel('Name\nand\nAttributes')
+   t.addLabel('Type')
+   t.addLabel('Units')
+   t.addLabel('Description\n(and Occurrences)')
+   t.addRow( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
+   t.addRow( ['class', 'NX_FLOAT', '', None, ] )
+   t.addRow( range(0,4) )
+   t.addRow( [None, t, 1.234, range(3)] )
+   t.setLongtable()
+   t.setTabularColumns(True, 'l L c r'.split())
 
-Here, we assert more control over the column widths using *longtable*,
-*use_tabular_columns*, and *alignment* configuration options.
+Here, we assert more control over the table format using 
+:func:`~.setLongtable` and 
+:func:`~.setTabularColumns` configuration options.
 
 Format: `print t.reST(fmt='simple')`
 ------------------------------------

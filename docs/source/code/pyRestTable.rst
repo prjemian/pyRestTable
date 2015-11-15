@@ -2,6 +2,9 @@
 pyRestTable
 ###########
 
+:author: |author| 
+:version: |display_version| 
+
 source code documentation
 *************************
 

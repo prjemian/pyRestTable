@@ -14,7 +14,7 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2015.1111.1'
+__version__ = '2015.1115.0+'
 __release__ = __version__
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
@@ -29,3 +29,23 @@ __author_email__ = __email__
 __url__ = 'https://github.com/prjemian/pyRestTable'
 __download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
 __keywords__ = ['reST', 'table', 'documentation']
+
+
+__display_version__ = __version__  # used for command line version
+if __version__.endswith('+'):
+    # try to find out the changeset hash if checked out from git, and append
+    # it to __version__ (since we use this value from setup.py, it gets
+    # automatically propagated to an installed copy as well)
+    __display_version__ = __version__
+    __version__ = __version__[:-1]  # remove '+' for PEP-440 version spec.
+    try:
+        import os, subprocess
+        package_dir = os.path.abspath(os.path.dirname(__file__))
+        p = subprocess.Popen(['git', 'show', '-s', '--pretty=format:%h',
+                              os.path.join(package_dir, '..')],
+                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        out, err = p.communicate()
+        if out:
+            __display_version__ += out.decode().strip()
+    except Exception:
+        pass

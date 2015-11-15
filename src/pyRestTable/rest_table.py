@@ -4,14 +4,27 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014, Pete R. Jemian
+# :copyright: (c) 2014-2015, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
 # The full license is in the file LICENSE, distributed with this software.
 #-----------------------------------------------------------------------------
 
-'''Format a nice table in reST (restructured text)'''
+'''
+Format a nice table in reST (restructured text)
+
+===========================  ============================================================
+User Interface               Description
+===========================  ============================================================
+:class:`Table`               Construct a table in reST
+:meth:`addLabel`             add label for one additional column
+:meth:`addRow`               add list of items for one additional row
+:meth:`setLongtable`         set `longtable` attribute
+:meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes
+:meth:`reST`                 render the table in reST format
+===========================  ============================================================
+'''
 
 
 def example_minimal():
@@ -40,14 +53,16 @@ def example_basic():
 def example_complicated():
     '''complicated example table'''
     t = Table()
-    t.labels = ('Name\nand\nAttributes', 'Type', 'Units', 'Description\n(and Occurrences)', )
-    t.rows.append( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
-    t.rows.append( ['class', 'NX_FLOAT', '', None, ] )
-    t.rows.append( range(0,4) )
-    t.rows.append( [None, t, 1.234, range(3)] )
-    t.longtable = True
-    t.use_tabular_columns = True
-    t.alignment = 'l L c r'.split()
+    t.addLabel('Name\nand\nAttributes')
+    t.addLabel('Type')
+    t.addLabel('Units')
+    t.addLabel('Description\n(and Occurrences)')
+    t.addRow( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
+    t.addRow( ['class', 'NX_FLOAT', '', None, ] )
+    t.addRow( range(0,4) )
+    t.addRow( [None, t, 1.234, range(3)] )
+    t.setLongtable()
+    t.setTabularColumns(True, 'l L c r'.split())
     print t.reST(fmt='simple') + '\n'
     print t.reST(fmt='grid') + '\n'
     print t.reST(fmt='list-table')
@@ -56,15 +71,63 @@ def example_complicated():
 class Table:
     '''
     Construct a table in reST (no row or column spans).
+    
+    :param bool use_tabular_columns: if True, embed table in
+       Sphinx `'.. tabularcolumns:: |%s|' % alignment'` role
+    :param [str] alignment: with `use_tabular_columns`, each 
+       list item is a column format string, as specified by
+       LaTeX *tabulary* package format:
+       http://sphinx-doc.org/markup/misc.html?highlight=tabularcolumns#directive-tabularcolumns
+    :param bool longtable: with `use_tabular_columns`, 
+       if True, add Sphinx `:longtable:` directive
     '''
     
     def __init__(self):
         self.rows = []
         self.labels = []
-        self.use_tabular_columns = False    # TODO: needs documentation
-        self.alignment = []                 # TODO: needs documentation
-        self.longtable = False              # TODO: needs documentation
+        self.use_tabular_columns = False
+        self.alignment = []
+        self.longtable = False
     
+    def addLabel(self, text):
+        '''
+        add label for one additional column
+        
+        :param str text: column label text
+        :return int: number of labels
+        '''
+        self.labels.append(text)
+        return len(self.labels)
+    
+    def addRow(self, list_of_items):
+        '''
+        add list of items for one additional row
+        
+        :param [obj] list_of_items: list of items for one complete row
+        :return int: number of rows
+        '''
+        self.rows.append(list_of_items)
+        return len(self.rows)
+    
+    def setLongtable(self, state = True):
+        '''
+        set `longtable` attribute
+        
+        :param bool longtable: True | False
+        '''
+        self.longtable = state
+    
+    def setTabularColumns(self, state = True, column_spec = []):
+        '''
+        set `use_tabular_columns` & `alignment` attributes
+        
+        :param bool state: True | False
+        :param [str] column_spec: list of column specifications
+        '''
+        self.use_tabular_columns = state
+        if state:
+            self.alignment = column_spec
+
     def reST(self, indentation = '', fmt = 'simple'):
         '''render the table in reST format'''
         if len(self.alignment) == 0:
