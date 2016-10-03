@@ -4,7 +4,7 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2015, Pete R. Jemian
+# :copyright: (c) 2014-2016, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
@@ -27,14 +27,18 @@ User Interface               Description
 '''
 
 
+def _print_results_(t):
+    print(t.reST(fmt='simple') + '\n')
+    print(t.reST(fmt='grid') + '\n')
+    print(t.reST(fmt='list-table'))
+
+
 def example_minimal():
     '''minimal example table'''
     t = Table()
     t.labels = ['x', 'y']
     t.rows.append([1,2])
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
+    _print_results_(t)
 
 
 def example_basic():
@@ -45,9 +49,7 @@ def example_basic():
     t.rows.append( ['2,1', '2,2', '2,3',] )
     t.rows.append( ['3,1', '3,2', '3,3',] )
     t.rows.append( ['4,1', '4,2', '4,3',] )
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
+    _print_results_(t)
 
 
 def example_complicated():
@@ -63,9 +65,7 @@ def example_complicated():
     t.addRow( [None, t, 1.234, range(3)] )
     t.setLongtable()
     t.setTabularColumns(True, 'l L c r'.split())
-    print t.reST(fmt='simple') + '\n'
-    print t.reST(fmt='grid') + '\n'
-    print t.reST(fmt='list-table')
+    _print_results_(t)
 
 
 class Table:
@@ -135,7 +135,7 @@ class Table:
             self.alignment = str('L '*len(self.labels)).strip().split()
         if not len(self.labels) == len(self.alignment):
             msg = "Number of column labels is different from column width specifiers"
-            raise IndexError, msg
+            raise IndexError(msg)
         return {'simple': self.simple_table,
                 'complex': self.grid_table,     # alias for `grid`, do not deprecate
                 'grid': self.grid_table,
@@ -209,7 +209,7 @@ class Table:
              - On a stick!
            * - Crunchy Frog
              - 1.49
-             - If we took the bones rest, it wouldn't be
+             - If we took the bones out, it wouldn't be
                crunchy, now would it?
            * - Gannet Ripple
              - 1.99
@@ -283,16 +283,16 @@ class Table:
             row_width = [max(map(len, str(_).split("\n"))) for _ in row]
             if len(width) == 0:
                 width = row_width
-            width = map( max, zip(width, row_width) )
+            width = list(map( max, zip(width, row_width) ))
         return width
 
 
 def main():
     '''test routine used to demo the code'''
     example_basic()
-    print '\n-----------\n'
+    print('\n-----------\n')
     example_complicated()
-    print '\n-----------\n'
+    print('\n-----------\n')
     example_minimal()
 
 

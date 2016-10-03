@@ -3,7 +3,10 @@
 
 :see: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#grid-tables
 
-These commands::
+These python commands:
+
+.. code-block:: python
+    :linenos:
 
     import pyRestTable
     t = pyRestTable.Table()
@@ -12,21 +15,24 @@ These commands::
     t.rows.append( ['2,1', '2,2', '2,3',] )
     t.rows.append( ['3,1', '3,2', '3,3',] )
     t.rows.append( ['4,1', '4,2', '4,3',] )
-    print t.reST(fmt='grid')
+    print(t.reST(fmt='grid'))
 
-build this table source code::
+build this table in reST source code:
 
-   +-----+-----+-------+
-   | one | two | three |
-   +=====+=====+=======+
-   | 1,1 | 1,2 | 1,3   |
-   +-----+-----+-------+
-   | 2,1 | 2,2 | 2,3   |
-   +-----+-----+-------+
-   | 3,1 | 3,2 | 3,3   |
-   +-----+-----+-------+
-   | 4,1 | 4,2 | 4,3   |
-   +-----+-----+-------+
+.. code-block:: guess
+    :linenos:
+
+    +-----+-----+-------+
+    | one | two | three |
+    +=====+=====+=======+
+    | 1,1 | 1,2 | 1,3	|
+    +-----+-----+-------+
+    | 2,1 | 2,2 | 2,3	|
+    +-----+-----+-------+
+    | 3,1 | 3,2 | 3,3	|
+    +-----+-----+-------+
+    | 4,1 | 4,2 | 4,3	|
+    +-----+-----+-------+
 
 which is rendered as:
 
@@ -56,9 +62,11 @@ which is rendered as:
       The ``complex`` output format has been aliased ``grid`` to be
       consistent with the docutils [#]_ documentation::
       
-          print t.reST(fmt='grid')
+          print(t.reST(fmt='grid'))
       
-      The two commands are identical.  To preserve existing code, no
+      The two commands are identical (except the latter is upgraded
+      for compatibility with Python v3).  
+      To preserve existing code, no
       plans are made to deprecate the ``complex`` name.
       
        .. [#] docutils: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html

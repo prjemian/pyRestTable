@@ -1,7 +1,8 @@
 Installation
 ############
 
-available for installation from PyPI via standard installers::
+available for installation from PyPI via standard installers
+for Python 2.7 or Python 3.0+::
 
   $ pip install pyRestTable
 

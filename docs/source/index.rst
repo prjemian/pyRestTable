@@ -18,6 +18,7 @@ Features
 * create *simple*, *grid* (also known as *complex*), and *list-table* 
   reST formatted tables
 * defines table cells through Python lists, row-by-row
+* use with Python 2 or Python 3
 
 :see: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#tables
 
