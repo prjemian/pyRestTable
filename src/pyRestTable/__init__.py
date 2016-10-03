@@ -18,7 +18,8 @@ __version__ = '2016.1003.0+'
 __release__ = __version__
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
-__copyright__ = '2014-2016, Pete R. Jemian'
+__copyright_year__ = '2014-2016'
+__copyright__ = __copyright_year__ + ', Pete R. Jemian'
 
 __package_name__ = 'pyRestTable'
 __license_url__ = 'http://creativecommons.org/licenses/by/4.0/deed.en_US'
@@ -26,7 +27,7 @@ __license__ = 'Creative Commons Attribution 4.0 International Public License (se
 __description__ = 'Format a nice table in reST (reStructuredText ) from Python'
 __author_name__ = __author__
 __author_email__ = __email__
-__url__ = 'https://github.com/prjemian/pyRestTable'
+__url__ = 'http://pyRestTable.readthedocs.io'
 __download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
 __keywords__ = ['reST', 'table', 'documentation']
 

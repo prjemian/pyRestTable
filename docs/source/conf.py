@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = unicode(pyRestTable.__package_name__)
-copyright = u'2014-2015, Pete R. Jemian'
+copyright = unicode(pyRestTable.__copyright__)
 author = pyRestTable.__author__
 rst_prolog = '.. |author| replace:: %s' % author
 description = pyRestTable.__description__

@@ -5,7 +5,7 @@ pyRestTable
 :email:     prjemian@gmail.com
 :copyright: 2014-2016, Pete R. Jemian
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
-:docs:      http://pyRestTable.readthedocs.org
+:docs:      http://pyRestTable.readthedocs.io
 :URL:       https://github.com/prjemian/pyRestTable
 :PyPI:      https://pypi.python.org/pypi/pyRestTable/ 
 
