@@ -3,7 +3,7 @@ pyRestTable
 
 :author:    Pete R. Jemian
 :email:     prjemian@gmail.com
-:copyright: 2014-2015, Pete R. Jemian
+:copyright: 2014-2016, Pete R. Jemian
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
 :docs:      http://pyRestTable.readthedocs.org
 :URL:       https://github.com/prjemian/pyRestTable

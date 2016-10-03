@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 
+import io
 from lxml import etree
+from urllib.request import urlopen
 from pyRestTable import Table
 
-xml_url = 'http://www.cansas.org/svn/1dwg/trunk/examples/cs_af1410.xml'
+SVN_BASE_URL = 'http://www.cansas.org/svn/1dwg/trunk'
+GITHUB_BASE_URL = 'https://raw.githubusercontent.com/canSAS-org/1dwg/master'
+CANSAS_URL = '/'.join((GITHUB_BASE_URL, 'examples/cs_af1410.xml'))
+
 nsmap = dict(cs='urn:cansas1d:1.1')
-doc = etree.parse(xml_url)
+
+r = urlopen(CANSAS_URL).read().decode("utf-8")
+doc = etree.parse(io.StringIO(r))
+
 node_list = doc.xpath('//cs:SASentry', namespaces=nsmap)
 t = Table()
 t.labels = ['SASentry', 'description', 'measurements']
@@ -21,7 +29,7 @@ for node in node_list:
     title = s.strip()
     t.rows += [[s_name, title, count]]
 
-print len(node_list), 'SASentry elements in', xml_url
-print
+print(len(node_list), 'SASentry elements in', CANSAS_URL)
+print()
 # use "complex" since s_name might be empty string
-print t.reST(fmt='complex')
+print(t.reST(fmt='complex'))
