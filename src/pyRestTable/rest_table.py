@@ -27,7 +27,7 @@ User Interface               Description
 '''
 
 
-def _printer_(t):
+def _print_results_(t):
     print(t.reST(fmt='simple') + '\n')
     print(t.reST(fmt='grid') + '\n')
     print(t.reST(fmt='list-table'))
@@ -38,7 +38,7 @@ def example_minimal():
     t = Table()
     t.labels = ['x', 'y']
     t.rows.append([1,2])
-    _printer_(t)
+    _print_results_(t)
 
 
 def example_basic():
@@ -49,7 +49,7 @@ def example_basic():
     t.rows.append( ['2,1', '2,2', '2,3',] )
     t.rows.append( ['3,1', '3,2', '3,3',] )
     t.rows.append( ['4,1', '4,2', '4,3',] )
-    _printer_(t)
+    _print_results_(t)
 
 
 def example_complicated():
@@ -65,7 +65,7 @@ def example_complicated():
     t.addRow( [None, t, 1.234, range(3)] )
     t.setLongtable()
     t.setTabularColumns(True, 'l L c r'.split())
-    _printer_(t)
+    _print_results_(t)
 
 
 class Table:

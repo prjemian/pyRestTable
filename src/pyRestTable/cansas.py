@@ -2,7 +2,12 @@
 
 import io
 from lxml import etree
-from urllib.request import urlopen
+try:
+    # python 3
+    from urllib.request import urlopen
+except ImportError, _exc:
+    # python 2
+    from urllib2 import urlopen
 from pyRestTable import Table
 
 SVN_BASE_URL = 'http://www.cansas.org/svn/1dwg/trunk'
