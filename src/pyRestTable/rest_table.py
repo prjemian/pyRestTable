@@ -209,7 +209,7 @@ class Table:
              - On a stick!
            * - Crunchy Frog
              - 1.49
-             - If we took the bones rest, it wouldn't be
+             - If we took the bones out, it wouldn't be
                crunchy, now would it?
            * - Gannet Ripple
              - 1.99

@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014, Pete R. Jemian
+# :copyright: (c) 2014-2016, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
@@ -14,7 +14,7 @@ import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 
-__version__ = '2016.0930.0+'
+__version__ = '2016.1003.0+'
 __release__ = __version__
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
@@ -29,6 +29,24 @@ __author_email__ = __email__
 __url__ = 'https://github.com/prjemian/pyRestTable'
 __download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
 __keywords__ = ['reST', 'table', 'documentation']
+
+__classifiers__ = [
+     'Development Status :: 6 - Mature',
+     'Environment :: Console',
+     'Intended Audience :: Developers',
+     'License :: Freely Distributable',
+     'License :: Public Domain',
+     'Programming Language :: Python',
+     'Programming Language :: Python :: 2',
+     'Programming Language :: Python :: 2.7',
+     'Programming Language :: Python :: 3',
+     'Topic :: Documentation',
+     'Topic :: Documentation :: Sphinx',
+     'Topic :: Software Development',
+     'Topic :: Software Development :: Documentation',
+     'Topic :: Text Processing :: Markup',
+     'Topic :: Utilities',
+   ]
 
 
 __display_version__ = __version__  # used for command line version
