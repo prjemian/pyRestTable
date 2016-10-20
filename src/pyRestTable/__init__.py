@@ -10,13 +10,16 @@
 # The full license is in the file LICENSE.txt, distributed with this software.
 #-----------------------------------------------------------------------------
 
+import os
+from _version import git_release
 from . import rest_table
 Table = rest_table.Table    # shorten the import trail
 
 __package_name__ = 'pyRestTable'
 
-from _version import git_release
-__version__ = u'2016.1003.1'
+_path = os.path.dirname(__file__)
+_vfile = os.path.join(_path, 'VERSION')
+__version__ = open(_vfile, 'r').read()
 __release__ = git_release(__package_name__, __version__)
 
 __author__ = 'Pete R. Jemian'
