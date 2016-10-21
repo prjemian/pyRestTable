@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
 import io
+import sys
 from lxml import etree
 try:
     # python 3
     from urllib.request import urlopen
-except ImportError, _exc:
+except ImportError as _exc:
     # python 2
     from urllib2 import urlopen
+sys.path.insert(0, '..')
 from pyRestTable import Table
 
 SVN_BASE_URL = 'http://www.cansas.org/svn/1dwg/trunk'
@@ -33,7 +35,7 @@ def main():
         else:
             s_name = ''
             count = ''
-        title = s.strip()
+        title = s.strip().decode()
         t.rows += [[s_name, title, count]]
     
     return t

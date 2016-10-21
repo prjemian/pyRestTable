@@ -11,7 +11,7 @@
 #-----------------------------------------------------------------------------
 
 import os
-from _version import git_release
+from ._version import git_release
 from . import rest_table
 Table = rest_table.Table    # shorten the import trail
 

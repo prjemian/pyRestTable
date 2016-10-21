@@ -79,28 +79,30 @@ class TestUM(unittest.TestCase):
     
     def setUp(self):
         pass
+    
+    def apply_test(self, table, reference_text, style='simple'):
+        text = table.reST(fmt=style)
+        self.assertTrue(text == reference_text)
 
     def test_simple(self):
         import pyRestTable.simple
-        table = pyRestTable.simple.main()
-        self.assertTrue(table.reST() == SIMPLE_RESULT)
+        self.apply_test(pyRestTable.simple.main(), SIMPLE_RESULT)
 
     def test_cansas(self):
         import pyRestTable.cansas
-        table = pyRestTable.cansas.main()
-        self.assertTrue(table.reST(fmt='complex') == CANSAS_RESULT)
+        self.apply_test(pyRestTable.cansas.main(), CANSAS_RESULT, 'complex')
 
     def test_minimal_simple(self):
-        table = pyRestTable.rest_table.example_minimal()
-        self.assertTrue(table.reST(fmt='simple') == MINIMAL_SIMPLE_RESULT)
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_SIMPLE_RESULT)
+
+    def test_minimal_complex(self):
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_GRID_RESULT, 'complex')
 
     def test_minimal_grid(self):
-        table = pyRestTable.rest_table.example_minimal()
-        self.assertTrue(table.reST(fmt='grid') == MINIMAL_GRID_RESULT)
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_GRID_RESULT, 'grid')
 
     def test_minimal_listtable(self):
-        table = pyRestTable.rest_table.example_minimal()
-        self.assertTrue(table.reST(fmt='list-table') == MINIMAL_LISTTABLE_RESULT)
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_LISTTABLE_RESULT, 'list-table')
 
 
 if __name__ == '__main__':
