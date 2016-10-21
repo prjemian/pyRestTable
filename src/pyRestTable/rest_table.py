@@ -38,7 +38,7 @@ def example_minimal():
     t = Table()
     t.labels = ['x', 'y']
     t.rows.append([1,2])
-    _print_results_(t)
+    return t
 
 
 def example_basic():
@@ -49,7 +49,7 @@ def example_basic():
     t.rows.append( ['2,1', '2,2', '2,3',] )
     t.rows.append( ['3,1', '3,2', '3,3',] )
     t.rows.append( ['4,1', '4,2', '4,3',] )
-    _print_results_(t)
+    return t
 
 
 def example_complicated():
@@ -65,7 +65,7 @@ def example_complicated():
     t.addRow( [None, t, 1.234, range(3)] )
     t.setLongtable()
     t.setTabularColumns(True, 'l L c r'.split())
-    _print_results_(t)
+    return t
 
 
 class Table:
@@ -289,11 +289,11 @@ class Table:
 
 def main():
     '''test routine used to demo the code'''
-    example_basic()
+    _print_results_(example_basic())
     print('\n-----------\n')
-    example_complicated()
+    _print_results_(example_complicated())
     print('\n-----------\n')
-    example_minimal()
+    _print_results_(example_minimal())
 
 
 if __name__ == '__main__':
