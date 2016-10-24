@@ -38,5 +38,11 @@ setup (name =             pyRestTable.__package_name__,        # pyRestTable
        package_dir =      {'': 'src'},
        packages =         ['pyRestTable', ],
        #packages=find_packages(),
+       package_data     = {
+                            'pyRestTable': [
+			        'LICENSE.txt',
+			        'VERSION',
+			    ],
+                         },
        classifiers =      pyRestTable.__classifiers__,
       )

@@ -1,4 +1,2 @@
 include README.rst
 include CHANGES.rst
-include src/pyRestTable/LICENSE.txt
-include src/pyRestTable/VERSION

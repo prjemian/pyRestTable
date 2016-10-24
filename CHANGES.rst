@@ -7,7 +7,7 @@ Change History
 Production
 **********
 
-:2016.1021.0: unit tests, repaired python 3 support
+:2016.1024.0: unit tests, repaired python 3 support
 :2016.1003.1: support python 3 AND python 2
 :2015.1115.0: add support methods, such as `addLabel` and `addRow`
 :2015.1111.01: support output as ReST `list-table` directive
