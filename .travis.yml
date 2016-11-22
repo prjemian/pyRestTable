@@ -11,15 +11,7 @@ python:
   - "3.5"
 
 before_script:
-  - wget http://repo.continuum.io/miniconda/Miniconda2-4.2.12-Linux-x86_64.sh -O miniconda.sh
-  - chmod +x miniconda.sh
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH=$HOME/miniconda/bin:$PATH
-  - which pip
-  - which python
-  - which conda
-  - conda install --yes coverage docopt lxml
-  - pip install coveralls
+  - pip install coveralls coverage docopt lxml
   - which coveralls
 
 # command to run tests
