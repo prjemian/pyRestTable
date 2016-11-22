@@ -13,4 +13,11 @@ that does not span any cells (no rowspans or columnspans).
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
 :docs:      http://pyRestTable.readthedocs.io
 :URL:       https://github.com/prjemian/pyRestTable
-:PyPI:      https://pypi.python.org/pypi/pyRestTable/ 
+:PyPI:      https://pypi.python.org/pypi/pyRestTable/
+:TODO list: https://github.com/prjemian/pyRestTable/issues
+:build:
+    .. image:: https://travis-ci.org/prjemian/pyRestTable.svg?branch=master
+               :target: https://travis-ci.org/prjemian/pyRestTable
+:coverage:
+   .. image:: https://coveralls.io/repos/github/prjemian/pyRestTable/badge.svg?branch=master
+              :target: https://coveralls.io/github/prjemian/pyRestTable?branch=master
