@@ -18,7 +18,7 @@ before_script:
   - which pip
   - which python
   - which conda
-  - conda install --yes coverage docopt
+  - conda install --yes coverage docopt lxml
   - pip install coveralls
   - which coveralls
 
