@@ -15,14 +15,12 @@ install:
 
 # command to run tests
 script:
-  - pwd
   - cd src/qa_qc
   - which coverage
-  - coverage run src/qa_qc/test_unittest.py
+  - coverage run test_unittest.py
   - cd ../..
 
 after_success:
-  - pwd
   - cd src/qa_qc
   - which coveralls
   - coveralls
