@@ -24,9 +24,11 @@ before_script:
 
 # command to run tests
 script:
+  - cd $HOME/build/prjemian/pyRestTable/src/qa_qc
   - which coverage
   - coverage run src/qa_qc/test_unittest.py
 
 after_success:
+  - cd $HOME/build/prjemian/pyRestTable/src/qa_qc
   - which coveralls
   - coveralls
