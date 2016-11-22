@@ -10,17 +10,19 @@ python:
   - "2.7"
   - "3.5"
 
-before_script:
-  - pip install coveralls coverage docopt lxml
-  - which coveralls
+install:
+  - pip install -r requirements.txt
 
 # command to run tests
 script:
-  - cd $HOME/build/prjemian/pyRestTable/src/qa_qc
+  - pwd
+  - cd src/qa_qc
   - which coverage
   - coverage run src/qa_qc/test_unittest.py
+  - cd ../..
 
 after_success:
-  - cd $HOME/build/prjemian/pyRestTable/src/qa_qc
+  - pwd
+  - cd src/qa_qc
   - which coveralls
   - coveralls
