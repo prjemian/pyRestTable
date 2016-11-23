@@ -19,5 +19,6 @@ script:
   - coverage run --omit=*/site-packages/* tests/test_unittest.py
 
 after_success:
+  - coverage report
   - which coveralls
   - coveralls
