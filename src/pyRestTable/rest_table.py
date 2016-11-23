@@ -27,10 +27,12 @@ User Interface               Description
 '''
 
 
-def _print_results_(t):
-    print(t.reST(fmt='simple') + '\n')
-    print(t.reST(fmt='grid') + '\n')
-    print(t.reST(fmt='list-table'))
+def _prepare_results_(t):
+    s = ''
+    s += t.reST(fmt='simple') + '\n'
+    s += t.reST(fmt='grid') + '\n'
+    s += t.reST(fmt='list-table')
+    return s
 
 
 def example_minimal():
@@ -289,11 +291,11 @@ class Table:
 
 def main():
     '''test routine used to demo the code'''
-    _print_results_(example_basic())
+    print(_prepare_results_(example_basic()))
     print('\n-----------\n')
-    _print_results_(example_complicated())
+    print(_prepare_results_(example_complicated()))
     print('\n-----------\n')
-    _print_results_(example_minimal())
+    print(_prepare_results_(example_minimal()))
 
 
 if __name__ == '__main__':
