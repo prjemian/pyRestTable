@@ -15,12 +15,9 @@ install:
 
 # command to run tests
 script:
-  - cd src/qa_qc
   - which coverage
-  - coverage run --omit=*/site-packages/* test_unittest.py
-  - cd ../..
+  - coverage run --omit=*/site-packages/* src/qa_qc/test_unittest.py
 
 after_success:
-  - cd src/qa_qc
   - which coveralls
   - coveralls
