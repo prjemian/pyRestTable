@@ -45,5 +45,5 @@ setup (name =             pyRestTable.__package_name__,        # pyRestTable
 			    ],
                          },
        classifiers =      pyRestTable.__classifiers__,
-       test_suite  =      "qa_qc.test_unittest",
+       test_suite  =      "tests",
       )
