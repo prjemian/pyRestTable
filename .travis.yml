@@ -17,7 +17,7 @@ install:
 script:
   - cd src
   - which coverage
-  - coverage run --omit=*/site-packages/* qa_qc/test_unittest.py
+  - PYTHONPATH=. coverage run --omit=*/site-packages/* qa_qc/test_unittest.py
   - cd ..
 
 after_success:
