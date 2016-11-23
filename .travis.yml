@@ -16,7 +16,8 @@ install:
 # command to run tests
 script:
   - which coverage
-  - coverage run --omit=*/site-packages/* tests/test_unittest.py
+  - coverage run --omit=*/site-packages/* tests/test_results.py
+  - coverage run -a --omit=*/site-packages/* tests/_version_test.py
 
 after_success:
   - coverage report

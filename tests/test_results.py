@@ -1,6 +1,6 @@
 
 '''
-unit testing of pyRestTable package
+test output results of pyRestTable package
 '''
 
 import os
