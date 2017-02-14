@@ -126,10 +126,31 @@ one two three
      - 4,3'''
 
 
-EXAMPLE_COMPLICATED_RESULT = '.. tabularcolumns:: |l|L|c|r|\n    :longtable:\n\n========== ========================================================= ====== =================\nName       Type                                                      Units  Description      \nand                                                                         (and Occurrences)\nAttributes                                                                                   \n========== ========================================================= ====== =================\none,       buckle my                                                 shoe.  ...              \ntwo                                                                                          \n                                                                                             \n                                                                     three,                  \n                                                                     four                    \nclass      NX_FLOAT                                                         None             \n0          1                                                         2      3                \nNone       <pyRestTable.rest_table.Table instance at 0x7f7401d2bcf8> 1.234  [0, 1, 2]        \n========== ========================================================= ====== =================\n\n.. tabularcolumns:: |l|L|c|r|\n    :longtable:\n\n+------------+-----------------------------------------------------------+--------+-------------------+\n| Name       | Type                                                      | Units  | Description       |\n| and        |                                                           |        | (and Occurrences) |\n| Attributes |                                                           |        |                   |\n+============+===========================================================+========+===================+\n| one,       | buckle my                                                 | shoe.  | ...               |\n| two        |                                                           |        |                   |\n|            |                                                           |        |                   |\n|            |                                                           | three, |                   |\n|            |                                                           | four   |                   |\n+------------+-----------------------------------------------------------+--------+-------------------+\n| class      | NX_FLOAT                                                  |        | None              |\n+------------+-----------------------------------------------------------+--------+-------------------+\n| 0          | 1                                                         | 2      | 3                 |\n+------------+-----------------------------------------------------------+--------+-------------------+\n| None       | <pyRestTable.rest_table.Table instance at 0x7f7401d2bcf8> | 1.234  | [0, 1, 2]         |\n+------------+-----------------------------------------------------------+--------+-------------------+\n\n.. list-table:: \n   :header-rows: 1\n   :widths: 10 57 6 17\n\n   * - Name\n       and\n       Attributes\n     - Type\n     - Units\n     - Description\n       (and Occurrences)\n   * - one,\n       two\n     - buckle my\n     - shoe.\n       \n       \n       three,\n       four\n     - ...\n   * - class\n     - NX_FLOAT\n     - \n     - \n   * - 0\n     - 1\n     - 2\n     - 3\n   * - None\n     - <pyRestTable.rest_table.Table instance at 0x7f7401d2bcf8>\n     - 1.234\n     - [0, 1, 2]'
+EXAMPLE_COMPLICATED_RESULT = '''
+.. tabularcolumns:: |l|L|c|r|
+    :longtable:
+
++------------+-------------------------+--------+-------------------+
+| Name       | Type                    | Units  | Description       |
+| and        |                         |        | (and Occurrences) |
+| Attributes |                         |        |                   |
++============+=========================+========+===================+
+| one,       | buckle my               | shoe.  | ...               |
+| two        |                         |        |                   |
+|            |                         |        |                   |
+|            |                         | three, |                   |
+|            |                         | four   |                   |
++------------+-------------------------+--------+-------------------+
+| class      | NX_FLOAT                |        | None              |
++------------+-------------------------+--------+-------------------+
+| 0          | 1                       | 2      | 3                 |
++------------+-------------------------+--------+-------------------+
+| None       | {'a': 1, 'b': 'dreamy'} | 1.234  | [0, 1, 2]         |
++------------+-------------------------+--------+-------------------+
+'''.strip()
 
 
-class TestUM(unittest.TestCase):
+class Test_pyRestTable(unittest.TestCase):
     
     def setUp(self):
         pass
@@ -165,8 +186,8 @@ class TestUM(unittest.TestCase):
 
     def test_example_complicated(self):
         t = pyRestTable.rest_table.example_complicated()
-        s = pyRestTable.rest_table._prepare_results_(t)
-        self.assertNotEqual(s, EXAMPLE_COMPLICATED_RESULT)
+        s = t.reST(fmt='grid').strip()
+        self.assertEqual(s, EXAMPLE_COMPLICATED_RESULT)
 
     def test_example_minimal(self):
         t = pyRestTable.rest_table.example_minimal()
@@ -223,6 +244,22 @@ class TestUM(unittest.TestCase):
         expected += '     - 2,2'
         self.assertEqual(s, expected)
 
+    def test_default_str(self):
+        t = pyRestTable.rest_table.example_minimal()
+        s = str(t)
+        self.assertEqual(s, MINIMAL_SIMPLE_RESULT, 'string representation')
 
-if __name__ == '__main__':
-    unittest.main()
+
+def suite(*args, **kw):
+    test_suite = unittest.TestSuite()
+    test_list = [
+        Test_pyRestTable,
+        ]
+    for test_case in test_list:
+        test_suite.addTest(unittest.makeSuite(test_case))
+    return test_suite
+
+
+if __name__ == "__main__":
+    runner=unittest.TextTestRunner(verbosity=2)
+    runner.run(suite())

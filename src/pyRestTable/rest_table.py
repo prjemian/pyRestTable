@@ -66,7 +66,7 @@ def example_complicated():
     t.addRow( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
     t.addRow( ['class', 'NX_FLOAT', '', None, ] )
     t.addRow( range(0,4) )
-    t.addRow( [None, t, 1.234, range(3)] )
+    t.addRow( [None, {'a':1, 'b': 'dreamy'}, 1.234, range(3)] )
     t.setLongtable()
     t.setTabularColumns(True, 'l L c r'.split())
     return t
@@ -92,6 +92,9 @@ class Table:
         self.use_tabular_columns = False
         self.alignment = []
         self.longtable = False
+    
+    def __str__(self):
+        return self.reST()
     
     def addLabel(self, text):
         '''
@@ -284,21 +287,11 @@ class Table:
         if len(self.labels) > 0:
             width = [max(map(len, str(_).split("\n"))) for _ in self.labels]
         for row in self.rows:
-            row_width = [max(map(len, str(_).split("\n"))) for _ in row]
+            
+            row_width = [max(map(len, str(_ or '').split("\n"))) for _ in row]
+            
             if len(width) == 0:
                 width = row_width
             width = list(map( max, zip(width, row_width) ))
         return width
 
-
-def main():
-    '''test routine used to demo the code'''
-    print(_prepare_results_(example_basic()))
-    print('\n-----------\n')
-    print(_prepare_results_(example_complicated()))
-    print('\n-----------\n')
-    print(_prepare_results_(example_minimal()))
-
-
-if __name__ == '__main__':
-    main()
