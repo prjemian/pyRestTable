@@ -29,6 +29,7 @@ User Interface               Description
 
 def _prepare_results_(t):
     s = ''
+    s += t.reST(fmt='plain') + '\n'
     s += t.reST(fmt='simple') + '\n'
     s += t.reST(fmt='grid') + '\n'
     s += t.reST(fmt='list-table')
@@ -144,10 +145,31 @@ class Table:
             msg = "Number of column labels is different from column width specifiers"
             raise IndexError(msg)
         return {'simple': self.simple_table,
+                'plain': self.plain_table,
                 'complex': self.grid_table,     # alias for `grid`, do not deprecate
                 'grid': self.grid_table,
                 'list-table': self.list_table,
                 }[fmt](indentation)
+    
+    def plain_table(self, indentation = ''):
+        '''render the table in *plain* reST format'''
+        # maximum column widths, considering possible line breaks in each cell
+        width = self.find_widths()
+        
+        # build the row format strings
+        fmt = " ".join(["%%-%ds" % w for w in width]) + '\n'
+        
+        rest = ''
+        if self.use_tabular_columns:
+            rest += indentation
+            rest += '.. tabularcolumns:: |%s|' % '|'.join(self.alignment)
+            if self.longtable:
+                rest += '\n%s%s' % (' '*4, ':longtable:')
+            rest += '\n\n'
+        rest += self._row(self.labels, fmt, indentation) # labels
+        for row in self.rows:
+            rest += self._row(row, fmt, indentation)     # each row
+        return rest
     
     def simple_table(self, indentation = ''):
         '''render the table in *simple* reST format'''

@@ -56,6 +56,11 @@ x y
 = =
 '''
 
+MINIMAL_PLAIN_RESULT = '''\
+x y
+1 2
+'''
+
 MINIMAL_GRID_RESULT = '''\
 +---+---+
 | x | y |
@@ -76,7 +81,9 @@ MINIMAL_LISTTABLE_RESULT = '''\
 '''
 
 
-EXAMPLE_MINIMAL_RESULT = MINIMAL_SIMPLE_RESULT
+EXAMPLE_MINIMAL_RESULT = MINIMAL_PLAIN_RESULT
+EXAMPLE_MINIMAL_RESULT += '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_SIMPLE_RESULT
 EXAMPLE_MINIMAL_RESULT += '\n'
 EXAMPLE_MINIMAL_RESULT += MINIMAL_GRID_RESULT
 EXAMPLE_MINIMAL_RESULT += '\n'
@@ -84,6 +91,12 @@ EXAMPLE_MINIMAL_RESULT += MINIMAL_LISTTABLE_RESULT
 
 
 EXAMPLE_BASIC_RESULT = '''\
+one two three
+1,1 1,2 1,3  
+2,1 2,2 2,3  
+3,1 3,2 3,3  
+4,1 4,2 4,3  
+
 === === =====
 one two three
 === === =====
@@ -158,10 +171,49 @@ class Test_pyRestTable(unittest.TestCase):
     def apply_test(self, table, reference_text, style='simple'):
         text = table.reST(fmt=style)
         self.assertTrue(text == reference_text)
+    
+    def population_table(self):
+        t = pyRestTable.Table()
+        t.addLabel('City name')
+        t.addLabel('Area')
+        t.addLabel('Population')
+        t.addLabel('Annual Rainfall')
+        t.addRow(['Adelaide',  1295, 1158259,    600.5])
+        t.addRow(['Brisbane',  5905, 1857594,    1146.4])
+        t.addRow(['Darwin',    112,  120900,     1714.7])
+        return t
 
     def test_simple(self):
-        import pyRestTable.simple
-        self.apply_test(pyRestTable.simple.main(), SIMPLE_RESULT)
+        s = self.population_table().reST(fmt = 'simple')
+        expected  = '========= ==== ========== ===============\n'
+        expected += 'City name Area Population Annual Rainfall\n'
+        expected += '========= ==== ========== ===============\n'
+        expected += 'Adelaide  1295 1158259    600.5          \n'
+        expected += 'Brisbane  5905 1857594    1146.4         \n'
+        expected += 'Darwin    112  120900     1714.7         \n'
+        expected += '========= ==== ========== ===============\n'
+        self.assertEqual(s, expected)
+
+    def test_plain(self):
+        s = self.population_table().reST(fmt = 'plain')
+        expected  = 'City name Area Population Annual Rainfall\n'
+        expected += 'Adelaide  1295 1158259    600.5          \n'
+        expected += 'Brisbane  5905 1857594    1146.4         \n'
+        expected += 'Darwin    112  120900     1714.7         \n'
+        self.assertEqual(s, expected)
+
+    def test_grid(self):
+        s = self.population_table().reST(fmt = 'grid')
+        expected  = '+-----------+------+------------+-----------------+\n'
+        expected += '| City name | Area | Population | Annual Rainfall |\n'
+        expected += '+===========+======+============+=================+\n'
+        expected += '| Adelaide  | 1295 | 1158259    | 600.5           |\n'
+        expected += '+-----------+------+------------+-----------------+\n'
+        expected += '| Brisbane  | 5905 | 1857594    | 1146.4          |\n'
+        expected += '+-----------+------+------------+-----------------+\n'
+        expected += '| Darwin    | 112  | 120900     | 1714.7          |\n'
+        expected += '+-----------+------+------------+-----------------+\n'
+        self.assertEqual(s, expected)
 
     def test_cansas(self):
         import pyRestTable.cansas
