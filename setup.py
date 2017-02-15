@@ -15,6 +15,8 @@ import os
 import re
 import sys
 
+import versioneer
+
 # pull in some definitions from the package's __init__.py file
 sys.path.insert(0, os.path.join('.', 'src', ))
 import pyRestTable
@@ -25,7 +27,8 @@ long_description = open('README.rst', 'r').read()
 
 
 setup (name =             pyRestTable.__package_name__,        # pyRestTable
-       version =          pyRestTable.__version__,
+       version =          versioneer.get_version(),
+       cmdclass =         versioneer.get_cmdclass(),
        license =          pyRestTable.__license__,
        description =      pyRestTable.__description__,
        long_description = long_description,
@@ -38,12 +41,7 @@ setup (name =             pyRestTable.__package_name__,        # pyRestTable
        package_dir =      {'': 'src'},
        packages =         ['pyRestTable', ],
        #packages=find_packages(),
-       package_data     = {
-                            'pyRestTable': [
-			        'LICENSE.txt',
-			        'VERSION',
-			    ],
-                         },
+       package_data     = {'pyRestTable': ['LICENSE.txt',]},
        classifiers =      pyRestTable.__classifiers__,
        test_suite  =      "tests",
       )
