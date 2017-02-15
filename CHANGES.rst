@@ -7,6 +7,15 @@ Change History
 Production
 **********
 
+:2017.2.0: 
+
+    * `#9 <https://github.com/prjemian/pyRestTable/issues/9>`_
+      provide default rendering: `t = Table(); ...;  str(t)`
+
+    * `#8 <https://github.com/prjemian/pyRestTable/issues/8>`_
+      add a plain table output
+
+
 :2016.1024.0: unit tests, repaired python 3 support
 :2016.1003.1: support python 3 AND python 2
 :2015.1115.0: add support methods, such as `addLabel` and `addRow`
