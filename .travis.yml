@@ -6,7 +6,7 @@
 #  https://docs.travis-ci.com/user/customizing-the-build#The-Build-Lifecycle
 
 language: python
-sudo: no
+sudo: false
 python:
   - "2.7"
   - "3.5"
