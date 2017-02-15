@@ -1,0 +1,28 @@
+{% set version = "2017.2.0rc1" %}
+
+package:
+    name: pyresttable
+    version: {{ version }}
+
+source:
+    git_rev: {{ version }}
+    git_url:  https://github.com/prjemian/pyRestTable.git
+
+test:
+
+    imports:
+        - pyRestTable
+
+    commands:
+        - pyRestTable --help
+
+about:
+    home: http://pyRestTable.readthedocs.io
+    license_file: src/pyRestTable/LICENSE.txt
+    license: Creative Commons Attribution 4.0 International Public License
+    summary: 'Format a nice table in reST (reStructuredText ) from Python'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
+# https://conda.io/docs/build_tutorials/pkgs.html
