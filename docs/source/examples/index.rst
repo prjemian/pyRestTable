@@ -9,6 +9,7 @@ Examples are provided to demonstrate usage.
 
    interactive
    simple
+   plain
    grid
    list-table
    example2
