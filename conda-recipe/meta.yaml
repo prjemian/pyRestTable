@@ -8,13 +8,22 @@ source:
     git_rev: {{ version }}
     git_url:  https://github.com/prjemian/pyRestTable.git
 
+requirements:
+
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+
 test:
 
     imports:
         - pyRestTable
 
     commands:
-        - pyRestTable --help
+        - python run_test.py
 
 about:
     home: http://pyRestTable.readthedocs.io
