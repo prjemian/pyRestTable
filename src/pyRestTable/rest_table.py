@@ -4,14 +4,14 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2016, Pete R. Jemian
+# :copyright: (c) 2014-2017, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
 # The full license is in the file LICENSE, distributed with this software.
 #-----------------------------------------------------------------------------
 
-'''
+"""
 Format a nice table in reST (restructured text)
 
 ===========================  ============================================================
@@ -24,7 +24,7 @@ User Interface               Description
 :meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes
 :meth:`reST`                 render the table in reST format
 ===========================  ============================================================
-'''
+"""
 
 
 def _prepare_results_(t):
@@ -37,7 +37,7 @@ def _prepare_results_(t):
 
 
 def example_minimal():
-    '''minimal example table'''
+    """minimal example table"""
     t = Table()
     t.labels = ['x', 'y']
     t.addRow([1,2])
@@ -45,7 +45,7 @@ def example_minimal():
 
 
 def example_basic():
-    '''basic example table'''
+    """basic example table"""
     t = Table()
     t.addLabel('one')
     t.addLabel('two')
@@ -58,7 +58,7 @@ def example_basic():
 
 
 def example_complicated():
-    '''complicated example table'''
+    """complicated example table"""
     t = Table()
     t.addLabel('Name\nand\nAttributes')
     t.addLabel('Type')
@@ -73,8 +73,9 @@ def example_complicated():
     return t
 
 
-class Table:
-    '''
+class Table(object):
+    
+    """
     Construct a table in reST (no row or column spans).
     
     :param bool use_tabular_columns: if True, embed table in
@@ -85,7 +86,7 @@ class Table:
        http://sphinx-doc.org/markup/misc.html?highlight=tabularcolumns#directive-tabularcolumns
     :param bool longtable: with `use_tabular_columns`, 
        if True, add Sphinx `:longtable:` directive
-    '''
+    """
     
     def __init__(self):
         self.rows = []
@@ -98,46 +99,46 @@ class Table:
         return self.reST()
     
     def addLabel(self, text):
-        '''
+        """
         add label for one additional column
         
         :param str text: column label text
         :return int: number of labels
-        '''
+        """
         self.labels.append(text)
         return len(self.labels)
     
     def addRow(self, list_of_items):
-        '''
+        """
         add list of items for one additional row
         
         :param [obj] list_of_items: list of items for one complete row
         :return int: number of rows
-        '''
+        """
         self.rows.append(list_of_items)
         return len(self.rows)
     
     def setLongtable(self, state = True):
-        '''
+        """
         set `longtable` attribute
         
         :param bool longtable: True | False
-        '''
+        """
         self.longtable = state
     
-    def setTabularColumns(self, state = True, column_spec = []):
-        '''
+    def setTabularColumns(self, state=True, column_spec=None):
+        """
         set `use_tabular_columns` & `alignment` attributes
         
         :param bool state: True | False
         :param [str] column_spec: list of column specifications
-        '''
+        """
         self.use_tabular_columns = state
         if state:
-            self.alignment = column_spec
+            self.alignment = column_spec or []
 
     def reST(self, indentation = '', fmt = 'simple'):
-        '''render the table in reST format'''
+        """render the table in reST format"""
         if len(self.alignment) == 0:
             #  set the default column alignments
             self.alignment = str('L '*len(self.labels)).strip().split()
@@ -152,7 +153,7 @@ class Table:
                 }[fmt](indentation)
     
     def plain_table(self, indentation = ''):
-        '''render the table in *plain* reST format'''
+        """render the table in *plain* reST format"""
         # maximum column widths, considering possible line breaks in each cell
         width = self.find_widths()
         
@@ -172,7 +173,7 @@ class Table:
         return rest
     
     def simple_table(self, indentation = ''):
-        '''render the table in *simple* reST format'''
+        """render the table in *simple* reST format"""
         # maximum column widths, considering possible line breaks in each cell
         width = self.find_widths()
         
@@ -196,7 +197,7 @@ class Table:
         return rest
     
     def grid_table(self, indentation = ''):
-        '''render the table in *grid* reST format'''
+        """render the table in *grid* reST format"""
         # maximum column widths, considering possible line breaks in each cell
         width = self.find_widths()
         
@@ -221,7 +222,7 @@ class Table:
         return rest
     
     def list_table(self, indentation = ''):
-        '''
+        """
         render the table in *list-table* reST format:
         
         :see: http://docutils.sourceforge.net/docs/ref/rst/directives.html
@@ -245,7 +246,7 @@ class Table:
              - On a stick!
         
         .. ... and, Yes, it _does_ work. 
-        '''
+        """
         
         def multiline(cell, prefix, indentation, fmt):
             r = []
@@ -278,16 +279,16 @@ class Table:
         return '\n'.join(rest)
     
     def _row(self, row, fmt, indentation = ''):
-        '''
+        """
         Given a list of entry nodes in this table row, 
         build one line of the table with one text from each entry element.
         The lines are separated by line breaks.
-        '''
+        """
         def pick_line(text, lineNum):
-            '''
+            """
             Pick the specific line of text or supply an empty string.
             Convenience routine when analyzing tables.
-            '''
+            """
             if lineNum < len(text):
                 s = text[lineNum]
             else:
@@ -301,10 +302,10 @@ class Table:
         return text
     
     def find_widths(self):
-        '''
+        """
         measure the maximum width of each column, 
         considering possible line breaks in each cell
-        '''
+        """
         width = []
         if len(self.labels) > 0:
             width = [max(map(len, str(_).split("\n"))) for _ in self.labels]
