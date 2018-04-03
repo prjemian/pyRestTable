@@ -4,7 +4,7 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2017, Pete R. Jemian
+# :copyright: (c) 2014-2018, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
@@ -24,6 +24,14 @@ User Interface               Description
 :meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes
 :meth:`reST`                 render the table in reST format
 ===========================  ============================================================
+
+.. autosummary::
+
+    ~Table
+    ~example_minimal
+    ~example_basic
+    ~example_complicated
+
 """
 
 
@@ -32,7 +40,8 @@ def _prepare_results_(t):
     s += t.reST(fmt='plain') + '\n'
     s += t.reST(fmt='simple') + '\n'
     s += t.reST(fmt='grid') + '\n'
-    s += t.reST(fmt='list-table')
+    s += t.reST(fmt='list-table') + '\n'
+    s += t.reST(fmt='html')
     return s
 
 
@@ -86,6 +95,27 @@ class Table(object):
        http://sphinx-doc.org/markup/misc.html?highlight=tabularcolumns#directive-tabularcolumns
     :param bool longtable: with `use_tabular_columns`, 
        if True, add Sphinx `:longtable:` directive
+
+    MAIN METHODS
+
+    .. autosummary::
+    
+        ~addLabel
+        ~addRow
+        ~reST
+
+    SUPPORTING METHODS
+
+    .. autosummary::
+    
+        ~setLongTable
+        ~setTabularColumns
+        ~plain_table
+        ~simple_table
+        ~grid_table
+        ~list_table
+        ~html_table
+
     """
     
     def __init__(self):
@@ -150,6 +180,7 @@ class Table(object):
                 'complex': self.grid_table,     # alias for `grid`, do not deprecate
                 'grid': self.grid_table,
                 'list-table': self.list_table,
+                'html': self.html_table,
                 }[fmt](indentation)
     
     def plain_table(self, indentation = ''):
@@ -277,6 +308,19 @@ class Table(object):
                     rest += multiline(cell, '- ', indentation, fmt)
     
         return '\n'.join(rest)
+    
+    def html_table(self, indentation = ''):
+        """render the table in *HTML*"""
+        html = "<table>\n"
+        html += '  <tr>\n'              # start the labels
+        html += "".join(["    <th>{}</th>\n".format(k) for k in self.labels]) # labels
+        html += '  </tr>\n'             # end the labels
+        for row in self.rows:
+            html += '  <tr>\n'          # start each row
+            html += "".join(["    <td>{}</td>\n".format(k) for k in row]) # each row
+            html += '  </tr>\n'         # end each row
+        html += '</table>'              # end of table
+        return html
     
     def _row(self, row, fmt, indentation = ''):
         """
