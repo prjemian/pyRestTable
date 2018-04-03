@@ -12,5 +12,6 @@ Examples are provided to demonstrate usage.
    plain
    grid
    list-table
+   html
    example2
    cansas

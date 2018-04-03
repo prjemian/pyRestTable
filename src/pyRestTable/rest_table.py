@@ -24,6 +24,14 @@ User Interface               Description
 :meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes
 :meth:`reST`                 render the table in reST format
 ===========================  ============================================================
+
+.. autosummary::
+
+    ~Table
+    ~example_minimal
+    ~example_basic
+    ~example_complicated
+
 """
 
 
@@ -87,6 +95,27 @@ class Table(object):
        http://sphinx-doc.org/markup/misc.html?highlight=tabularcolumns#directive-tabularcolumns
     :param bool longtable: with `use_tabular_columns`, 
        if True, add Sphinx `:longtable:` directive
+
+    MAIN METHODS
+
+    .. autosummary::
+    
+        ~addLabel
+        ~addRow
+        ~reST
+
+    SUPPORTING METHODS
+
+    .. autosummary::
+    
+        ~setLongTable
+        ~setTabularColumns
+        ~plain_table
+        ~simple_table
+        ~grid_table
+        ~list_table
+        ~html_table
+
     """
     
     def __init__(self):
