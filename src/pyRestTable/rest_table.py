@@ -4,7 +4,7 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2017, Pete R. Jemian
+# :copyright: (c) 2014-2018, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
@@ -32,7 +32,8 @@ def _prepare_results_(t):
     s += t.reST(fmt='plain') + '\n'
     s += t.reST(fmt='simple') + '\n'
     s += t.reST(fmt='grid') + '\n'
-    s += t.reST(fmt='list-table')
+    s += t.reST(fmt='list-table') + '\n'
+    s += t.reST(fmt='html')
     return s
 
 
@@ -150,6 +151,7 @@ class Table(object):
                 'complex': self.grid_table,     # alias for `grid`, do not deprecate
                 'grid': self.grid_table,
                 'list-table': self.list_table,
+                'html': self.html_table,
                 }[fmt](indentation)
     
     def plain_table(self, indentation = ''):
@@ -277,6 +279,20 @@ class Table(object):
                     rest += multiline(cell, '- ', indentation, fmt)
     
         return '\n'.join(rest)
+    
+    def html_table(self, indentation = ''):
+        """render the table in *HTML*"""
+        html = "<table>\n"
+        html += '  <tr>\n'              # start the labels
+        html += "".join(["    <th>{}</th>\n".format(k) for k in self.labels]) # labels
+        html += '  </tr>\n'             # end the labels
+        for row in self.rows:
+            html += '  <tr>\n'          # start each row
+            # TODO: consider column and row spans
+            html += "".join(["    <td>{}</td>\n".format(k) for k in row]) # each row
+            html += '  </tr>\n'         # end each row
+        html += '</table>'              # end of table
+        return html
     
     def _row(self, row, fmt, indentation = ''):
         """

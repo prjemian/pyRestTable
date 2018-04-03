@@ -80,14 +80,25 @@ MINIMAL_LISTTABLE_RESULT = '''\
      - 2\
 '''
 
+MINIMAL_HTML_RESULT = '''\
+<table>
+  <tr>
+    <th>x</th>
+    <th>y</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+</table>\
+'''
 
-EXAMPLE_MINIMAL_RESULT = MINIMAL_PLAIN_RESULT
-EXAMPLE_MINIMAL_RESULT += '\n'
-EXAMPLE_MINIMAL_RESULT += MINIMAL_SIMPLE_RESULT
-EXAMPLE_MINIMAL_RESULT += '\n'
-EXAMPLE_MINIMAL_RESULT += MINIMAL_GRID_RESULT
-EXAMPLE_MINIMAL_RESULT += '\n'
-EXAMPLE_MINIMAL_RESULT += MINIMAL_LISTTABLE_RESULT
+
+EXAMPLE_MINIMAL_RESULT = MINIMAL_PLAIN_RESULT + '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_SIMPLE_RESULT + '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_GRID_RESULT + '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_LISTTABLE_RESULT + '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_HTML_RESULT
 
 
 EXAMPLE_BASIC_RESULT = '''\
@@ -136,7 +147,36 @@ one two three
      - 3,3
    * - 4,1
      - 4,2
-     - 4,3'''
+     - 4,3
+\
+<table>
+  <tr>
+    <th>one</th>
+    <th>two</th>
+    <th>three</th>
+  </tr>
+  <tr>
+    <td>1,1</td>
+    <td>1,2</td>
+    <td>1,3</td>
+  </tr>
+  <tr>
+    <td>2,1</td>
+    <td>2,2</td>
+    <td>2,3</td>
+  </tr>
+  <tr>
+    <td>3,1</td>
+    <td>3,2</td>
+    <td>3,3</td>
+  </tr>
+  <tr>
+    <td>4,1</td>
+    <td>4,2</td>
+    <td>4,3</td>
+  </tr>
+</table>\
+'''
 
 
 EXAMPLE_COMPLICATED_RESULT = '''
@@ -170,7 +210,7 @@ class Test_pyRestTable(unittest.TestCase):
     
     def apply_test(self, table, reference_text, style='simple'):
         text = table.reST(fmt=style)
-        self.assertTrue(text == reference_text)
+        self.assertTrue(text.strip() == reference_text.strip())
     
     def population_table(self):
         t = pyRestTable.Table()
@@ -231,10 +271,14 @@ class Test_pyRestTable(unittest.TestCase):
     def test_minimal_listtable(self):
         self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_LISTTABLE_RESULT, 'list-table')
 
+    def test_minimal_htmltable(self):
+        table = pyRestTable.rest_table.example_minimal()
+        self.apply_test(table, MINIMAL_HTML_RESULT, 'html')
+
     def test_example_basic(self):
         t = pyRestTable.rest_table.example_basic()
         s = pyRestTable.rest_table._prepare_results_(t)
-        self.assertEqual(s, EXAMPLE_BASIC_RESULT)
+        self.assertEqual(s.strip(), EXAMPLE_BASIC_RESULT.strip())
 
     def test_example_complicated(self):
         t = pyRestTable.rest_table.example_complicated()

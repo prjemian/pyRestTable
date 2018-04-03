@@ -7,6 +7,11 @@ Change History
 Production
 **********
 
+:2018.4.0:
+
+    * `#12 <https://github.com/prjemian/pyRestTable/issues/12>`_
+      provide HTML table output format
+
 :2017.2.0: 
 
     * `#9 <https://github.com/prjemian/pyRestTable/issues/9>`_
