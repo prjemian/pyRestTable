@@ -288,7 +288,6 @@ class Table(object):
         html += '  </tr>\n'             # end the labels
         for row in self.rows:
             html += '  <tr>\n'          # start each row
-            # TODO: consider column and row spans
             html += "".join(["    <td>{}</td>\n".format(k) for k in row]) # each row
             html += '  </tr>\n'         # end each row
         html += '</table>'              # end of table
