@@ -16,6 +16,10 @@ that does not span any cells (no rowspans or columnspans).
 :URL:       https://github.com/prjemian/pyRestTable
 :PyPI:      https://pypi.python.org/pypi/pyRestTable/
 :TODO list: https://github.com/prjemian/pyRestTable/issues
+:citations:
+    .. image:: https://zenodo.org/badge/16644277.svg
+       :target: https://zenodo.org/badge/latestdoi/16644277
+       :alt: DOI: 10.5281/zenodo.1471691
 :build:
     .. image:: https://travis-ci.org/prjemian/pyRestTable.svg?branch=master
                :target: https://travis-ci.org/prjemian/pyRestTable
