@@ -29,7 +29,7 @@ test:
         - python run_test.py
 
 about:
-    home: http://pyRestTable.readthedocs.io
+    home: https://pyRestTable.readthedocs.io
     license_file: src/pyRestTable/LICENSE.txt
     license_family: CC
     license: Creative Commons Attribution 4.0 International Public License
