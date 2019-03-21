@@ -8,6 +8,9 @@ The content of each cell will be rendered as str(cell).
 At present, *pyRestTable* only supports tables with content 
 that does not span any cells (no rowspans or columnspans).
 
+* Install with conda: ``conda install -c prjemian pyRestTable``
+* Install with pip: ``pip install pyRestTable``
+
 :author:    Pete R. Jemian
 :email:     prjemian@gmail.com
 :copyright: 2014-2018, Pete R. Jemian
