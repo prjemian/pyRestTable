@@ -7,6 +7,10 @@ Change History
 Production
 **********
 
+:2019.0321.0.rc2:
+
+    * develop and test conda release packaging
+
 :2019.0321.0.rc1:
 
     * conda release of noarch packaging, and pip
