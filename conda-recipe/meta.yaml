@@ -31,6 +31,7 @@ test:
 about:
     home: http://pyRestTable.readthedocs.io
     license_file: src/pyRestTable/LICENSE.txt
+    license_family: CC
     license: Creative Commons Attribution 4.0 International Public License
     summary: 'Format a nice table in reST (reStructuredText ) from Python'
 
