@@ -10,3 +10,4 @@ MANIFEST
 /docs/build
 /htmlcov
 /.coverage
+build_log.txt
