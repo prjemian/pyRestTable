@@ -1,6 +1,10 @@
 {% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
 {% set name = data.get('name') %}
 {% set version = data.get('version') %}
+{% set url = data.get('url') %}
+{% set description = data.get('description') %}
+{% set keywords = data.get('keywords') %}
+{% set license = data.get('license') %}
 
 package:
     name: "{{ name|lower }}"
@@ -30,11 +34,12 @@ test:
         - python run_test.py
 
 about:
-    home: https://pyRestTable.readthedocs.io
+    home: "{{ url }}"
     license_file: src/pyRestTable/LICENSE.txt
     license_family: CC
-    license: Creative Commons Attribution 4.0 International Public License
-    summary: 'Format a nice table in reST (reStructuredText) from Python'
+    license: "{{ license }}"
+    summary: "{{ description }}"
+    keywords: "{{ keywords }}"
 
 # See
 # http://docs.continuum.io/conda/build.html for
