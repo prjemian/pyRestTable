@@ -38,11 +38,12 @@ setup (name =             pyRestTable.__package_name__,        # pyRestTable
        url =              pyRestTable.__url__,
        download_url =     pyRestTable.__download_url__,
        keywords =         pyRestTable.__keywords__,
-       platforms =        'any',
+       platforms =        pyRestTable.__platforms__,
        package_dir =      {'': 'src'},
        packages =         ['pyRestTable', ],
        #packages=find_packages(),
        package_data     = {'pyRestTable': ['LICENSE.txt',]},
        classifiers =      pyRestTable.__classifiers__,
        test_suite  =      "tests",
+       zip_safe =         pyRestTable.__zip_safe__,
       )

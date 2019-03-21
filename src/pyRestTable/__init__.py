@@ -37,6 +37,8 @@ __author_email__ = __email__
 __url__ = 'http://pyRestTable.readthedocs.io'
 __download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
 __keywords__ = ['reST', 'table', 'documentation']
+__platforms__ = 'any'
+__zip_safe__ = True
 
 __classifiers__ = [
      'Development Status :: 6 - Mature',
