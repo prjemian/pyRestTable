@@ -34,7 +34,7 @@ about:
     license_file: src/pyRestTable/LICENSE.txt
     license_family: CC
     license: Creative Commons Attribution 4.0 International Public License
-    summary: 'Format a nice table in reST (reStructuredText ) from Python'
+    summary: 'Format a nice table in reST (reStructuredText) from Python'
 
 # See
 # http://docs.continuum.io/conda/build.html for
