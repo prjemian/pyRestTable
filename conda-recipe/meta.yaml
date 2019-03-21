@@ -1,12 +1,13 @@
-{% set version = "2017.2.0" %}
+{% set name = "pyRestTable" %}
+{% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
+{% set version = data.get('version') %}
 
 package:
-    name: pyresttable
-    version: {{ version }}
+    name: "{{ name|lower }}"
+    version: "{{ version }}"
 
 source:
-    git_rev: {{ version }}
-    git_url:  https://github.com/prjemian/pyRestTable.git
+    path: ../
 
 build:
     noarch: python
