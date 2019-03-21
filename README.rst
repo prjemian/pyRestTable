@@ -15,8 +15,9 @@ that does not span any cells (no rowspans or columnspans).
 :email:     prjemian@gmail.com
 :copyright: 2014-2018, Pete R. Jemian
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
-:docs:      http://pyRestTable.readthedocs.io
+:docs:      https://pyRestTable.readthedocs.io
 :URL:       https://github.com/prjemian/pyRestTable
+:conda:     https://anaconda.org/prjemian/pyresttable
 :PyPI:      https://pypi.python.org/pypi/pyRestTable/
 :TODO list: https://github.com/prjemian/pyRestTable/issues
 :citations:
