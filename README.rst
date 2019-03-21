@@ -1,7 +1,7 @@
 pyRestTable
 ===========
 
-Format a nice table in reST (reStructuredText ) from Python.
+Format a nice table in reST (reStructuredText) from Python.
 
 Each cell may have multiple lines, separated by a newline.
 The content of each cell will be rendered as str(cell).
