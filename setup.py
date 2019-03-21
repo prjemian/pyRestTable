@@ -18,12 +18,13 @@ import sys
 import versioneer
 
 # pull in some definitions from the package's __init__.py file
-sys.path.insert(0, os.path.join('.', 'src', ))
+basedir = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(basedir, 'src', ))
 import pyRestTable
 
 
 verbose=1
-long_description = open('README.rst', 'r').read()
+long_description = open(os.path.join(basedir, 'README.rst'), 'r').read()
 
 
 setup (name =             pyRestTable.__package_name__,        # pyRestTable
