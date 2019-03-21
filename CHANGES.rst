@@ -7,6 +7,14 @@ Change History
 Production
 **********
 
+:2019.0321.0.rc1:
+
+    * conda release of noarch packaging, and pip
+
+:2018.10.25:
+
+    * for zenodo DOI
+
 :2018.4.0:
 
     * `#12 <https://github.com/prjemian/pyRestTable/issues/12>`_
