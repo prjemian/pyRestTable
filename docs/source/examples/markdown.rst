@@ -1,7 +1,7 @@
-*simple* (default)
-##################
+*markdown*
+##########
 
-:see: http://docutils.sourceforge.net/docs/ref/rst/directives.html#tables
+:see: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
 
 These python commands:
 
@@ -32,6 +32,7 @@ build this table source code:
 which is rendered (by markdown) as:
 
 .. note that we show using reST here
+   could use a screen grab instead
 
 === === =====
 one two three
