@@ -20,7 +20,7 @@ Features
 ########
 
 * create *simple*, *plain*, *grid* (also known as *complex*), and *list-table* 
-  reST formatted tables
+  reST formatted tables, also *markdown*-formatted output
 * defines table cells through Python lists, row-by-row
 * use with Python 2 or Python 3
 
