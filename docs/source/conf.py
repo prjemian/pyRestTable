@@ -32,6 +32,7 @@ import pyRestTable
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
 ]
@@ -49,8 +50,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = unicode(pyRestTable.__package_name__)
-copyright = unicode(pyRestTable.__copyright__)
+project = pyRestTable.__package_name__
+#copyright = pyRestTable.__copyright__
 author = pyRestTable.__author__
 rst_prolog = '.. |author| replace:: %s' % author
 description = pyRestTable.__description__
@@ -209,7 +210,7 @@ latex_documents = [
   ('index', 
    project + '.tex', 
    project + u' Documentation',
-   unicode(author), 'manual'),
+   author, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -241,7 +242,7 @@ man_pages = [
     ('index', 
      project, 
      project + u' Documentation',
-     [unicode(author)], 1)
+     [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -257,7 +258,7 @@ texinfo_documents = [
   ('index', 
    project, 
    project + u' Documentation',
-   unicode(author), 
+   author, 
    project, 
    description,
    'Miscellaneous'),
