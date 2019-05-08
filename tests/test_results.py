@@ -69,6 +69,12 @@ MINIMAL_GRID_RESULT = '''\
 +---+---+
 '''
 
+MINIMAL_MARKDOWN_RESULT = '''\
+x    | y   
+---- | ----
+1    | 2   
+'''
+
 MINIMAL_LISTTABLE_RESULT = '''\
 .. list-table:: 
    :header-rows: 1
@@ -97,6 +103,7 @@ MINIMAL_HTML_RESULT = '''\
 EXAMPLE_MINIMAL_RESULT = MINIMAL_PLAIN_RESULT + '\n'
 EXAMPLE_MINIMAL_RESULT += MINIMAL_SIMPLE_RESULT + '\n'
 EXAMPLE_MINIMAL_RESULT += MINIMAL_GRID_RESULT + '\n'
+EXAMPLE_MINIMAL_RESULT += MINIMAL_MARKDOWN_RESULT + '\n'
 EXAMPLE_MINIMAL_RESULT += MINIMAL_LISTTABLE_RESULT + '\n'
 EXAMPLE_MINIMAL_RESULT += MINIMAL_HTML_RESULT
 
@@ -128,6 +135,13 @@ one two three
 +-----+-----+-------+
 | 4,1 | 4,2 | 4,3   |
 +-----+-----+-------+
+
+one  | two  | three
+---- | ---- | -----
+1,1  | 1,2  | 1,3  
+2,1  | 2,2  | 2,3  
+3,1  | 3,2  | 3,3  
+4,1  | 4,2  | 4,3  
 
 .. list-table:: 
    :header-rows: 1
@@ -267,6 +281,9 @@ class Test_pyRestTable(unittest.TestCase):
 
     def test_minimal_grid(self):
         self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_GRID_RESULT, 'grid')
+
+    def test_markdown_grid(self):
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_MARKDOWN_RESULT, 'markdown')
 
     def test_minimal_listtable(self):
         self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_LISTTABLE_RESULT, 'list-table')
