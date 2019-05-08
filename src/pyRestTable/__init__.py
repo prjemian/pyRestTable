@@ -14,12 +14,6 @@ import os
 from . import rest_table
 Table = rest_table.Table    # shorten the import trail
 
-from ._version import get_versions
-_vdict_ = get_versions()
-__version__ = _vdict_['version']
-__release__ = __version__ + '<' + _vdict_['date'] + '>'
-del get_versions, _vdict_
-
 __package_name__ = 'pyRestTable'
 
 _path = os.path.dirname(__file__)
@@ -35,7 +29,7 @@ __description__ = 'Format a nice table in reST (reStructuredText) from Python'
 __author_name__ = __author__
 __author_email__ = __email__
 __url__ = 'https://pyRestTable.readthedocs.io'
-__download_url__ = 'https://github.com/prjemian/pyRestTable/tarball/' + __version__
+__download_url__ = 'https://github.com/prjemian/pyRestTable/archive/master.zip'
 __keywords__ = ['reST', 'table', 'documentation']
 __platforms__ = 'any'
 __zip_safe__ = True
@@ -61,3 +55,8 @@ __classifiers__ = [
      'Topic :: Utilities',
    ]
 
+
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
+__release__ = __version__
