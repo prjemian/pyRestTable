@@ -110,7 +110,7 @@ class Table(object):
 
     .. autosummary::
     
-        ~setLongTable
+        ~setLongtable
         ~setTabularColumns
         ~plain_table
         ~simple_table
