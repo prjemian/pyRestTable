@@ -20,8 +20,8 @@ These python commands setup the table:
     t.setTabularColumns(True, 'l L c r'.split())
 
 Here, we assert more control over the table format using 
-:func:`~.setLongtable` and 
-:func:`~.setTabularColumns` configuration options.
+:meth:`setLongtable` and 
+:meth:`setTabularColumns` configuration options.
 
 Format: `print(t.reST(fmt='simple'))`
 -------------------------------------
