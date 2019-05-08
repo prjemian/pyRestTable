@@ -57,6 +57,9 @@ __classifiers__ = [
 
 
 from ._version import get_versions
-__version__ = get_versions()['version']
+vinfo = get_versions()
+from pprint import pprint
+pprint(vinfo)
+__release__ = get_versions()['version']
 del get_versions
-__release__ = __version__
+__version__ = __release__.split("+")[0]
