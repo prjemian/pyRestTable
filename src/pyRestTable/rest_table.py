@@ -36,13 +36,15 @@ User Interface               Description
 
 
 def _prepare_results_(t):
-    s = ''
-    s += t.reST(fmt='plain') + '\n'
-    s += t.reST(fmt='simple') + '\n'
-    s += t.reST(fmt='grid') + '\n'
-    s += t.reST(fmt='list-table') + '\n'
-    s += t.reST(fmt='html')
-    return s
+    s = [
+        t.reST(fmt='plain'),
+        t.reST(fmt='simple'),
+        t.reST(fmt='grid'),
+        t.reST(fmt='markdown'),
+        t.reST(fmt='list-table'),
+        t.reST(fmt='html')
+    ]
+    return "\n".join(s)
 
 
 def example_minimal():
@@ -179,6 +181,7 @@ class Table(object):
                 'plain': self.plain_table,
                 'complex': self.grid_table,     # alias for `grid`, do not deprecate
                 'grid': self.grid_table,
+                'markdown' : self.markdown_table,
                 'list-table': self.list_table,
                 'html': self.html_table,
                 }[fmt](indentation)
@@ -251,6 +254,21 @@ class Table(object):
             rest += self._row(row, fmt, indentation)     # each row
             rest += '%s%s' % (indentation, separator)    # row separator
         return rest
+    
+    def markdown_table(self, indentation = ''):
+        """render the table in *markdown* (not reST) format"""
+        # build the row separators
+        # maximum column widths, considering possible line breaks in each cell
+        width = [max(w,4) for w in self.find_widths()]
+        separator = " | ".join(['-'*w for w in width]) + '\n'
+        fmt = " | ".join(["%%-%ds" % w for w in width]) + '\n'
+        
+        md = ''
+        md += self._row(self.labels, fmt, indentation) # labels
+        md += '%s%s' % (indentation, separator)        # end of the labels
+        for row in self.rows:
+            md += self._row(row, fmt, indentation)     # each row
+        return md
     
     def list_table(self, indentation = ''):
         """

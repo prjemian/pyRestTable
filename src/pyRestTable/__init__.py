@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2017, Pete R. Jemian
+# :copyright: (c) 2014-2019, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
@@ -51,6 +51,8 @@ __classifiers__ = [
      'Programming Language :: Python :: 2.7',
      'Programming Language :: Python :: 3',
      'Programming Language :: Python :: 3.5',
+     'Programming Language :: Python :: 3.6',
+     'Programming Language :: Python :: 3.7',
      'Topic :: Documentation',
      'Topic :: Documentation :: Sphinx',
      'Topic :: Software Development',

@@ -7,6 +7,10 @@ Change History
 Production
 **********
 
+:2019.0508.0:
+
+    * add output in markdown table format
+
 :2019.0321.0:
 
     * conda release of noarch packaging, also pip
