@@ -6,12 +6,8 @@ for Python 2.7 or Python 3.0+::
 
   $ pip install pyRestTable
 
-or::
+or from conda::
 
-  $ easy_install -U pyRestTable
-  
-or download the tarball from GitHub and use setuptools to install::
+  $ conda -c prjemian pyRestTable
 
-  $ tar xzf pyRestTable-2015-1111-1.tar.gz
-  $ cd pyRestTable-2015-1111-1
-  $ python setup.py install
+The source code is on GitHub: https://github.com/prjemian/pyRestTable

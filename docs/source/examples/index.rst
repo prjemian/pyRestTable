@@ -11,6 +11,7 @@ Examples are provided to demonstrate usage.
    simple
    plain
    grid
+   markdown
    list-table
    html
    example2
