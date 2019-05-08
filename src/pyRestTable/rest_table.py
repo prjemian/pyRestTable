@@ -78,7 +78,7 @@ def example_complicated():
     t.addRow( ['one,\ntwo', "buckle my", "shoe.\n\n\nthree,\nfour", "..."] )
     t.addRow( ['class', 'NX_FLOAT', '', None, ] )
     t.addRow( range(0,4) )
-    t.addRow( [None, {'a':1, 'b': 'dreamy'}, 1.234, range(3)] )
+    t.addRow( [None, {'a':1, 'b': 'dreamy'}, 1.234, list(range(3))] )
     t.setLongtable()
     t.setTabularColumns(True, 'l L c r'.split())
     return t
@@ -256,10 +256,14 @@ class Table(object):
         return rest
     
     def markdown_table(self, indentation = ''):
-        """render the table in *markdown* (not reST) format"""
+        """
+        render the table in GitHub-flavored *markdown* (not reST) format
+        
+        see: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
+        """
         # build the row separators
         # maximum column widths, considering possible line breaks in each cell
-        width = [max(w,4) for w in self.find_widths()]
+        width = [max(w,3) for w in self.find_widths()]
         separator = " | ".join(['-'*w for w in width]) + '\n'
         fmt = " | ".join(["%%-%ds" % w for w in width]) + '\n'
         

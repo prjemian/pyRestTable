@@ -70,9 +70,9 @@ MINIMAL_GRID_RESULT = '''\
 '''
 
 MINIMAL_MARKDOWN_RESULT = '''\
-x    | y   
----- | ----
-1    | 2   
+x   | y  
+--- | ---
+1   | 2  
 '''
 
 MINIMAL_LISTTABLE_RESULT = '''\
@@ -136,12 +136,12 @@ one two three
 | 4,1 | 4,2 | 4,3   |
 +-----+-----+-------+
 
-one  | two  | three
----- | ---- | -----
-1,1  | 1,2  | 1,3  
-2,1  | 2,2  | 2,3  
-3,1  | 3,2  | 3,3  
-4,1  | 4,2  | 4,3  
+one | two | three
+--- | --- | -----
+1,1 | 1,2 | 1,3  
+2,1 | 2,2 | 2,3  
+3,1 | 3,2 | 3,3  
+4,1 | 4,2 | 4,3  
 
 .. list-table:: 
    :header-rows: 1
@@ -300,6 +300,14 @@ class Test_pyRestTable(unittest.TestCase):
     def test_example_complicated(self):
         t = pyRestTable.rest_table.example_complicated()
         s = t.reST(fmt='grid').strip()
+        self.maxDiff = None
+        if s != EXAMPLE_COMPLICATED_RESULT:
+            print("")
+            print("expected: %s" % len(EXAMPLE_COMPLICATED_RESULT))
+            print(EXAMPLE_COMPLICATED_RESULT)
+            print("")
+            print("received: %s" % len(s))
+            print(s)
         self.assertEqual(s, EXAMPLE_COMPLICATED_RESULT)
 
     def test_example_minimal(self):
