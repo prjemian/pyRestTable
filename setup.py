@@ -20,30 +20,30 @@ import versioneer
 # pull in some definitions from the package's __init__.py file
 basedir = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(basedir, 'src', ))
-import pyRestTable
+import pyRestTable as package
 
 
 verbose=1
 long_description = open(os.path.join(basedir, 'README.rst'), 'r').read()
 
 
-setup (name =             pyRestTable.__package_name__,        # pyRestTable
+setup (name =             package.__package_name__,        # pyRestTable
        version =          versioneer.get_version(),
        cmdclass =         versioneer.get_cmdclass(),
-       license =          pyRestTable.__license__,
-       description =      pyRestTable.__description__,
+       license =          package.__license__,
+       description =      package.__description__,
        long_description = long_description,
-       author =           pyRestTable.__author_name__,
-       author_email =     pyRestTable.__author_email__,
-       url =              pyRestTable.__url__,
-       download_url =     pyRestTable.__download_url__,
-       keywords =         pyRestTable.__keywords__,
-       platforms =        pyRestTable.__platforms__,
+       author =           package.__author_name__,
+       author_email =     package.__author_email__,
+       url =              package.__url__,
+       download_url =     package.__download_url__,
+       keywords =         package.__keywords__,
+       platforms =        package.__platforms__,
        package_dir =      {'': 'src'},
        packages =         ['pyRestTable', ],
        #packages=find_packages(),
        package_data     = {'pyRestTable': ['LICENSE.txt',]},
-       classifiers =      pyRestTable.__classifiers__,
+       classifiers =      package.__classifiers__,
        test_suite  =      "tests",
-       zip_safe =         pyRestTable.__zip_safe__,
+       zip_safe =         package.__zip_safe__,
       )
