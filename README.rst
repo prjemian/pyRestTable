@@ -33,3 +33,6 @@ that does not span any cells (no rowspans or columnspans).
 
 :review:
    LGTM: https://lgtm.com/projects/g/prjemian/spec2nexus/overview/
+   <a href="https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/"
+     ><img alt="Total alerts" 
+     src="https://img.shields.io/lgtm/alerts/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18"/></a>
