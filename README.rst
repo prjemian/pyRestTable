@@ -32,12 +32,11 @@ that does not span any cells (no rowspans or columnspans).
               :target: https://coveralls.io/github/prjemian/pyRestTable?branch=master
 
 :review:
-    <!--
-    .. image:: https://img.shields.io/lgtm/grade/javascript/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18
-       :target: https://lgtm.com/projects/g/prjemian/pyRestTable/context:javascript
-       :alt: Language grade: JavaScript
-    --?
     .. image:: https://img.shields.io/lgtm/alerts/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18
        :target: https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/
        :alt: Total alerts
     LGTM: https://lgtm.com/projects/g/prjemian/spec2nexus/overview/
+    ..
+      .. image:: https://img.shields.io/lgtm/grade/javascript/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18
+         :target: https://lgtm.com/projects/g/prjemian/pyRestTable/context:javascript
+         :alt: Language grade: JavaScript
