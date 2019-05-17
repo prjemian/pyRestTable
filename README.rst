@@ -35,8 +35,8 @@ that does not span any cells (no rowspans or columnspans).
     .. image:: https://img.shields.io/lgtm/alerts/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18
        :target: https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/
        :alt: Total alerts
-    LGTM: https://lgtm.com/projects/g/prjemian/spec2nexus/overview/
     ..
       .. image:: https://img.shields.io/lgtm/grade/javascript/g/prjemian/pyRestTable.svg?logo=lgtm&logoWidth=18
          :target: https://lgtm.com/projects/g/prjemian/pyRestTable/context:javascript
+    LGTM: https://lgtm.com/projects/g/prjemian/spec2nexus/overview/ (should be marked as Python)
          :alt: Language grade: JavaScript
