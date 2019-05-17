@@ -30,3 +30,6 @@ that does not span any cells (no rowspans or columnspans).
 :coverage:
    .. image:: https://coveralls.io/repos/github/prjemian/pyRestTable/badge.svg?branch=master
               :target: https://coveralls.io/github/prjemian/pyRestTable?branch=master
+
+:review:
+   LGTM: https://lgtm.com/projects/g/prjemian/spec2nexus/overview/
