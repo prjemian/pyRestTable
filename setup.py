@@ -10,9 +10,8 @@
 # The full license is in the file LICENSE, distributed with this software.
 #-----------------------------------------------------------------------------
 
-from setuptools import setup, find_packages
+from setuptools import setup
 import os
-import re
 import sys
 import versioneer
 
@@ -40,7 +39,6 @@ setup (name =             package.__package_name__,        # pyRestTable
        platforms =        package.__platforms__,
        package_dir =      {'': 'src'},
        packages =         ['pyRestTable', ],
-       #packages=find_packages(),
        package_data     = {'pyRestTable': ['LICENSE.txt',]},
        classifiers =      package.__classifiers__,
        test_suite  =      "tests",
