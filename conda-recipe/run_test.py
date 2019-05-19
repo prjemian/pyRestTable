@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import os, sys, unittest
 import pyRestTable
 
 t = pyRestTable.Table()

@@ -7,6 +7,11 @@ Change History
 Production
 **********
 
+:tba:
+
+    * `#22 <https://github.com/prjemian/pyRestTable/issues/2>`_
+      automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
+
 :2019.0508.1:
 
     * add output in markdown table format
