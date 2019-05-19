@@ -7,7 +7,7 @@ Change History
 Production
 **********
 
-:tba:
+:2019.0601.0: *exact date is TBA*
 
     * `#22 <https://github.com/prjemian/pyRestTable/issues/2>`_
       automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
