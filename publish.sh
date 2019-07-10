@@ -36,7 +36,8 @@ export CONDA_BLD_PATH=/tmp/conda-bld
 
 conda build ./conda-recipe/
 BUILD_DIR=${CONDA_BLD_PATH}/noarch
-BUNDLE=${BUILD_DIR}/${PACKAGE}-${RELEASE}-*_0.tar.bz2
+_package_=$(echo ${PACKAGE} | tr '[:upper:]' '[:lower:]')
+BUNDLE=${BUILD_DIR}/${_package_}-${RELEASE}-*_0.tar.bz2
 anaconda upload -u ${CHANNEL} ${BUNDLE}
 
 # also post to my personal channel
