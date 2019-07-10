@@ -4,12 +4,13 @@
 
 ## Define the release
 
-PACKAGE=pyRestTable
+PACKAGE=`python setup.py --name`
 RELEASE=`python setup.py --version`
-if [[ ${RELEASE} == *dirty ]] ; then
+if [[ ${RELEASE} == *dirty || ${RELEASE} == *+* ]] ; then
   echo "version: ${RELEASE} not ready to publish"
   exit 1
 fi
+
 ## PyPI Build and upload::
 
 python setup.py sdist bdist_wheel
