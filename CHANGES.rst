@@ -10,7 +10,7 @@ Production
 :2020.0.0: 2019.07.09 - packaging and code review
 
     * `#28 <https://github.com/prjemian/pyRestTable/issues/28>`_
-      switch to semantic version numbering
+      switch to semantic version numbering (https://semver.org/)
       automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
     * `#27 <https://github.com/prjemian/pyRestTable/issues/27>`_
       automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
