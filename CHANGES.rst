@@ -7,9 +7,11 @@ Change History
 Production
 **********
 
-:2019.0601.0: *exact date is TBA*
+:2019.0709.0: packaging and code review
 
-    * `#22 <https://github.com/prjemian/pyRestTable/issues/2>`_
+    * `#27 <https://github.com/prjemian/pyRestTable/issues/27>`_
+      automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
+    * `#22 <https://github.com/prjemian/pyRestTable/issues/22>`_
       automated `code reviews <https://lgtm.com/projects/g/prjemian/pyRestTable/alerts/?mode=list>`_
 
 :2019.0508.1:
