@@ -376,7 +376,10 @@ class Test_column_widths(unittest.TestCase):
         table.addRow([0, 1, 1, 0.0, 3.4824458166048444, 22.712897698011936, 0.0, 0.0, 13.799774663132288])
         table.addRow([0.0, 8.0, 0.0, 0.0, 22.31594087562736, 89.13769999977886, 0.0, 0.0, 45.158571742842376])
         table.addRow([0.0, 12.0, 1.0, 0.0, 34.963469180020944, 78.33265876350477, 0.0, 0.0, 71.80070421791422])
-        s = str(table).splitlines()
+
+        result = str(table)
+        s = result.splitlines()
+
         self.assertEqual(len(s), 7)
         columns = s[0].split()
         self.assertEqual(len(columns), 9)
@@ -390,7 +393,11 @@ class Test_column_widths(unittest.TestCase):
             "0.0 12.0 1.0 0.0 34.963469180020944 78.33265876350477  0.0 0.0   71.80070421791422 ",
             "=== ==== === === ================== ================== === ===== =================="
             ]
-        self.assertEqual("\n".join(s), "\n".join(expected))
+        for i in range(len(s)):
+            msg = "row %d: " % (i+1)
+            msg += "\n  received: %s" + s[i]
+            msg += "\n  expected: %s" + expected[i]
+            self.assertEqual(s[i], expected[i], msg)
 
 
 def suite(*args, **kw):
