@@ -395,8 +395,8 @@ class Test_column_widths(unittest.TestCase):
             ]
         for i in range(len(s)):
             msg = "row %d: " % (i+1)
-            msg += "\n  received: %s" + s[i]
-            msg += "\n  expected: %s" + expected[i]
+            msg += "\n  received: " + s[i]
+            msg += "\n  expected: " + expected[i]
             self.assertEqual(s[i], expected[i], msg)
 
 
