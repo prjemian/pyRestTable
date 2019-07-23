@@ -372,15 +372,24 @@ class Table(object):
         measure the maximum width of each column, 
         considering possible line breaks in each cell
         """
+        
+        def col_widths(columns):
+            result = []
+            for s in columns:
+                # if multi-line, get width of biggest line
+                widths = [len(p) for p in str(s).split("\n")]
+                result.append(max(widths))
+            return result
+        
         width = []
         if len(self.labels) > 0:
-            width = [max(map(len, str(_).split("\n"))) for _ in self.labels]
+            width = col_widths(self.labels)
         for row in self.rows:
             
-            row_width = [max(map(len, str(_ or '').split("\n"))) for _ in row]
+            row_width = col_widths(row)
             
             if len(width) == 0:
                 width = row_width
-            width = list(map( max, zip(width, row_width) ))
+            width = list(map(max, zip(width, row_width) ))
         return width
 
