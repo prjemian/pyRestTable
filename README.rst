@@ -17,20 +17,24 @@ that does not span any cells (no rowspans or columnspans).
 :license:   Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
 :docs:      https://pyRestTable.readthedocs.io
 :URL:       https://github.com/prjemian/pyRestTable
-:conda:     https://anaconda.org/prjemian/pyresttable
-:PyPI:      https://pypi.python.org/pypi/pyRestTable/
-:TODO list: https://github.com/prjemian/pyRestTable/issues
+:TODO:      https://github.com/prjemian/pyRestTable/issues
 :citations:
     .. image:: https://zenodo.org/badge/16644277.svg
        :target: https://zenodo.org/badge/latestdoi/16644277
        :alt: DOI: 10.5281/zenodo.1471691
+:package:
+    .. image:: https://anaconda.org/prjemian/pyresttable/badges/version.svg
+       :target: https://anaconda.org/prjemian/pyresttable
+       :alt: https://anaconda.org/prjemian/pyresttable
+    .. image:: https://img.shields.io/pypi/v/pyresttable.svg
+       :target: https://pypi.python.org/pypi/pyresttable
+       :alt: https://pypi.python.org/pypi/pyresttable
 :build:
     .. image:: https://travis-ci.org/prjemian/pyRestTable.svg?branch=master
-               :target: https://travis-ci.org/prjemian/pyRestTable
+       :target: https://travis-ci.org/prjemian/pyRestTable
 :coverage:
    .. image:: https://coveralls.io/repos/github/prjemian/pyRestTable/badge.svg?branch=master
-              :target: https://coveralls.io/github/prjemian/pyRestTable?branch=master
-
+       :target: https://coveralls.io/github/prjemian/pyRestTable?branch=master
 :review:
     .. image:: https://img.shields.io/lgtm/grade/python/g/prjemian/spec2nexus.svg?logo=lgtm&logoWidth=18
        :target: https://lgtm.com/projects/g/spec2nexus/context:python
