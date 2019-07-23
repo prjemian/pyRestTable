@@ -377,13 +377,15 @@ class Test_column_widths(unittest.TestCase):
         table.addRow([0.0, 8.0, 0.0, 0.0, 22.31594087562736, 89.13769999977886, 0.0, 0.0, 45.158571742842376])
         table.addRow([0.0, 12.0, 1.0, 0.0, 34.963469180020944, 78.33265876350477, 0.0, 0.0, 71.80070421791422])
 
-        result = str(table)
-        s = result.splitlines()
+        result = str(table).splitlines()
 
-        self.assertEqual(len(s), 7)
-        columns = s[0].split()
+        self.assertEqual(len(result), 7)
+        columns = result[0].split()
         self.assertEqual(len(columns), 9)
+        
+        # this was the first problem in issue #31
         self.assertEqual(columns[0], "===", "width of h column should be three")
+
         expected = [
             "=== ==== === === ================== ================== === ===== ==================",
             "h   k    l   mu  omega              chi                phi gamma delta             ",
@@ -393,11 +395,19 @@ class Test_column_widths(unittest.TestCase):
             "0.0 12.0 1.0 0.0 34.963469180020944 78.33265876350477  0.0 0.0   71.80070421791422 ",
             "=== ==== === === ================== ================== === ===== =================="
             ]
-        for i in range(len(s)):
-            msg = "row %d: " % (i+1)
-            msg += "\n  received: " + s[i]
-            msg += "\n  expected: " + expected[i]
-            self.assertEqual(s[i], expected[i], msg)
+
+        # check the column labels are identical
+        for s, e in zip(result[1].split(), expected[1].split()):
+            self.assertEqual(s, e)
+
+        # floating point numbers might be truncated but otherwise OK
+        # check that values match to roundoff precision
+        digits = 9
+        for row in (3, 4, 5):
+            for s, e in zip(result[row].split(), expected[row].split()):
+                self.assertEqual(
+                    round(float(s), digits), 
+                    round(float(e), digits))
 
 
 def suite(*args, **kw):
