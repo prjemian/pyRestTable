@@ -26,12 +26,12 @@ that does not span any cells (no rowspans or columnspans).
     .. image:: https://anaconda.org/prjemian/pyresttable/badges/version.svg
        :target: https://anaconda.org/prjemian/pyresttable
        :alt: https://anaconda.org/prjemian/pyresttable
-    .. image:: https://img.shields.io/pypi/pyversions/pyresttable.svg
-       :target: https://pypi.python.org/pypi/pyresttable
-       :alt: https://pypi.python.org/pypi/pyresttable
     .. image:: https://img.shields.io/pypi/v/pyresttable.svg
        :target: https://pypi.python.org/pypi/pyresttable
        :alt: https://pypi.python.org/pypi/pyresttable
+    .. image:: https://img.shields.io/pypi/pyversions/pyresttable.svg
+       :target: https://pypi.python.org/pypi/pyresttable
+       :alt: Py 2.7 | 3.5 | 3.6 | 3.7
 :build:
     .. image:: https://travis-ci.org/prjemian/pyRestTable.svg?branch=master
        :target: https://travis-ci.org/prjemian/pyRestTable
