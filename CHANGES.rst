@@ -7,7 +7,7 @@ Change History
 Production
 **********
 
-:2020.0.1: expected *2019.08* - bug fix
+:2020.0.1: *2019.07-23* - bug fix
 
     * `#31 <https://github.com/prjemian/pyRestTable/issues/31>`_
       fix bug in column width detection
