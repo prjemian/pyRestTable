@@ -219,9 +219,6 @@ EXAMPLE_COMPLICATED_RESULT = '''
 
 class Test_pyRestTable(unittest.TestCase):
     
-    def setUp(self):
-        pass
-    
     def apply_test(self, table, reference_text, style='simple'):
         text = table.reST(fmt=style)
         self.assertTrue(text.strip() == reference_text.strip())
@@ -371,10 +368,36 @@ class Test_pyRestTable(unittest.TestCase):
         self.assertEqual(s, MINIMAL_SIMPLE_RESULT, 'string representation')
 
 
+class Test_column_widths(unittest.TestCase):
+
+    def test_issue_31(self):
+        table = pyRestTable.Table()
+        table.labels = ['h', 'k', 'l', 'mu', 'omega', 'chi', 'phi', 'gamma', 'delta']
+        table.addRow([0, 1, 1, 0.0, 3.4824458166048444, 22.712897698011936, 0.0, 0.0, 13.799774663132288])
+        table.addRow([0.0, 8.0, 0.0, 0.0, 22.31594087562736, 89.13769999977886, 0.0, 0.0, 45.158571742842376])
+        table.addRow([0.0, 12.0, 1.0, 0.0, 34.963469180020944, 78.33265876350477, 0.0, 0.0, 71.80070421791422])
+        s = str(table).splitlines()
+        self.assertEqual(len(s), 7)
+        columns = s[0].split()
+        self.assertEqual(len(columns), 9)
+        self.assertEqual(columns[0], "===", "width of h column should be three")
+        expected = [
+            "=== ==== === === ================== ================== === ===== ==================",
+            "h   k    l   mu  omega              chi                phi gamma delta             ",
+            "=== ==== === === ================== ================== === ===== ==================",
+            "0   1    1   0.0 3.4824458166048444 22.712897698011936 0.0 0.0   13.799774663132288",
+            "0.0 8.0  0.0 0.0 22.31594087562736  89.13769999977886  0.0 0.0   45.158571742842376",
+            "0.0 12.0 1.0 0.0 34.963469180020944 78.33265876350477  0.0 0.0   71.80070421791422 ",
+            "=== ==== === === ================== ================== === ===== =================="
+            ]
+        self.assertEqual("\n".join(s), "\n".join(expected))
+
+
 def suite(*args, **kw):
     test_suite = unittest.TestSuite()
     test_list = [
         Test_pyRestTable,
+        Test_column_widths,
         ]
     for test_case in test_list:
         test_suite.addTest(unittest.makeSuite(test_case))
