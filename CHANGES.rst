@@ -7,6 +7,11 @@ Change History
 Production
 **********
 
+:2020.0.2: *2019.07-30* - bug fix
+
+    * `#33 <https://github.com/prjemian/pyRestTable/issues/33>`_
+      not really a bug -- add side pipes to markdown table
+
 :2020.0.1: *2019.07-23* - bug fix
 
     * `#31 <https://github.com/prjemian/pyRestTable/issues/31>`_
