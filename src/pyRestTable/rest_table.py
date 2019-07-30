@@ -264,8 +264,8 @@ class Table(object):
         # build the row separators
         # maximum column widths, considering possible line breaks in each cell
         width = [max(w,3) for w in self.find_widths()]
-        separator = " | ".join(['-'*w for w in width]) + '\n'
-        fmt = " | ".join(["%%-%ds" % w for w in width]) + '\n'
+        separator = "| " +" | ".join(['-'*w for w in width]) + ' |\n'
+        fmt = "| " + " | ".join(["%%-%ds" % w for w in width]) + ' |\n'
         
         md = ''
         md += self._row(self.labels, fmt, indentation) # labels
