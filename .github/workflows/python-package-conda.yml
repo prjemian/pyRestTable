@@ -20,7 +20,7 @@ jobs:
         mamba-version: "*"
         channels: conda-forge,defaults
         channel-priority: true
-        activate-environment: anaconda-client-env
+        activate-environment: anaconda-client-env-py-${{ matrix.pyver }}
         environment-file: environment.yml
     - shell: bash -l {0}
       run: |
