@@ -7,6 +7,15 @@ Change History
 Production
 **********
 
+:2020.0.3: *2020-11-10* - general
+
+    * `#49 <https://github.com/prjemian/pyRestTable/pulls/49>`_
+      add tests on python 3.8 & 3.9, drop tests on python <3.6
+    * `#44 <https://github.com/prjemian/pyRestTable/pulls/44>`_
+      md is alias for markdown
+    * `#38 <https://github.com/prjemian/pyRestTable/pulls/38>`_
+      move CI from travis-ci to Github Actions
+
 :2020.0.2: *2019.07-30* - bug fix
 
     * `#33 <https://github.com/prjemian/pyRestTable/issues/33>`_
