@@ -17,8 +17,7 @@ jobs:
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
       env:
-        PY_VER: ${{ matrix.python-version }}
-        ENV_NAME: anaconda-client-env-py-$PY_VER
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
       with:
         activate-environment: $ENV_NAME
         auto-update-base: false
@@ -27,7 +26,7 @@ jobs:
         channels: defaults,conda-forge
         # environment-file: environment.yml
         mamba-version: "*"
-        # python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python-version }}
         use-only-tar-bz2: true  # required for caching
     - shell: bash -l {0}
       run: |
@@ -46,14 +45,14 @@ jobs:
         conda install -y python=$PY_VER -n $ENV_NAME
       env:
         PY_VER: ${{ matrix.python-version }}
-        ENV_NAME: anaconda-client-env-py-$PY_VER
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
         $CONDA/bin/conda env update --file environment.yml --name $ENV_NAME
       env:
         PY_VER: ${{ matrix.python-version }}
-        ENV_NAME: anaconda-client-env-py-$PY_VER
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
 
     - name: Test with pytest
       run: |
@@ -63,4 +62,4 @@ jobs:
         $CONDA/bin/pytest tests
       env:
         PY_VER: ${{ matrix.python-version }}
-        ENV_NAME: anaconda-client-env-py-$PY_VER
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
