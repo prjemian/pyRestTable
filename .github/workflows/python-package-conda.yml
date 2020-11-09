@@ -54,7 +54,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        $CONDA/bin/conda activate $ENV_NAME
+        source $CONDA/bin/activate $ENV_NAME
         conda install pytest
         conda list -r
         pytest tests
