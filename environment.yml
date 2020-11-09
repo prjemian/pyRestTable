@@ -1,0 +1,6 @@
+name: pyRestTable
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - lxml
