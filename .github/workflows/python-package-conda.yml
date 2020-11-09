@@ -16,8 +16,11 @@ jobs:
 
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-$PY_VER
       with:
-        activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
+        activate-environment: $ENV_NAME
         auto-update-base: false
         auto-update-conda: true
         channel-priority: true
@@ -34,18 +37,30 @@ jobs:
         conda config --show
         printenv | sort
 
-    # $CONDA is an environment variable pointing to the root of the miniconda directory
+    # $CONDA is an environment variable pointing to the
+    # root of the miniconda directory
 
     - name: Install Python version
       run: |
         conda env list
-        conda install -y python=${{ matrix.python-version }}
+        conda install -y python=$PY_VER -n $ENV_NAME
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-$PY_VER
 
     - name: Install dependencies
       run: |
-        $CONDA/bin/conda env update --file environment.yml --name anaconda-client-env-py-${{ matrix.python-version }}
+        $CONDA/bin/conda env update --file environment.yml --name $ENV_NAME
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-$PY_VER
 
     - name: Test with pytest
       run: |
+        conda activate $ENV_NAME
         conda install pytest
+        conda list -r
         $CONDA/bin/pytest tests
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-$PY_VER
