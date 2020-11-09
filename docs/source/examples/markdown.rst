@@ -42,3 +42,5 @@ one two three
 3,1 3,2 3,3  
 4,1 4,2 4,3  
 === === =====
+
+.. note:: ``fmt="md"`` is a synonym for ``fmt="markdown"``
