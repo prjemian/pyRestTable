@@ -17,14 +17,14 @@ jobs:
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
+        activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
         auto-update-base: false
         auto-update-conda: true
-        python-version: ${{ matrix.python-version }}
-        # channels: defaults,conda-forge
-        # channel-priority: true
-        activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
+        channel-priority: true
+        channels: defaults,conda-forge
         environment-file: environment.yml
         mamba-version: "*"
+        python-version: ${{ matrix.python-version }}
         use-only-tar-bz2: true  # required for caching
     - shell: bash -l {0}
       run: |
