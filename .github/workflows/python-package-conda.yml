@@ -16,10 +16,8 @@ jobs:
 
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
-      env:
-        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
       with:
-        activate-environment: $ENV_NAME
+        activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
         auto-update-base: false
         auto-update-conda: true
         channel-priority: true
