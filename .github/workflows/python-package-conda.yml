@@ -19,7 +19,7 @@ jobs:
         channels: conda-forge,defaults
         channel-priority: true
         activate-environment: anaconda-client-env
-        # environment-file: etc/example-environment.yml
+        environment-file: environment.yml
     - shell: bash -l {0}
       run: |
         conda info
@@ -33,11 +33,10 @@ jobs:
     #   with:
     #     python-version: 3.8
 
-    # pyRestTable has no environment.yml file at this time
-    # - name: Install dependencies
-    #   run: |
-    #     # $CONDA is an environment variable pointing to the root of the miniconda directory
-    #     $CONDA/bin/conda env update --file environment.yml --name base
+    - name: Install dependencies
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        $CONDA/bin/conda env update --file environment.yml --name base
 
     - name: Test with pytest
       run: |
