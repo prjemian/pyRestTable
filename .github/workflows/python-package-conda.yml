@@ -33,12 +33,11 @@ jobs:
     #   with:
     #     python-version: 3.8
 
-    - name: Install dependencies
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        # $CONDA/bin/conda env update --file environment.yml --name base
-        # pyRestTable has no environment.yml file at this time
-        $CONDA/bin/conda env update --name base
+    # pyRestTable has no environment.yml file at this time
+    # - name: Install dependencies
+    #   run: |
+    #     # $CONDA is an environment variable pointing to the root of the miniconda directory
+    #     $CONDA/bin/conda env update --file environment.yml --name base
 
     - name: Test with pytest
       run: |
