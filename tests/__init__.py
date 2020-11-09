@@ -1,1 +1,1 @@
-"""pyRestTable unit tests"""
+"""Unit tests of pyRestTable package."""

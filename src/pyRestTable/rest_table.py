@@ -11,7 +11,8 @@
 # The full license is in the file LICENSE, distributed with this software.
 #-----------------------------------------------------------------------------
 
-"""Format a nice table in reST (restructured text)
+"""
+Format a nice table in reST (restructured text).
 
 ===========================  ============================================================
 User Interface               Description

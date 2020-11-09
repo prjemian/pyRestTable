@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-1 -*-
 
-"""pyRestTable package"""
+"""Configuration of pyRestTable package."""
 
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
