@@ -22,9 +22,9 @@ jobs:
         auto-update-conda: true
         channel-priority: true
         channels: defaults,conda-forge
-        environment-file: environment.yml
+        # environment-file: environment.yml
         mamba-version: "*"
-        python-version: ${{ matrix.python-version }}
+        # python-version: ${{ matrix.python-version }}
         use-only-tar-bz2: true  # required for caching
     - shell: bash -l {0}
       run: |
@@ -34,11 +34,16 @@ jobs:
         conda config --show
         printenv | sort
 
-    # - name: Install dependencies
-    #   run: |
-    #     # $CONDA is an environment variable pointing to the root of the miniconda directory
-    #     $CONDA/bin/conda env update --file environment.yml --name base
-    #     # TODO: Is this redundant?
+    # $CONDA is an environment variable pointing to the root of the miniconda directory
+
+    - name: Install Python version
+      run: |
+        conda env list
+        conda install -y python=${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        $CONDA/bin/conda env update --file environment.yml --name anaconda-client-env-py-${{ matrix.python-version }}
 
     - name: Test with pytest
       run: |
