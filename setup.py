@@ -22,8 +22,14 @@ import pyRestTable as package
 
 
 verbose=1
-long_description = open(os.path.join(basedir, 'README.rst'), 'r').read()
+long_description = """\
+Format a nice table in reST (reStructuredText) from Python.
 
+Each cell may have multiple lines, separated by a newline.
+The content of each cell will be rendered as str(cell).
+At present, *pyRestTable* only supports tables with content 
+that does not span any cells (no rowspans or columnspans).
+"""
 
 setup (name =             package.__package_name__,        # pyRestTable
        version =          versioneer.get_version(),
