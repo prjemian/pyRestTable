@@ -4,10 +4,11 @@ on: [push]
 
 jobs:
   build-linux:
+    name: CI py${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        pyver: ['2.7', '3.5', '3.6', '3.7', '3.8']
+        python-version: ['2.7', '3.5', '3.6', '3.7', '3.8']
       max-parallel: 5
 
     steps:
@@ -16,11 +17,12 @@ jobs:
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
-        python-version: ${{ matrix.pyver }}
+        auto-update-conda: true
+        python-version: ${{ matrix.python-version }}
         mamba-version: "*"
-        channels: conda-forge,defaults
+        channels: defaults,conda-forge
         channel-priority: true
-        activate-environment: anaconda-client-env-py-${{ matrix.pyver }}
+        activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
         environment-file: environment.yml
     - shell: bash -l {0}
       run: |
@@ -30,11 +32,11 @@ jobs:
         conda config --show
         printenv | sort 
 
-    - name: Install dependencies
-      run: |
-        # $CONDA is an environment variable pointing to the root of the miniconda directory
-        $CONDA/bin/conda env update --file environment.yml --name base
-        # TODO: Is this redundant?
+    # - name: Install dependencies
+    #   run: |
+    #     # $CONDA is an environment variable pointing to the root of the miniconda directory
+    #     $CONDA/bin/conda env update --file environment.yml --name base
+    #     # TODO: Is this redundant?
 
     - name: Test with pytest
       run: |
