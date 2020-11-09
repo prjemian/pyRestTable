@@ -20,7 +20,7 @@ _path = os.path.dirname(__file__)
 
 __author__ = 'Pete R. Jemian'
 __email__ = 'prjemian@gmail.com'
-__copyright_year__ = '2014-2019'
+__copyright_year__ = '2014-2020'
 __copyright__ = __copyright_year__ + ', Pete R. Jemian'
 
 __license_url__ = 'http://creativecommons.org/licenses/by/4.0/deed.en_US'
@@ -41,12 +41,10 @@ __classifiers__ = [
      'License :: Freely Distributable',
      'License :: Public Domain',
      'Programming Language :: Python',
-     'Programming Language :: Python :: 2',
-     'Programming Language :: Python :: 2.7',
      'Programming Language :: Python :: 3',
-     'Programming Language :: Python :: 3.5',
      'Programming Language :: Python :: 3.6',
      'Programming Language :: Python :: 3.7',
+     'Programming Language :: Python :: 3.8',
      'Topic :: Documentation',
      'Topic :: Documentation :: Sphinx',
      'Topic :: Software Development',
