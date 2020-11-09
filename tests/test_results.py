@@ -282,6 +282,9 @@ class Test_pyRestTable(unittest.TestCase):
     def test_markdown_grid(self):
         self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_MARKDOWN_RESULT, 'markdown')
 
+    def test_md_grid(self):
+        self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_MARKDOWN_RESULT, 'md')
+
     def test_minimal_listtable(self):
         self.apply_test(pyRestTable.rest_table.example_minimal(), MINIMAL_LISTTABLE_RESULT, 'list-table')
 
