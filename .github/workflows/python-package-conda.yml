@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['2.7', '3.5', '3.6', '3.7', '3.8']
+        python-version: ['3.5', '3.6', '3.7', '3.8']
       max-parallel: 5
 
     steps:
@@ -17,14 +17,15 @@ jobs:
     - name: Setup Miniconda
       uses: conda-incubator/setup-miniconda@v2
       with:
+        auto-update-base: false
         auto-update-conda: true
         python-version: ${{ matrix.python-version }}
-        mamba-version: "*"
-        channels: defaults,conda-forge
-        channel-priority: true
+        # channels: defaults,conda-forge
+        # channel-priority: true
         activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
         environment-file: environment.yml
-    - shell: bash -l {0}
+        mamba-version: "*"
+        use-only-tar-bz2: true  # required for caching    - shell: bash -l {0}
       run: |
         conda info
         conda list
