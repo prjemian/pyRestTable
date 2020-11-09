@@ -4,8 +4,8 @@
 
 ## Define the release
 
-PACKAGE=`python setup.py --name`
-RELEASE=`python setup.py --version`
+PACKAGE=$(python setup.py --name)
+RELEASE=$(python setup.py --version)
 echo "PACKAGE: ${PACKAGE}"
 echo "RELEASE: ${RELEASE}"
 
@@ -18,7 +18,7 @@ fi
 
 echo "Building for upload to PyPI"
 python setup.py sdist bdist_wheel
-twine upload dist/${PACKAGE}-${RELEASE}*
+twine upload "dist/${PACKAGE}-${RELEASE}*"
 
 ## Conda Build and upload::
 
@@ -41,11 +41,11 @@ export CONDA_BLD_PATH=/tmp/conda-bld
 
 conda build ./conda-recipe/
 BUILD_DIR=${CONDA_BLD_PATH}/noarch
-_package_=$(echo ${PACKAGE} | tr '[:upper:]' '[:lower:]')
+_package_=$(echo "${PACKAGE}" | tr '[:upper:]' '[:lower:]')
 BUNDLE=${BUILD_DIR}/${_package_}-${RELEASE}-*_0.tar.bz2
 echo "upload to conda"
 echo "CHANNEL: ${CHANNEL}"
-anaconda upload -u ${CHANNEL} ${BUNDLE}
+anaconda upload -u "${CHANNEL}" "${BUNDLE}"
 
 # also post to my personal channel
-anaconda upload ${BUNDLE}
+anaconda upload "${BUNDLE}"

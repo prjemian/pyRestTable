@@ -1,5 +1,4 @@
 include README.rst
 include CHANGES.rst
 include versioneer.py
-include run_tests.py
 include src/pyRestTable/_version.py
