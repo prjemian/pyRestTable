@@ -177,7 +177,7 @@ class Table(object):
         if not len(self.labels) == len(self.alignment):
             msg = "Number of column labels is different from column width specifiers"
             raise IndexError(msg)
-        return {
+        xref = {
             'complex': self.grid_table,     # alias for `grid`, keep
             'grid': self.grid_table,
             'html': self.html_table,
@@ -186,7 +186,12 @@ class Table(object):
             'md' : self.markdown_table,     # alias for `markdown`, keep
             'plain': self.plain_table,
             'simple': self.simple_table,
-            }[fmt](indentation)
+            }
+        if fmt not in xref:
+            raise KeyError(
+                f'format name "{fmt}" is unknown'
+            )
+        return xref[fmt](indentation)
     
     def plain_table(self, indentation = ''):
         """render the table in *plain* reST format"""
