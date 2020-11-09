@@ -25,13 +25,14 @@ jobs:
         activate-environment: anaconda-client-env-py-${{ matrix.python-version }}
         environment-file: environment.yml
         mamba-version: "*"
-        use-only-tar-bz2: true  # required for caching    - shell: bash -l {0}
+        use-only-tar-bz2: true  # required for caching
+    - shell: bash -l {0}
       run: |
         conda info
         conda list
         conda config --show-sources
         conda config --show
-        printenv | sort 
+        printenv | sort
 
     # - name: Install dependencies
     #   run: |
