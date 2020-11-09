@@ -6,7 +6,7 @@ from lxml import etree
 try:
     # python 3
     from urllib.request import urlopen
-except ImportError as _exc:
+except ImportError:
     # python 2
     from urllib2 import urlopen
 sys.path.insert(0, '..')
@@ -19,10 +19,10 @@ CANSAS_URL = '/'.join((GITHUB_BASE_URL, 'examples/cs_af1410.xml'))
 
 def main():
     nsmap = dict(cs='urn:cansas1d:1.1')
-    
+
     r = urlopen(CANSAS_URL).read().decode("utf-8")
     doc = etree.parse(io.StringIO(r))
-    
+
     node_list = doc.xpath('//cs:SASentry', namespaces=nsmap)
     t = Table()
     t.labels = ['SASentry', 'description', 'measurements']
@@ -35,7 +35,7 @@ def main():
             count = len(node.xpath('cs:SASdata', namespaces=nsmap))
         title = s.strip().decode()
         t.rows += [[s_name, title, count]]
-    
+
     return t
 
 
