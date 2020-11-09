@@ -7,7 +7,7 @@ Change History
 Production
 **********
 
-:2020.0.3: *2020-11-10* - general
+:2020.0.3: released *2020-11-09* - general
 
     * `#49 <https://github.com/prjemian/pyRestTable/pulls/49>`_
       add tests on python 3.8 & 3.9, drop tests on python <3.6
