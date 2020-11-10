@@ -216,7 +216,9 @@ def report(title, repo, milestone, tags, pulls, issues, commits):
             commit = repo.get_commit(tag.commit.sha)
             when = str2time(commit.last_modified).strftime("%Y-%m-%d")
             base_url = tag.commit.html_url
-            tag_url = "/".join(base_url.split("/")[:-2] + ["tag", k])
+            tag_url = "/".join(
+                base_url.split("/")[:-2] + ["releases", "tag", k]
+                )
             print(
                 f"[{k}]({tag_url})"
                 f" | {when}"
