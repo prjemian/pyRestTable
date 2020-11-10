@@ -210,12 +210,18 @@ def report(title, repo, milestone, tags, pulls, issues, commits):
     if len(tags) == 0:
         print("-- none --")
     else:
-        print("tag | date | name")
+        print("tag | date | commit")
         print("-"*5, " | ", "-"*5, " | ", "-"*5)
         for k, tag in sorted(tags.items(), reverse=True):
             commit = repo.get_commit(tag.commit.sha)
             when = str2time(commit.last_modified).strftime("%Y-%m-%d")
-            print(f"[{tag.commit.sha[:7]}]({tag.commit.html_url}) | {when} | {k}")
+            base_url = tag.commit.html_url
+            tag_url = "/".join(base_url.split("/")[:-2] + ["tag", k])
+            print(
+                f"[{k}]({tag_url})"
+                f" | {when}"
+                f" | [{tag.commit.sha[:7]}]({tag.commit.html_url})"
+                )
     print("")
     print("### Pull Requests")
     print("")
