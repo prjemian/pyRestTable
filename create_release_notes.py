@@ -234,9 +234,13 @@ def report(title, repo, milestone, tags, pulls, issues, commits):
     if len(issues) == 0:
         print("-- none --")
     else:
+        def sorter(o):
+            k, v = o
+            logger.debug("[closed: %s] %d %s", v.closed_at, k, v.title)
+            return v.closed_at
         print("issue | date | title")
         print("-"*5, " | ", "-"*5, " | ", "-"*5)
-        for k, issue in sorted(issues.items(), reverse=True):
+        for k, issue in sorted(issues.items(), key=sorter, reverse=True):
             if k not in pulls:
                 when = issue.closed_at.strftime("%Y-%m-%d")
                 print(f"[#{issue.number}]({issue.html_url}) | {when} | {issue.title}")
