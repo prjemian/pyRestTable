@@ -42,7 +42,7 @@ jobs:
       run: |
         $CONDA/bin/conda env update --file environment.yml --name $ENV_NAME
         $CONDA/bin/conda install pytest --name $ENV_NAME
-        $CONDA/bin/conda list -4 --name $ENV_NAME
+        $CONDA/bin/conda list -r --name $ENV_NAME
       env:
         PY_VER: ${{ matrix.python-version }}
         ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
