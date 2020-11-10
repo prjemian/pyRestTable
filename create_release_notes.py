@@ -234,25 +234,34 @@ def report(title, repo, milestone, tags, pulls, issues, commits):
     if len(issues) == 0:
         print("-- none --")
     else:
-        def sorter(o):
+        def isorter(o):
             k, v = o
             logger.debug("[closed: %s] %d %s", v.closed_at, k, v.title)
             return v.closed_at
         print("issue | date | title")
         print("-"*5, " | ", "-"*5, " | ", "-"*5)
-        for k, issue in sorted(issues.items(), key=sorter, reverse=True):
+        for k, issue in sorted(issues.items(), key=isorter, reverse=True):
             if k not in pulls:
                 when = issue.closed_at.strftime("%Y-%m-%d")
-                print(f"[#{issue.number}]({issue.html_url}) | {when} | {issue.title}")
+                print(
+                    f"[#{issue.number}]({issue.html_url})"
+                    f" | {when}"
+                    f" | {issue.title}"
+                    )
     print("")
     print("### Commits")
     print("")
     if len(commits) == 0:
         print("-- none --")
     else:
+        def csorter(o):
+            k, v = o
+            ts = v.raw_data['commit']['committer']['date']
+            logger.debug("[closed: %s] %s", ts, k)
+            return v.raw_data['commit']['committer']['date']
         print("commit | date | message")
         print("-"*5, " | ", "-"*5, " | ", "-"*5)
-        for k, commit in sorted(commits.items(), reverse=True):
+        for k, commit in sorted(commits.items(), key=csorter, reverse=True):
             message = commit.commit.message.splitlines()[0]
             when = commit.raw_data['commit']['committer']['date'].split("T")[0]
             print(f"[{k[:7]}]({commit.html_url}) | {when} | {message}")
