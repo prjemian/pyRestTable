@@ -34,22 +34,37 @@ jobs:
         conda env list
         printenv | sort
 
+    - name: Diagnostic
+      run: |
+        $CONDA/bin/conda list -r --name $ENV_NAME
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
+
     # $CONDA is an environment variable pointing to the
     # root of the miniconda directory
 
     - name: Install dependencies
       run: |
         $CONDA/bin/conda env update --file environment.yml --name $ENV_NAME
-        $CONDA/bin/conda install pytest --name $ENV_NAME
+        $CONDA/bin/conda env update --file .github/env-workflow.yml --name $ENV_NAME
+        source $CONDA/bin/activate $ENV_NAME
+        pip install -e .
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
+
+    - name: Diagnostic
+      run: |
         $CONDA/bin/conda list -r --name $ENV_NAME
       env:
         PY_VER: ${{ matrix.python-version }}
         ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
 
-    - name: Run tests with pytest
+    - name: Code coverage & unit tests with pytest
       run: |
         source $CONDA/bin/activate $ENV_NAME
-        pytest -vvv
+        coverage run -m pytest -vvv
       env:
         PY_VER: ${{ matrix.python-version }}
         ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
