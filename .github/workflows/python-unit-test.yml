@@ -1,5 +1,4 @@
-name: Python Package using Conda
-
+name: Unit Test
 on: [push]
 
 jobs:
@@ -8,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.6', '3.7', '3.8', '3.9']
+        python-version: ['3.6', '3.7', '3.8', '3.9', '3.10']
       max-parallel: 5
 
     steps:
@@ -35,22 +34,37 @@ jobs:
         conda env list
         printenv | sort
 
+    - name: Diagnostic
+      run: |
+        $CONDA/bin/conda list -r --name $ENV_NAME
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
+
     # $CONDA is an environment variable pointing to the
     # root of the miniconda directory
 
     - name: Install dependencies
       run: |
         $CONDA/bin/conda env update --file environment.yml --name $ENV_NAME
-        $CONDA/bin/conda install pytest --name $ENV_NAME
+        $CONDA/bin/conda env update --file .github/env-workflow.yml --name $ENV_NAME
+        source $CONDA/bin/activate $ENV_NAME
+        pip install -e .
+      env:
+        PY_VER: ${{ matrix.python-version }}
+        ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
+
+    - name: Diagnostic
+      run: |
         $CONDA/bin/conda list -r --name $ENV_NAME
       env:
         PY_VER: ${{ matrix.python-version }}
         ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
 
-    - name: Run tests with pytest
+    - name: Code coverage & unit tests with pytest
       run: |
         source $CONDA/bin/activate $ENV_NAME
-        pytest tests
+        coverage run -m pytest -vvv
       env:
         PY_VER: ${{ matrix.python-version }}
         ENV_NAME: anaconda-client-env-py-${{ matrix.python-version }}
