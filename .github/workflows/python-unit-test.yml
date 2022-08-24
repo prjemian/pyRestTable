@@ -74,14 +74,14 @@ jobs:
           coverage combine
           coverage report --precision 3
 
-      - name: Install for functional testing
-        run: |
-          python3 ./setup.py build sdist
-          python3 -m pip install .
+      # - name: Install for functional testing
+      #   run: |
+      #     python3 ./setup.py build sdist
+      #     python3 -m pip install .
 
-      - name: Functional Test(s)
-        run: |
-          pyRestTable --help
+      # - name: Functional Test(s)
+      #   run: |
+      #     pyRestTable --help
 
       - name: Upload to coveralls
         # https://github.com/TheKevJames/coveralls-python
