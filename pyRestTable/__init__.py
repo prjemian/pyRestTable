@@ -1,13 +1,10 @@
-#!/usr/bin/env python
+# -*- coding: iso-8859-1 -*-
 
-import setuptools
-import setuptools_scm
+"""Configuration of pyRestTable package."""
 
-setuptools.setup(
-    version=setuptools_scm.get_version(),
-    # use_scm_version=True,
-    setup_requires=["setuptools_scm"],
-)
+from setuptools_scm import get_version
+
+__version__ = get_version()
 
 #-----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
@@ -16,5 +13,5 @@ setuptools.setup(
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
-# The full license is in the file LICENSE, distributed with this software.
+# The full license is in the file LICENSE.txt, distributed with this software.
 #-----------------------------------------------------------------------------

@@ -11,3 +11,6 @@ MANIFEST
 /htmlcov
 /.coverage
 build_log.txt
+
+# generated version number
+_version.py
