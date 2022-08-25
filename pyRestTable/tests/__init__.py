@@ -35,6 +35,7 @@ CANSAS_RESULT = """\
 +-----------+--------------------------------------+--------------+
 """
 
+# fmt: off
 MINIMAL_SIMPLE_RESULT = (
     "= =\n"
     "x y\n"
@@ -57,10 +58,11 @@ MINIMAL_GRID_RESULT = (
 )
 
 MINIMAL_MARKDOWN_RESULT = (
-"| x   | y   |\n"
-"| --- | --- |\n"
-"| 1   | 2   |\n"
+    "| x   | y   |\n"
+    "| --- | --- |\n"
+    "| 1   | 2   |\n"
 )
+# fmt: on
 
 MINIMAL_LISTTABLE_RESULT = (
     ".. list-table::\n"
