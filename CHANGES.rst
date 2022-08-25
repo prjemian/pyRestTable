@@ -11,7 +11,7 @@ Production
 
     * `#53 <https://github.com/prjemian/pyRestTable/pulls/53>`_
       refactor packaging per PEP518
-    * `#56 <https://github.com/prjemian/pyRestTable/pulls/56>`_
+    * `#55 <https://github.com/prjemian/pyRestTable/issues/55>`_
       publish docs on GitHub Pages
 
 :2020.0.3: released *2020-11-10* - general
