@@ -1,0 +1,50 @@
+{% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
+
+source:
+    path: ../
+
+about:
+    home: "{{ data.get('url') }}"
+    license_file: LICENSE
+    # see: https://github.com/conda/conda-build/blob/master/conda_build/license_family.py#L8-L23
+    license_family: CC
+    license: "{{ data.get('license') }}"
+    summary: "{{ data.get('description') }}"
+    keywords: "{{ data.get('keywords') }}"
+
+package:
+    name: "{{ data.get('name')|lower }}"
+    version: {{ data.get('version') }}
+
+build:
+    noarch: python
+    script: python setup.py install
+  # entry_points: pyRestTable is a library; it has no entry points
+
+requirements:
+
+  build:
+    - python
+    - pip
+    - setuptools-scm
+
+  run:
+    - python
+    # - setuptools-scm
+
+test:
+
+    imports:
+        - pyRestTable
+
+    commands:
+        - python run_test.py
+
+extra:
+  recipe-maintainers:
+    - prjemian
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
+# https://conda.io/docs/build_tutorials/pkgs.html

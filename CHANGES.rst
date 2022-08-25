@@ -7,6 +7,11 @@ Change History
 Production
 **********
 
+:2020.0.4: expected *2022-08-31* - general
+
+    * `#53 <https://github.com/prjemian/pyRestTable/pulls/53>`_
+      refactor packaging per PEP518
+
 :2020.0.3: released *2020-11-10* - general
 
     * `#49 <https://github.com/prjemian/pyRestTable/pulls/49>`_
