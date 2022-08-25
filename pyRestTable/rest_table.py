@@ -51,34 +51,12 @@ def example_basic():
     t.addLabel("one")
     t.addLabel("two")
     t.addLabel("three")
-    t.addRow(
-        [
-            "1,1",
-            "1,2",
-            "1,3",
-        ]
-    )
-    t.addRow(
-        [
-            "2,1",
-            "2,2",
-            "2,3",
-        ]
-    )
-    t.addRow(
-        [
-            "3,1",
-            "3,2",
-            "3,3",
-        ]
-    )
-    t.addRow(
-        [
-            "4,1",
-            "4,2",
-            "4,3",
-        ]
-    )
+    # fmt: off
+    t.addRow(["1,1", "1,2", "1,3", ])
+    t.addRow(["2,1", "2,2", "2,3", ])
+    t.addRow(["3,1", "3,2", "3,3", ])
+    t.addRow(["4,1", "4,2", "4,3", ])
+    # fmt: on
     return t
 
 
@@ -190,8 +168,9 @@ class Table(object):
         if state:
             self.alignment = column_spec or []
 
-    def reST(self, indentation="", fmt="simple"):
+    def reST(self, indentation="", fmt=None):
         """render the table in reST format"""
+        fmt = fmt or "simple"
         if len(self.alignment) == 0:
             #  set the default column alignments
             self.alignment = str("L " * len(self.labels)).strip().split()
@@ -339,7 +318,7 @@ class Table(object):
 
         widths = self.find_widths()
         rest = [
-            indentation + ".. list-table:: ",
+            indentation + ".. list-table::",
         ]
         rest.append(indentation + "   :header-rows: 1")
         rest.append(indentation + "   :widths: " + " ".join(map(str, widths)))
