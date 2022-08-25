@@ -21,7 +21,8 @@ jobs:
 
     - name: Install furo theme
       run: |
-        pip install furo
+        # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
+        pip install "furo <=2022.4.7"
 
     - name: Build and Commit
       uses: sphinx-notes/pages@master
