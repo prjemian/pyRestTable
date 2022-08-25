@@ -56,11 +56,11 @@ MINIMAL_GRID_RESULT = (
     "+---+---+\n"
 )
 
-MINIMAL_MARKDOWN_RESULT = """\
-| x   | y   |
-| --- | --- |
-| 1   | 2   |
-"""
+MINIMAL_MARKDOWN_RESULT = (
+"| x   | y   |\n"
+"| --- | --- |\n"
+"| 1   | 2   |\n"
+)
 
 MINIMAL_LISTTABLE_RESULT = (
     ".. list-table::\n"
