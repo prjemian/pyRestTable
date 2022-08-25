@@ -15,13 +15,13 @@ jobs:
       with:
         fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
 
-    - name: Install package
+    - name: Install package as editable
       run: |
         pip install -e .
 
-    - name: Install sphinx-rtd-theme
+    - name: Install furo theme
       run: |
-        pip install sphinx-rtd-theme
+        pip install furo
 
     - name: Build and Commit
       uses: sphinx-notes/pages@master
