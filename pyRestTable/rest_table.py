@@ -197,14 +197,14 @@ class Table(object):
         width = self.find_widths()
 
         # build the row format strings
-        fmt = " ".join(["%%-%ds" % w for w in width]) + "\n"
+        fmt = " ".join([f"%-{w}s" for w in width]) + "\n"
 
         rest = ""
         if self.use_tabular_columns:
             rest += indentation
-            rest += ".. tabularcolumns:: |%s|" % "|".join(self.alignment)
+            rest += f".. tabularcolumns:: |{'|'.join(self.alignment)}|"
             if self.longtable:
-                rest += "\n%s%s" % (" " * 4, ":longtable:")
+                rest += f"\n{' ' * 4}:longtable:"
             rest += "\n\n"
         rest += self._row(self.labels, fmt, indentation)  # labels
         for row in self.rows:
@@ -218,21 +218,21 @@ class Table(object):
 
         # build the row separators
         separator = " ".join(["=" * w for w in width]) + "\n"
-        fmt = " ".join(["%%-%ds" % w for w in width]) + "\n"
+        fmt = " ".join([f"%-{w}s" for w in width]) + "\n"
 
         rest = ""
         if self.use_tabular_columns:
             rest += indentation
-            rest += ".. tabularcolumns:: |%s|" % "|".join(self.alignment)
+            rest += f".. tabularcolumns:: |{'|'.join(self.alignment)}|"
             if self.longtable:
-                rest += "\n%s%s" % (" " * 4, ":longtable:")
+                rest += f"\n{' ' * 4}:longtable:"
             rest += "\n\n"
-        rest += "%s%s" % (indentation, separator)  # top line of table
+        rest += f"{indentation}{separator}"  # top line of table
         rest += self._row(self.labels, fmt, indentation)  # labels
-        rest += "%s%s" % (indentation, separator)  # end of the labels
+        rest += f"{indentation}{separator}"  # end of the labels
         for row in self.rows:
             rest += self._row(row, fmt, indentation)  # each row
-        rest += "%s%s" % (indentation, separator)  # end of table
+        rest += f"{indentation}{separator}"  # end of table
         return rest
 
     def grid_table(self, indentation=""):
@@ -243,21 +243,21 @@ class Table(object):
         # build the row separators
         separator = "+" + "".join(["-" * (w + 2) + "+" for w in width]) + "\n"
         label_sep = "+" + "".join(["=" * (w + 2) + "+" for w in width]) + "\n"
-        fmt = "|" + "".join([" %%-%ds |" % w for w in width]) + "\n"
+        fmt = "|" + "".join([f" %-{w}s |" for w in width]) + "\n"
 
         rest = ""
         if self.use_tabular_columns:
             rest += indentation
-            rest += ".. tabularcolumns:: |%s|" % "|".join(self.alignment)
+            rest += f".. tabularcolumns:: |{'|'.join(self.alignment)}|"
             if self.longtable:
-                rest += "\n%s%s" % (" " * 4, ":longtable:")
+                rest += f"\n{' ' * 4}:longtable:"
             rest += "\n\n"
-        rest += "%s%s" % (indentation, separator)  # top line of table
+        rest += f"{indentation}{separator}"  # top line of table
         rest += self._row(self.labels, fmt, indentation)  # labels
-        rest += "%s%s" % (indentation, label_sep)  # end of the labels
+        rest += f"{indentation}{label_sep}"  # end of the labels
         for row in self.rows:
             rest += self._row(row, fmt, indentation)  # each row
-            rest += "%s%s" % (indentation, separator)  # row separator
+            rest += f"{indentation}{separator}"  # row separator
         return rest
 
     def markdown_table(self, indentation=""):
@@ -270,11 +270,11 @@ class Table(object):
         # maximum column widths, considering possible line breaks in each cell
         width = [max(w, 3) for w in self.find_widths()]
         separator = "| " + " | ".join(["-" * w for w in width]) + " |\n"
-        fmt = "| " + " | ".join(["%%-%ds" % w for w in width]) + " |\n"
+        fmt = "| " + " | ".join([f"%-{w}s" for w in width]) + " |\n"
 
         md = ""
         md += self._row(self.labels, fmt, indentation)  # labels
-        md += "%s%s" % (indentation, separator)  # end of the labels
+        md += f"{indentation}{separator}"  # end of the labels
         for row in self.rows:
             md += self._row(row, fmt, indentation)  # each row
         return md

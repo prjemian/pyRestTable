@@ -97,10 +97,10 @@ def test_example_complicated():
     s = t.reST(fmt="grid").strip()
     if s != EXAMPLE_COMPLICATED_RESULT:
         print("")
-        print("expected: %s" % len(EXAMPLE_COMPLICATED_RESULT))
+        print(f"expected: {len(EXAMPLE_COMPLICATED_RESULT)}")
         print(EXAMPLE_COMPLICATED_RESULT)
         print("")
-        print("received: %s" % len(s))
+        print(f"received: {len(s)}")
         print(s)
     assert s == EXAMPLE_COMPLICATED_RESULT
 
