@@ -9,7 +9,7 @@ setuptools.setup(
     setup_requires=["setuptools_scm"],
 )
 
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
 # :copyright: (c) 2014-2022, Pete R. Jemian
@@ -17,4 +17,4 @@ setuptools.setup(
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #
 # The full license is in the file LICENSE, distributed with this software.
-#-----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
