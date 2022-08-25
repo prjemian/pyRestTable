@@ -13,9 +13,9 @@ Install with conda | `conda install -c prjemian pyRestTable`
 Install with pip | `pip install pyRestTable`
 author | Pete R. Jemian
 email | prjemian@gmail.com
-copyright | 2014-2020, Pete R. Jemian
+copyright | 2014-2022, Pete R. Jemian
 license | Creative Commons Attribution 4.0 International Public License (see *LICENSE.txt*)
-docs | https://pyRestTable.readthedocs.io
+docs | https://github.io/prjemian/pyRestTable
 URL | https://github.com/prjemian/pyRestTable
 TODO | https://github.com/prjemian/pyRestTable/issues
 citations | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4265794.svg)](https://doi.org/10.5281/zenodo.4265794)

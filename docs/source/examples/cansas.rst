@@ -8,7 +8,7 @@ reST table.  This particular XML uses a namespace which we setup in the
 variable ``nsmap``:
 
 
-.. literalinclude:: ../../../src/pyRestTable/cansas.py
+.. literalinclude:: ../../../pyRestTable/cansas.py
    :tab-width: 4
    :linenos:
    :language: guess
