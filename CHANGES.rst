@@ -6,7 +6,7 @@ Change History
 Production
 **********
 
-:2020.0.5: released *2022-08-26* - distribution
+:2020.0.6: released *2022-08-26* - distribution
 
   * `#56 <https://github.com/prjemian/pyRestTable/pulls/56>`_
     resolve packaging problems with new workflows
