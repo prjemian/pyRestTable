@@ -9,11 +9,38 @@ from . import MINIMAL_MARKDOWN_RESULT
 from . import MINIMAL_MARKDOWN_RESULT
 from . import MINIMAL_SIMPLE_RESULT
 from .. import Table
-from ..cansas import main as cansas_main
 from ..rest_table import _prepare_results_
 from ..rest_table import example_basic
 from ..rest_table import example_minimal
+import io
+import lxml
 import pytest
+import urllib.request
+
+
+CANSAS_URL = "https://raw.githubusercontent.com/" "canSAS-org/1dwg/master/" "examples/cs_af1410.xml"
+
+
+def cansas():
+    nsmap = dict(cs="urn:cansas1d:1.1")
+
+    r = urllib.request.urlopen(CANSAS_URL).read().decode("utf-8")
+    doc = lxml.etree.parse(io.StringIO(r))
+
+    node_list = doc.xpath("//cs:SASentry", namespaces=nsmap)
+    t = Table()
+    t.labels = ["SASentry", "description", "measurements"]
+    for node in node_list:
+        s_name, count = "", ""
+        subnode = node.find("cs:Title", namespaces=nsmap)
+        if subnode is not None:
+            s = lxml.etree.tostring(subnode, method="text")
+            s_name = node.attrib["name"]
+            count = len(node.xpath("cs:SASdata", namespaces=nsmap))
+        title = s.strip().decode()
+        t.rows += [[s_name, title, count]]
+
+    return t
 
 
 def population_table():
@@ -73,7 +100,7 @@ def test_grid():
         [example_minimal, MINIMAL_HTML_RESULT, "html"],
         [example_minimal, MINIMAL_MARKDOWN_RESULT, "md"],
         [example_minimal, MINIMAL_LISTTABLE_RESULT, "list-table"],
-        [cansas_main, CANSAS_RESULT, "complex"],
+        [cansas, CANSAS_RESULT, "complex"],
     ],
 )
 def test_variations_example_minimal(source, reference_text, style):
