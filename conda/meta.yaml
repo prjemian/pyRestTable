@@ -30,7 +30,6 @@ requirements:
 
   run:
     - python
-    # - setuptools-scm
 
 test:
 

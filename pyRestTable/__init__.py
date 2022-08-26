@@ -2,10 +2,10 @@
 
 """Configuration of pyRestTable package."""
 
-from setuptools_scm import get_version
 from .rest_table import Table
+from importlib.metadata import version
 
-__version__ = get_version()
+__version__ = version("pyRestTable")
 
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
