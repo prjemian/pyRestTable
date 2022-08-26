@@ -7,7 +7,7 @@ Change History
 Production
 **********
 
-:2020.0.4: expected *2022-08-31* - general
+:2020.0.4: released *2022-08-25* - general
 
     * drop support for Python versions < 3.7
     * `#53 <https://github.com/prjemian/pyRestTable/pulls/53>`_
@@ -69,7 +69,7 @@ Production
     * `#12 <https://github.com/prjemian/pyRestTable/issues/12>`_
       provide HTML table output format
 
-:2017.2.0: 
+:2017.2.0:
 
     * `#9 <https://github.com/prjemian/pyRestTable/issues/9>`_
       provide default rendering: `t = Table(); ...;  str(t)`
