@@ -25,7 +25,7 @@ jobs:
         pip install "furo <=2022.4.7"
 
     - name: Build and Commit
-      uses: sphinx-notes/pages@master
+      uses: sphinx-notes/pages@v2
       with:
         # path to conf.py directory
         documentation_path: docs/source
