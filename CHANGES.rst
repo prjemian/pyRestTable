@@ -11,6 +11,7 @@ Production
 
   * `#56 <https://github.com/prjemian/pyRestTable/pulls/56>`_
     resolve packaging problems with new workflows
+  * https://prjemian.github.io/pyRestTable
 
 :2020.0.4: released *2022-08-25* - general
 
