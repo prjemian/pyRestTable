@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import io
-import lxml
+import lxml.etree
 import pyRestTable
 import urllib.request
 

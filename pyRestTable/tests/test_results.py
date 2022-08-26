@@ -13,7 +13,7 @@ from ..rest_table import _prepare_results_
 from ..rest_table import example_basic
 from ..rest_table import example_minimal
 import io
-import lxml
+import lxml.etree
 import pytest
 import urllib.request
 
