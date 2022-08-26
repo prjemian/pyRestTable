@@ -9,6 +9,7 @@ Production
 
 :2020.0.4: expected *2022-08-31* - general
 
+    * drop support for Python versions < 3.7
     * `#53 <https://github.com/prjemian/pyRestTable/pulls/53>`_
       refactor packaging per PEP518
     * `#55 <https://github.com/prjemian/pyRestTable/issues/55>`_

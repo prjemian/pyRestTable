@@ -2,13 +2,12 @@
 Example using XML source data from a URL
 ########################################
 
-Another example (*cansas.py* in the source distribution) shows how content can be 
-scraped from a URL that provides XML (using the *lxml* package) and written as a
-reST table.  This particular XML uses a namespace which we setup in the 
-variable ``nsmap``:
+This example (``cansas.py``) shows how content can be scraped from a URL that
+provides XML (using the *lxml* package) and written as a reST table.  This
+particular XML uses a namespace which we setup in the variable ``nsmap``:
 
 
-.. literalinclude:: ../../../pyRestTable/cansas.py
+.. literalinclude:: cansas.py
    :tab-width: 4
    :linenos:
    :language: guess
@@ -18,7 +17,7 @@ The output from this code:
 .. code-block:: text
     :linenos:
 
-    10 SASentry elements in http://www.cansas.org/svn/1dwg/trunk/examples/cs_af1410.xml
+    10 SASentry elements in https://raw.githubusercontent.com/canSAS-org/1dwg/master/examples/cs_af1410.xml
 
     +-----------+--------------------------------------+--------------+
     | entry	| description			       | measurements |
