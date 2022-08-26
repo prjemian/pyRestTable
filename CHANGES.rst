@@ -7,6 +7,11 @@ Change History
 Production
 **********
 
+:2020.0.5: expected by *2022-08-31* - distribution
+
+  * `#56 <https://github.com/prjemian/pyRestTable/pulls/56>`_
+    resolve packaging problems with new workflows
+
 :2020.0.4: released *2022-08-25* - general
 
     * drop support for Python versions < 3.7
