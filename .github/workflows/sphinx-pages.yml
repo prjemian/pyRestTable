@@ -1,8 +1,27 @@
 name: Publish Sphinx Docs to GitHub Pages
-on: [push]
 
-# see: https://sphinx-notes.github.io/pages/
-# see: https://github.com/marketplace/actions/sphinx-to-github-pages
+on:
+  # Build the docs on pushes to main branch, PRs to main branch, and new tags.
+  # Publish only on demand.
+  push:
+    branches:
+      - main
+    tags:
+      - '*'  # all tags
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:   # allow manual triggering
+    inputs:
+      deploy:
+        description: 'Deploy documentation'
+        type: boolean
+        required: true
+        default: false
+
+defaults:
+  run:
+    shell: bash -l {0}
 
 jobs:
 
@@ -10,29 +29,44 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-      with:
-        fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
 
-    - name: Install package as editable
-      run: |
-        pip install -e .
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
-    - name: Install furo theme
-      run: |
-        # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
-        pip install "furo <=2022.4.7"
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
 
-    - name: Build and Commit
-      uses: sphinx-notes/pages@v2
-      with:
-        # path to conf.py directory
-        documentation_path: docs/source
+      - name: Info
+        run: |
+          echo $(pwd)
+          ls -lAFgh
 
-    - name: Push changes if refs/tags
-      if: startsWith(github.ref, 'refs/tags')
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
+      - name: Install package
+        run: |
+          pip install --no-deps -e . -vv
+
+      - name: Diagnostics
+        run: |
+          python -m pip list
+          python -c "import pyRestTable; print(f'{pyRestTable.__version__=}')"
+
+      - name: Install Sphinx build requirements
+        run: |
+          # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
+          pip install setuptools-scm sphinx "furo <=2022.4.7"
+
+      - name: Sphinx
+        run: |
+          make -C docs html
+
+      - name: Deploy (to gh-pages branch) only on demand
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event.inputs.deploy }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
+          force_orphan: true
