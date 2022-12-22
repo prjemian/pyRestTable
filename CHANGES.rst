@@ -8,7 +8,7 @@ Production
 
 :2020.0.7: released *2022-12* - packaging
 
-  * `#62 <https://github.com/prjemian/pyRestTable/issues/62>`_
+  * `#63 <https://github.com/prjemian/pyRestTable/pulls/63>`_
     Version not reported correctly when run in certain directories.
 
 :2020.0.6: released *2022-08-26* - distribution
