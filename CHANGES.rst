@@ -6,7 +6,7 @@ Change History
 Production
 **********
 
-:2020.0.7: to be released *2022-12* - packaging
+:2020.0.7: released *2022-12-22* - packaging
 
   * `#63 <https://github.com/prjemian/pyRestTable/pulls/63>`_
     Version not reported correctly when run in certain directories.
