@@ -18,7 +18,7 @@ Change History
 2020.0.8
 ************
 
-release expected by 2023-03-17
+released 2023-03-11
 
 Enhancements
 ---------------------
