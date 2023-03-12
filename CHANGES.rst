@@ -1,10 +1,32 @@
 .. pyRestTable
 
+  subsections could include these headings (in this order), omit if no content
+
+    Notice
+    Breaking Changes
+    New Features
+    Enhancements
+    Fixes
+    Maintenance
+    Deprecations
+    Known Problems
+    New Contributors
+
 Change History
 ##############
 
-Production
-**********
+2020.0.8
+************
+
+release expected by 2023-03-17
+
+Enhancements
+---------------------
+
+* Accept optional dictionary as argument to Table() to build table automatically.
+
+Previous releases
+********************
 
 :2020.0.7: released *2022-12-22* - packaging
 

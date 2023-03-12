@@ -96,6 +96,7 @@ class Table(object):
        http://sphinx-doc.org/markup/misc.html?highlight=tabularcolumns#directive-tabularcolumns
     :param bool longtable: with `use_tabular_columns`,
        if True, add Sphinx `:longtable:` directive
+    :param dict dd: dictionary with content for the table
 
     MAIN METHODS
 
@@ -109,6 +110,7 @@ class Table(object):
 
     .. autosummary::
 
+        ~dict_to_table
         ~setLongtable
         ~setTabularColumns
         ~plain_table
@@ -119,15 +121,48 @@ class Table(object):
 
     """
 
-    def __init__(self):
+    def __init__(self, dd={}):
         self.rows = []
         self.labels = []
         self.use_tabular_columns = False
         self.alignment = []
         self.longtable = False
 
+        if len(dd) > 0:
+            self.dict_to_table(dd)
+
     def __str__(self):
         return self.reST()
+
+    def dict_to_table(self, dd):
+        """
+        Make (or append to) table from dictionary.
+
+        PARAMETERS
+
+        dd *dict*:
+            Dictionary to create (or append to) table.  Keys are the column labels,
+            values are the rows.  Empty cells, created if the values are not of
+            equal lengths, will be filled with ``""`` (empty string).
+
+        (New in version 2020.0.8)
+        """
+        if len(self.labels) == 0 and len(self.rows) == 0:
+            # new table
+            self.labels = list(dd.keys())
+
+        if self.labels != list(dd.keys()):
+            raise KeyError("New dictionary keys do not match existing labels.")
+
+        nrows = max([len(col) for col in dd.values()])
+        # fmt: off
+        for i in range(nrows):
+            row = [
+                "" if i >= len(dd[k]) else dd[k][i]
+                for k in self.labels
+            ]
+            self.addRow(row)
+            # fmt: on
 
     def addLabel(self, text):
         """
@@ -396,7 +431,6 @@ class Table(object):
         if len(self.labels) > 0:
             width = col_widths(self.labels)
         for row in self.rows:
-
             row_width = col_widths(row)
 
             if len(width) == 0:
@@ -408,7 +442,7 @@ class Table(object):
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2022, Pete R. Jemian
+# :copyright: (c) 2014-2023, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #

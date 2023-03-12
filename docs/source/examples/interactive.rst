@@ -1,27 +1,19 @@
 Interactive example with *ipython*
 ##################################
 
+Build the table from a dictionary:
+
 .. code-block:: guess
     :linenos:
 
     In [1]: import pyRestTable
- 
-    In [2]: pyRestTable.__long_description__
- 
-    Out[2]: 'Format a nice table in reST (reStructuredText ) from Python'
- 
-    In [3]: pyRestTable.__version__
- 
-    Out[3]: '2015-1111-1'
- 
-    In [4]: t = pyRestTable.Table()
- 
-    In [5]: t.labels = ['x', 'y']
- 
-    In [6]: t.rows.append([1,2])
- 
-    In [7]: print(t.reST())
- 
+
+    In [2]: pyRestTable.__version__
+    Out[2]: '2020.0.8.dev5+g2e1eee2'
+
+    In [3]: t = pyRestTable.Table(dict(x=[1], y=[2]))
+
+    In [4]: print(t.reST())
     = =
     x y
     = =
