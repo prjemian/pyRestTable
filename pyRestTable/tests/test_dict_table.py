@@ -1,4 +1,5 @@
 import pytest
+
 from ..rest_table import Table
 
 

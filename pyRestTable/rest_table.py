@@ -431,13 +431,13 @@ class Table(object):
         if len(self.labels) > 0:
             width = col_widths(self.labels)
         for row in self.rows:
-
             row_width = col_widths(row)
 
             if len(width) == 0:
                 width = row_width
             width = list(map(max, zip(width, row_width)))
         return width
+
 
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
