@@ -8,23 +8,22 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 from importlib.metadata import version
-import configparser
 import pathlib
-import sys
+import tomllib
 
 root_path = pathlib.Path(__file__).parent.parent.parent
-# sys.path.insert(0, str(root_path))
-# import pyRestTable
 
-parser = configparser.ConfigParser()
-parser.read(root_path / "setup.cfg")
-metadata = parser["metadata"]
+with open(root_path / "pyproject.toml", "rb") as fp:
+    toml = tomllib.load(fp)
+metadata = toml["project"]
 
 project = metadata["name"]
-copyright = metadata["copyright"]
-author = metadata["author"]
+gh_org = "prjemian"
+copyright = toml["tool"]["copyright"]["copyright"]
+author = metadata["authors"][0]["name"]
 description = metadata["description"]
 rst_prolog = f".. |author| replace:: {author}"
+github_url = (f"https://github.com/{gh_org}/{project}",)
 
 # -- Special handling for version numbers ---------------------------------------------------
 # https://github.com/pypa/setuptools_scm#usage-from-sphinx
