@@ -44,6 +44,10 @@ jobs:
           echo $(pwd)
           ls -lAFgh
 
+      - name: update pip
+        run: |
+          pip install --upgrade pip
+
       - name: Install package
         run: |
           pip install --no-deps -e . -vv
