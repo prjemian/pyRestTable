@@ -1,10 +1,59 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+requires = [
+  "setuptools>=61.0",
+  "setuptools_scm[toml]>=6.2"
+]
 build-backend = "setuptools.build_meta"
+
+[tool.copyright]
+copyright = "2014-2024, Pete R. Jemian"
+
+[project]
+name = "pyRestTable"
+description = "Format a nice table in reST (reStructuredText) from Python."
+authors = [
+  { name="Pete Jemian", email="prjemian+pyRestTable@gmail.com" },
+]
+maintainers = [
+  { name="Pete Jemian", email="prjemian+pyRestTable@gmail.com" },
+]
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ['reST', 'table', 'documentation']
+license = {file = "pyRestTable/LICENSE.txt"}
+classifiers = [
+  "Development Status :: 6 - Mature",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+  "License :: Freely Distributable",
+  "License :: Public Domain",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Documentation",
+  "Topic :: Documentation :: Sphinx",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Documentation",
+  "Topic :: Text Processing :: Markup",
+  "Topic :: Utilities",
+]
+
+[project.urls]
+"Homepage" = "https://prjemian.github.io/pyRestTable/"
+"Bug Tracker" = "https://github.com/prjemian/pyRestTable/issues"
+
+[project.scripts]
+gemviz = "gemviz.app:main"
 
 [tool.black]
 line-length = 115
-target-version = ['py37']
+target-version = ['py311']
 include = '\.pyi?$'
 exclude = '''
 
@@ -22,10 +71,33 @@ exclude = '''
     | dist
     | docs
   )/
-  | versioneer.py
-  | _version.py
 )
 '''
+
+
+[tool.flake8]
+max-line-length = 115
+extend-ignore = [
+  "E203", # See https://github.com/PyCQA/pycodestyle/issues/373
+  "E402", # module level import not at top of file (for cansas.py)
+  "E501",
+  "F401",  # imported but unused
+  "F722", # allow Annotated[typ, some_func("some string")]
+  "F811", # support typing.overload decorator
+  "W503",
+  "W504"
+]
+
+[tool.isort]
+force_single_line = true
+# multi_line_output = 1
+line_length = 88
+include_trailing_comma = true
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
 
 [tool.setuptools_scm]
 write_to = "pyRestTable/_version.py"
