@@ -48,29 +48,29 @@ jobs:
         run: |
           pip install --upgrade pip
 
-      - name: Install package
-        run: |
-          pip install --no-deps -e . -vv
+      # - name: Install package
+      #   run: |
+      #     pip install --no-deps -e . -vv
 
-      - name: Diagnostics
-        run: |
-          python -m pip list
-          python -c "import pyRestTable; print(f'{pyRestTable.__version__=}')"
+      # - name: Diagnostics
+      #   run: |
+      #     python -m pip list
+      #     python -c "import pyRestTable; print(f'{pyRestTable.__version__=}')"
 
-      - name: Install Sphinx build requirements
-        run: |
-          # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
-          pip install setuptools-scm sphinx "furo <=2022.4.7"
+      # - name: Install Sphinx build requirements
+      #   run: |
+      #     # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
+      #     pip install setuptools-scm sphinx "furo <=2022.4.7"
 
-      - name: Sphinx
-        run: |
-          make -C docs html
+      # - name: Sphinx
+      #   run: |
+      #     make -C docs html
 
-      - name: Deploy (to gh-pages branch) only on demand
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event.inputs.deploy }}
-        with:
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/build/html
-          force_orphan: true
+      # - name: Deploy (to gh-pages branch) only on demand
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   if: ${{ github.event.inputs.deploy }}
+      #   with:
+      #     publish_branch: gh-pages
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: docs/build/html
+      #     force_orphan: true
