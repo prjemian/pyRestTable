@@ -61,7 +61,7 @@ jobs:
           fetch-depth: 0
 
       - name: Create Python ${{ matrix.python-version }} environment
-        uses: mamba-org/provision-with-micromamba@v12
+        uses: mamba-org/provision-with-micromamba@v16
         with:
           # cache-downloads: true
           cache-env-key: env-key-${{ matrix.python-version }}
