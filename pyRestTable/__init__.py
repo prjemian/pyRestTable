@@ -2,7 +2,7 @@
 
 """Configuration of pyRestTable package."""
 
-from .rest_table import Table
+from .rest_table import Table  # noqa
 
 try:
     from setuptools_scm import get_version

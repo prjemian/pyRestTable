@@ -6,7 +6,6 @@ from . import MINIMAL_GRID_RESULT
 from . import MINIMAL_HTML_RESULT
 from . import MINIMAL_LISTTABLE_RESULT
 from . import MINIMAL_MARKDOWN_RESULT
-from . import MINIMAL_MARKDOWN_RESULT
 from . import MINIMAL_SIMPLE_RESULT
 from .. import Table
 from ..rest_table import _prepare_results_
