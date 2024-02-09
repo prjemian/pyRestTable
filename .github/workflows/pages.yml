@@ -48,9 +48,9 @@ jobs:
         run: |
           pip install --upgrade pip
 
-      # - name: Install package
-      #   run: |
-      #     pip install --no-deps -e . -vv
+      - name: Install package
+        run: |
+          pip install --no-deps -e . -vv
 
       # - name: Diagnostics
       #   run: |
