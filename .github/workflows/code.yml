@@ -41,9 +41,6 @@ jobs:
           pip_install_command: "pip install -e .[dev]"
           python_version: "3.11"
 
-      # - name: Run black (code style)
-      #   uses: psf/black@stable
-
   tests:
     name: CI py${{ matrix.python-version }}
     needs: lint
@@ -56,6 +53,7 @@ jobs:
           - '3.9'
           - '3.10'
           - '3.11'
+          - '3.12'
       max-parallel: 5
 
     steps:
