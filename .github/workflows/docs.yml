@@ -60,11 +60,18 @@ jobs:
       - name: Install Sphinx build requirements
         run: |
           # https://github.com/pradyunsg/furo/discussions/308#discussioncomment-3064061
-          pip install setuptools-scm sphinx "furo <=2022.4.7"
+          pip install setuptools-scm sphinx furo
+
+      - name: Set time zone
+        uses: szenius/set-timezone@v1.2
+        with:
+          timezoneLinux: &tz_chicago "UAmerica/ChicagoTC"
+          timezoneMacos: *tz_chicago
+          timezoneWindows: *tz_chicago
 
       - name: Sphinx
         run: |
-          make -C docs html
+          TZ=UTC make -C docs html
 
       - name: Deploy (to gh-pages branch) only on demand
         uses: peaceiris/actions-gh-pages@v3
