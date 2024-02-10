@@ -23,7 +23,7 @@ copyright = toml["tool"]["copyright"]["copyright"]
 author = metadata["authors"][0]["name"]
 description = metadata["description"]
 rst_prolog = f".. |author| replace:: {author}"
-github_url = (f"https://github.com/{gh_org}/{project}",)
+github_url = f"https://github.com/{gh_org}/{project}"
 
 # -- Special handling for version numbers ---------------------------------------------------
 # https://github.com/pypa/setuptools_scm#usage-from-sphinx
