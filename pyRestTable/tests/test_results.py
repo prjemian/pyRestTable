@@ -1,3 +1,13 @@
+import io
+import urllib.request
+
+import lxml.etree
+import pytest
+
+from .. import Table
+from ..rest_table import _prepare_results_
+from ..rest_table import example_basic
+from ..rest_table import example_minimal
 from . import CANSAS_RESULT
 from . import EXAMPLE_BASIC_RESULT
 from . import EXAMPLE_COMPLICATED_RESULT
@@ -7,15 +17,6 @@ from . import MINIMAL_HTML_RESULT
 from . import MINIMAL_LISTTABLE_RESULT
 from . import MINIMAL_MARKDOWN_RESULT
 from . import MINIMAL_SIMPLE_RESULT
-from .. import Table
-from ..rest_table import _prepare_results_
-from ..rest_table import example_basic
-from ..rest_table import example_minimal
-import io
-import lxml.etree
-import pytest
-import urllib.request
-
 
 CANSAS_URL = (
     "https://raw.githubusercontent.com/"
