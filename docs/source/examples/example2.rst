@@ -16,12 +16,6 @@ These python commands setup the table:
     t.addRow( ['class', 'NX_FLOAT', '', None, ] )
     t.addRow( range(0,4) )
     t.addRow( [None, {'a': 1, 'b': 'dreamy'}, 1.234, range(3)] )
-    t.setLongtable()
-    t.setTabularColumns(True, 'l L c r'.split())
-
-Here, we assert more control over the table format using 
-:meth:`setLongtable` and 
-:meth:`setTabularColumns` configuration options.
 
 Format: `print(t.reST(fmt='simple'))`
 -------------------------------------
@@ -30,10 +24,6 @@ this reST code:
 
 .. code-block:: guess
    :linenos:
-   
-   
-   .. tabularcolumns:: |l|L|c|r|
-       :longtable:
    
    ========== ======================= ====== =================
    Name       Type                    Units  Description      
@@ -51,9 +41,6 @@ this reST code:
    ========== ======================= ====== =================
 
 is rendered as:
-
-.. tabularcolumns:: |l|L|c|r|
-    :longtable:
 
 ========== ======================= ====== =================
 Name       Type                    Units  Description      
@@ -78,9 +65,6 @@ this reST code:
 .. code-block:: guess
    :linenos:
    
-   .. tabularcolumns:: |l|L|c|r|
-       :longtable:
-   
    +------------+-------------------------+--------+-------------------+
    | Name       | Type                    | Units  | Description       |
    | and        |                         |        | (and Occurrences) |
@@ -100,9 +84,6 @@ this reST code:
    +------------+-------------------------+--------+-------------------+
 
 is rendered as:
-
-.. tabularcolumns:: |l|L|c|r|
-    :longtable:
 
 +------------+-------------------------+--------+-------------------+
 | Name       | Type                    | Units  | Description       |

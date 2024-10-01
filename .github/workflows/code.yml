@@ -26,7 +26,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Install package
         run: |
@@ -39,7 +39,7 @@ jobs:
           # src: "."
           # options: "--cov=src"
           pip_install_command: "pip install -e .[dev]"
-          python_version: "3.11"
+          python_version: "3.12"
 
   tests:
     name: CI py${{ matrix.python-version }}
@@ -48,12 +48,11 @@ jobs:
     strategy:
       matrix:
         python-version:
-          # - '3.7'
-          - '3.8'
           - '3.9'
           - '3.10'
           - '3.11'
           - '3.12'
+          - '3.13'
       max-parallel: 5
 
     steps:
@@ -63,16 +62,17 @@ jobs:
           fetch-depth: 0
 
       - name: Create Python ${{ matrix.python-version }} environment
-        uses: mamba-org/provision-with-micromamba@v16
+        uses: mamba-org/setup-micromamba@v1
         with:
-          # cache-downloads: true
-          cache-env-key: env-key-${{ matrix.python-version }}
-          cache-env: true
-          channel-priority: flexible
+          init-shell: bash
           environment-file: environment.yml
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
+          cache-environment-key: env-key-${{ matrix.python-version }}
+          cache-environment: true
+          # cache-downloads: true
+          # channel-priority: flexible
           # packages for the unit tests
-          extra-specs: |
+          create-args: >-
             coveralls
             pytest
             pytest-cov

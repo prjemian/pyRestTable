@@ -15,6 +15,25 @@
 Change History
 ##############
 
+.. for next release (2020.0.9)
+    2020.0.9
+    ************
+
+    release ~ 20234-10-01
+
+    Fixes
+    -----
+
+    * Cannot align columns in HTML output.  Remove from docs.
+
+    Maintenance
+    -----------
+
+    * Switch conda environment to use ``nodefaults`` channel.
+    * Test with Python versions 3.9 - 3.13
+    * Update CI unit test workflow.
+
+
 2020.0.8
 ************
 

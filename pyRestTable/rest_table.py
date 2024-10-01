@@ -4,16 +4,16 @@
 """
 Format a nice table in reST (restructured text).
 
-===========================  ============================================================
+===========================  ===============================================================
 User Interface               Description
-===========================  ============================================================
+===========================  ===============================================================
 :class:`Table`               Construct a table in reST
 :meth:`addLabel`             add label for one additional column
 :meth:`addRow`               add list of items for one additional row
-:meth:`setLongtable`         set `longtable` attribute
-:meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes
+:meth:`setLongtable`         set `longtable` attribute (LaTeX-only)
+:meth:`setTabularColumns`    set `use_tabular_columns` & `alignment` attributes (LaTeX-only)
 :meth:`reST`                 render the table in reST format
-===========================  ============================================================
+===========================  ===============================================================
 
 .. autosummary::
 
@@ -186,7 +186,9 @@ class Table(object):
 
     def setLongtable(self, state=True):
         """
-        set `longtable` attribute
+        Set `longtable` attribute.
+
+        .. note:: Only used for LaTeX output.
 
         :param bool longtable: True | False
         """
@@ -194,7 +196,9 @@ class Table(object):
 
     def setTabularColumns(self, state=True, column_spec=None):
         """
-        set `use_tabular_columns` & `alignment` attributes
+        Set `use_tabular_columns` & `alignment` attributes.
+
+        .. note:: Only used for LaTeX output.
 
         :param bool state: True | False
         :param [str] column_spec: list of column specifications
