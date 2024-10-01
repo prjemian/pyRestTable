@@ -48,8 +48,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          # - '3.7'
-          # - '3.8'
           - '3.9'
           - '3.10'
           - '3.11'
@@ -66,14 +64,15 @@ jobs:
       - name: Create Python ${{ matrix.python-version }} environment
         uses: mamba-org/setup-micromamba@v1
         with:
-          # cache-downloads: true
-          cache-environment-key: env-key-${{ matrix.python-version }}
-          cache-environment: true
-          # channel-priority: flexible
+          init-shell: bash
           environment-file: environment.yml
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
+          cache-environment-key: env-key-${{ matrix.python-version }}
+          cache-environment: true
+          # cache-downloads: true
+          # channel-priority: flexible
           # packages for the unit tests
-          create-args: |
+          create-args: >-
             coveralls
             pytest
             pytest-cov
