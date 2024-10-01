@@ -15,6 +15,13 @@
 Change History
 ##############
 
+.. for next release (2020.0.9)
+
+    Fixes
+    -----
+
+    * Cannot align columns in HTML output.  Remove from docs.
+
 2020.0.8
 ************
 
