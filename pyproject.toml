@@ -19,7 +19,7 @@ maintainers = [
   { name="Pete Jemian", email="prjemian+pyRestTable@gmail.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 keywords = ['reST', 'table', 'documentation']
 license = {file = "pyRestTable/LICENSE.txt"}
 classifiers = [
@@ -31,11 +31,11 @@ classifiers = [
   "License :: Public Domain",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Documentation",
   "Topic :: Documentation :: Sphinx",
   "Topic :: Software Development",
