@@ -16,6 +16,10 @@ Change History
 ##############
 
 .. for next release (2020.0.9)
+    2020.0.9
+    ************
+
+    release ~ 20234-10-01
 
     Fixes
     -----
