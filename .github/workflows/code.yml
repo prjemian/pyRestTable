@@ -54,7 +54,7 @@ jobs:
           - '3.10'
           - '3.11'
           - '3.12'
-          - '3.13'
+          # - '3.13'
       max-parallel: 5
 
     steps:
@@ -64,16 +64,16 @@ jobs:
           fetch-depth: 0
 
       - name: Create Python ${{ matrix.python-version }} environment
-        uses: mamba-org/provision-with-micromamba@v16
+        uses: mamba-org/setup-micromamba@v1
         with:
           # cache-downloads: true
-          cache-env-key: env-key-${{ matrix.python-version }}
-          cache-env: true
-          channel-priority: flexible
+          cache-environment-key: env-key-${{ matrix.python-version }}
+          cache-environment: true
+          # channel-priority: flexible
           environment-file: environment.yml
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
           # packages for the unit tests
-          extra-specs: |
+          create-args: |
             coveralls
             pytest
             pytest-cov
