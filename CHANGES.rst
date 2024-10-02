@@ -16,14 +16,13 @@ Change History
 ##############
 
 .. future releases (in comments)
-
-    2020.0.10
-    ********
+    2020.0.11
+    *********
 
     release: tba
 
-2020.0.9
-********
+2020.0.10
+*********
 
 released: 2024-10-01
 
