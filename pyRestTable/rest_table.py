@@ -15,9 +15,17 @@ User Interface               Description
 .. autosummary::
 
     ~Table
+    ~kv_table
     ~example_minimal
     ~example_basic
     ~example_complicated
+
+Example::
+
+    import pyRestTable
+
+    table = pyRestTable.kv_table({"a": 1, "b": "bb"})
+    print(table.reST())
 
 """
 
@@ -77,6 +85,15 @@ def example_complicated():
     t.addRow([None, {"a": 1, "b": "dreamy"}, 1.234, list(range(3))])
     t.setLongtable()
     t.setTabularColumns(True, ["l", "L", "c", "r"])
+    return t
+
+
+def kv_table(dd, key_label="key", value_label="value"):
+    """Build a two-column table from a key:value dictionary."""
+    t = Table()
+    t.labels = [key_label, value_label]
+    for key, value in dd.items():
+        t.addRow([key, value])
     return t
 
 
