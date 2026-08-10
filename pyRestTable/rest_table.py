@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
-
 """
 Format a nice table in reST (restructured text).
 
@@ -120,7 +117,9 @@ class Table:
 
     """
 
-    def __init__(self, dd={}):
+    def __init__(self, dd=None):
+        if dd is None:
+            dd = {}
         self.rows = []
         self.labels = []
         self.use_tabular_columns = False
@@ -212,7 +211,7 @@ class Table:
         if len(self.alignment) == 0:
             #  set the default column alignments
             self.alignment = str("L " * len(self.labels)).strip().split()
-        if not len(self.labels) == len(self.alignment):
+        if len(self.labels) != len(self.alignment):
             msg = "Number of column labels is different from column width specifiers"
             raise IndexError(msg)
         xref = {

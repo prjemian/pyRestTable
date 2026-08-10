@@ -91,6 +91,7 @@ extend-ignore = [
   "F401",  # imported but unused
   "F722", # allow Annotated[typ, some_func("some string")]
   "F811", # support typing.overload decorator
+  "N999", # package name is not snake_case
 ]
 
 [tool.ruff.lint.isort]
