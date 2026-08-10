@@ -43,11 +43,12 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - '3.9'
           - '3.10'
           - '3.11'
           - '3.12'
           - '3.13'
+          - '3.14'
+          # - '3.15'
       max-parallel: 5
 
     steps:
@@ -95,3 +96,4 @@ jobs:
           coveralls --service=github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

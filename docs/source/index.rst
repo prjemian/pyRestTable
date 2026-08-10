@@ -40,7 +40,7 @@ Features
 * create *simple*, *plain*, *grid* (also known as *complex*), and *list-table* 
   reST formatted tables [#]_, also *markdown*-formatted tables [#]_
 * defines table cells through Python lists, row-by-row
-* use with Python 2 or Python 3
+* use with Python 3.10+
 
 .. [#] http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#tables
 .. [#] https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
