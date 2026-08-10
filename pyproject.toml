@@ -47,6 +47,16 @@ dependencies = [
   "lxml",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "coveralls",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "ruff==0.16.2",
+  "setuptools-scm",
+]
+
 [project.urls]
 "Homepage" = "https://prjemian.github.io/pyRestTable/"
 "Bug Tracker" = "https://github.com/prjemian/pyRestTable/issues"
