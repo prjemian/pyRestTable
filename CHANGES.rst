@@ -16,10 +16,39 @@ Change History
 ##############
 
 .. future releases (in comments)
-    2020.0.11
+    2020.0.12
     *********
 
     release: tba
+
+2020.0.11
+*********
+
+release: 2026-08-10
+
+Breaking Changes
+----------------
+
+* Raise the supported Python version floor.
+
+New Features
+------------
+
+* Add ``kv_table`` helper for building key-value tables.
+
+Enhancements
+------------
+
+* Document local development installation and usage updates.
+
+Maintenance
+-----------
+
+* Adopt Ruff-based linting and clean up remaining lint findings.
+* Modernize project license metadata.
+* Automate annual copyright year updates.
+* Refresh GitHub Actions and publishing workflow dependencies.
+* Remove obsolete packaging deadwood and unused requirements.
 
 2020.0.10
 *********
