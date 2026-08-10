@@ -14,6 +14,13 @@ it should be used within a Python program.)
   (either ``rows.append([])`` or :func:`~.addRow`)
 * Render the table with :func:`.reST` (default table format is ``simple``)
 
+For a simple key:value dictionary, use :func:`pyRestTable.kv_table`::
+
+    import pyRestTable
+
+    table = pyRestTable.kv_table({"a": 1, "b": "bb"})
+    print(table.reST())
+
 Examples are provided to demonstrate usage.
 
 .. [#] http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
