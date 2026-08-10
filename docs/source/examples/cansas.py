@@ -14,7 +14,7 @@ CANSAS_URL = (
 
 
 def main():
-    nsmap = dict(cs="urn:cansas1d:1.1")
+    nsmap = {"cs": "urn:cansas1d:1.1"}
 
     r = urllib.request.urlopen(CANSAS_URL).read().decode("utf-8")
     doc = lxml.etree.parse(io.StringIO(r))

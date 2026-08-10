@@ -76,15 +76,14 @@ def example_complicated():
             None,
         ]
     )
-    t.addRow(range(0, 4))
+    t.addRow(range(4))
     t.addRow([None, {"a": 1, "b": "dreamy"}, 1.234, list(range(3))])
     t.setLongtable()
-    t.setTabularColumns(True, "l L c r".split())
+    t.setTabularColumns(True, ["l", "L", "c", "r"])
     return t
 
 
-class Table(object):
-
+class Table:
     """
     Construct a table in reST (no row or column spans).
 
@@ -383,11 +382,11 @@ class Table(object):
         """render the table in *HTML*"""
         html = "<table>\n"
         html += "  <tr>\n"  # start the labels
-        html += "".join(["    <th>{}</th>\n".format(k) for k in self.labels])  # labels
+        html += "".join([f"    <th>{k}</th>\n" for k in self.labels])  # labels
         html += "  </tr>\n"  # end the labels
         for row in self.rows:
             html += "  <tr>\n"  # start each row
-            html += "".join(["    <td>{}</td>\n".format(k) for k in row])  # each row
+            html += "".join([f"    <td>{k}</td>\n" for k in row])  # each row
             html += "  </tr>\n"  # end each row
         html += "</table>"  # end of table
         return html

@@ -26,7 +26,7 @@ CANSAS_URL = (
 
 
 def cansas():
-    nsmap = dict(cs="urn:cansas1d:1.1")
+    nsmap = {"cs": "urn:cansas1d:1.1"}
 
     r = urllib.request.urlopen(CANSAS_URL).read().decode("utf-8")
     doc = lxml.etree.parse(io.StringIO(r))
@@ -57,7 +57,7 @@ complicated_labels = [
 complicated_rows = [
     ["one,\ntwo", "buckle my", "shoe.\n\n\nthree,\nfour", "..."],
     ["class", "NX_FLOAT", "", None],
-    list(range(0, 4)),
+    list(range(4)),
     [None, {"a": 1, "b": "dreamy"}, 1.234, list(range(3))],
 ]
 population_labels = ["City name", "Area", "Population", "Annual Rainfall"]
@@ -66,7 +66,7 @@ population_rows = [
     ["Brisbane", 5905, 1857594, 1146.4],
     ["Darwin", 112, 120900, 1714.7],
 ]
-simple_labels = "one two three".split()
+simple_labels = ["one", "two", "three"]
 simple_rows = [[f"{r},{c}" for c in [1, 2, 3]] for r in [1, 2, 3, 4]]
 
 
@@ -395,10 +395,10 @@ def test_example_complicated():
     t = example_complicated()
     s = t.reST(fmt="grid").strip()
     if s != EXAMPLE_COMPLICATED_RESULT:
-        print("")
+        print()
         print(f"expected: {len(EXAMPLE_COMPLICATED_RESULT)}")
         print(EXAMPLE_COMPLICATED_RESULT)
-        print("")
+        print()
         print(f"received: {len(s)}")
         print(s)
     assert s == EXAMPLE_COMPLICATED_RESULT
