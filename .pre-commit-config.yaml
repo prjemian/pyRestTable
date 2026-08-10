@@ -1,4 +1,14 @@
+# hint: pre-commit run --all-files
+
 repos:
+  - repo: local
+    hooks:
+      - id: update-copyright-year
+        name: Update copyright end year
+        language: python
+        entry: python scripts/update_copyright_year.py
+        pass_filenames: false
+        always_run: true
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.2
     hooks:

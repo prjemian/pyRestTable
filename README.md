@@ -13,7 +13,7 @@ Install with conda | `conda install -c conda-forge pyRestTable`
 Install with pip | `pip install pyRestTable`
 author | Pete R. Jemian
 email | prjemian@gmail.com
-copyright | 2014-2023, Pete R. Jemian
+copyright | 2014-2026, Pete R. Jemian
 license | [![Anaconda-Server Badge](https://anaconda.org/conda-forge/pyresttable/badges/license.svg)](https://anaconda.org/conda-forge/pyresttable) (see *LICENSE.txt*)
 docs | https://prjemian.github.io/pyRestTable
 URL | https://github.com/prjemian/pyRestTable
