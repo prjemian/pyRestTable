@@ -1,6 +1,6 @@
 [build-system]
 requires = [
-  "setuptools>=64.0",
+  "setuptools>=77.0.3",
   "setuptools_scm[toml]>=8.0"
 ]
 build-backend = "setuptools.build_meta"
@@ -18,14 +18,12 @@ maintainers = [
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ['reST', 'table', 'documentation']
-license = {file = "pyRestTable/LICENSE.txt"}
+license = "CC-BY-4.0"
+license-files = ["pyRestTable/LICENSE.txt"]
 classifiers = [
   "Development Status :: 6 - Mature",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
-  "License :: Freely Distributable",
-  "License :: Public Domain",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.10",
