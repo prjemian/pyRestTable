@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
-
 """
 Format a nice table in reST (restructured text).
 
@@ -76,15 +73,14 @@ def example_complicated():
             None,
         ]
     )
-    t.addRow(range(0, 4))
+    t.addRow(range(4))
     t.addRow([None, {"a": 1, "b": "dreamy"}, 1.234, list(range(3))])
     t.setLongtable()
-    t.setTabularColumns(True, "l L c r".split())
+    t.setTabularColumns(True, ["l", "L", "c", "r"])
     return t
 
 
-class Table(object):
-
+class Table:
     """
     Construct a table in reST (no row or column spans).
 
@@ -121,7 +117,9 @@ class Table(object):
 
     """
 
-    def __init__(self, dd={}):
+    def __init__(self, dd=None):
+        if dd is None:
+            dd = {}
         self.rows = []
         self.labels = []
         self.use_tabular_columns = False
@@ -213,7 +211,7 @@ class Table(object):
         if len(self.alignment) == 0:
             #  set the default column alignments
             self.alignment = str("L " * len(self.labels)).strip().split()
-        if not len(self.labels) == len(self.alignment):
+        if len(self.labels) != len(self.alignment):
             msg = "Number of column labels is different from column width specifiers"
             raise IndexError(msg)
         xref = {
@@ -383,11 +381,11 @@ class Table(object):
         """render the table in *HTML*"""
         html = "<table>\n"
         html += "  <tr>\n"  # start the labels
-        html += "".join(["    <th>{}</th>\n".format(k) for k in self.labels])  # labels
+        html += "".join([f"    <th>{k}</th>\n" for k in self.labels])  # labels
         html += "  </tr>\n"  # end the labels
         for row in self.rows:
             html += "  <tr>\n"  # start each row
-            html += "".join(["    <td>{}</td>\n".format(k) for k in row])  # each row
+            html += "".join([f"    <td>{k}</td>\n" for k in row])  # each row
             html += "  </tr>\n"  # end each row
         html += "</table>"  # end of table
         return html
@@ -446,7 +444,7 @@ class Table(object):
 # -----------------------------------------------------------------------------
 # :author:    Pete R. Jemian
 # :email:     prjemian@gmail.com
-# :copyright: (c) 2014-2023, Pete R. Jemian
+# :copyright: (c) 2014-2026, Pete R. Jemian
 #
 # Distributed under the terms of the Creative Commons Attribution 4.0 International Public License.
 #

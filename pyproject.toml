@@ -5,9 +5,6 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-[tool.copyright]
-copyright = "2014-2024, Pete R. Jemian"
-
 [project]
 name = "pyRestTable"
 dynamic = ["version"]
@@ -19,7 +16,7 @@ maintainers = [
   { name="Pete Jemian", email="prjemian+pyRestTable@gmail.com" },
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 keywords = ['reST', 'table', 'documentation']
 license = {file = "pyRestTable/LICENSE.txt"}
 classifiers = [
@@ -31,11 +28,11 @@ classifiers = [
   "License :: Public Domain",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
   "Topic :: Documentation",
   "Topic :: Documentation :: Sphinx",
   "Topic :: Software Development",
@@ -47,39 +44,46 @@ dependencies = [
   "lxml",
 ]
 
+[project.optional-dependencies]
+dev = [
+  "coveralls",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "ruff==0.16.2",
+  "setuptools-scm",
+]
+
 [project.urls]
 "Homepage" = "https://prjemian.github.io/pyRestTable/"
 "Bug Tracker" = "https://github.com/prjemian/pyRestTable/issues"
 
-# [project.scripts]
-# gemviz = "gemviz.app:main"
+[tool.copyright]
+copyright = "2014-2026, Pete R. Jemian"
 
-[tool.black]
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
+
+[tool.ruff]
 line-length = 115
-target-version = ['py311']
-include = '\.pyi?$'
-exclude = '''
+target-version = "py311"
+exclude = [
+  ".eggs",
+  ".git",
+  ".hg",
+  ".mypy_cache",
+  ".pytest_cache",
+  ".tox",
+  ".venv",
+  "_build",
+  "build",
+  "dist",
+  "docs",
+]
 
-(
-  /(
-      \.eggs         # exclude a few common directories in the
-    | \.git          # root of the project
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | \.pytest_cache
-    | _build
-    | build
-    | dist
-    | docs
-  )/
-)
-'''
-
-
-[tool.flake8]
-max-line-length = 115
+[tool.ruff.lint]
 extend-ignore = [
   "E203", # See https://github.com/PyCQA/pycodestyle/issues/373
   "E402", # module level import not at top of file (for cansas.py)
@@ -87,20 +91,11 @@ extend-ignore = [
   "F401",  # imported but unused
   "F722", # allow Annotated[typ, some_func("some string")]
   "F811", # support typing.overload decorator
-  "W503",
-  "W504"
+  "N999", # package name is not snake_case
 ]
 
-[tool.isort]
-force_single_line = true
-# multi_line_output = 1
-line_length = 88
-include_trailing_comma = true
-
-[tool.pytest.ini_options]
-addopts = [
-    "--import-mode=importlib",
-]
+[tool.ruff.lint.isort]
+force-single-line = true
 
 [tool.setuptools_scm]
 write_to = "pyRestTable/_version.py"

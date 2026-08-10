@@ -4,7 +4,7 @@ from ..rest_table import Table
 
 
 def test_dict_to_table():
-    dd = dict(a=[1, 2, 3], b=[-1, 0, 1], c=[], d="one two".split())
+    dd = {"a": [1, 2, 3], "b": [-1, 0, 1], "c": [], "d": ["one", "two"]}
     table = Table(dd)
     assert len(table.labels) == len(dd)
     nrows = max([len(v) for v in dd.values()])
